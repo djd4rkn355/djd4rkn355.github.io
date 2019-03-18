@@ -3,6 +3,7 @@ from selenium.webdriver.common.by import By
 from io import TextIOWrapper
 import time
 import codecs
+import subprocess
 
 while True:
     file = codecs.open("index.html", "w", "utf-8")
@@ -42,3 +43,26 @@ while True:
     file.write("\n\t\t</table>\n\t</body>\n</html>")
     browser.quit()
     file.close()
+    
+    #cmdOne = "cd /home/pi/djd4rkn355.github.io"
+    #cmdTwo = "git add --all"
+    #cmdThree = "git commit"
+    #cmdFour = "git push"
+    
+    #processOne = subprocess.Popen(cmdOne.split(), stdout=subprocess.PIPE, cwd='/home/pi/djd4rkn355.github.io')
+    #output, error = processOne.communicate
+    #processTwo = subprocess.Popen(cmdTwo.split(), stdout=subprocess.PIPE, cwd='/home/pi/djd4rkn355.github.io')
+    #output, error = processTwo.communicate
+    #processThree = subprocess.Popen(cmdThree.split(), stdout=subprocess.PIPE, cwd='/home/pi/djd4rkn355.github.io')
+    #output, error = processThree.communicate
+    #processFour = subprocess.Popen(cmdFour.split(), stdout=subprocess.PIPE, cwd='/home/pi/djd4rkn355.github.io')
+    #output, error = processFour.communicate
+    
+    def subprocess_cmd(command):
+        process = subprocess.Popen(command,stdout=subprocess.PIPE, shell=True)
+        proc_stdout = process.communicate()[0].strip()
+        print(proc_stdout)
+
+    subprocess_cmd('cd /home/pi/djd4rkn355.github.io; git add --all; git commit -m "Pi Push"; git push')
+    
+    time.sleep(600)
