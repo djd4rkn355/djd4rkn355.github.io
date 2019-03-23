@@ -10,7 +10,6 @@ while True:
     file.truncate()
     file.write("<!DOCTYPE HTML>\n<html>\n\t<head>\n\t\t<meta charset=\"utf-8\">\n\t\t<style>\n\t\t\tbody {\n\t\t\t\tfont-family: Arial, Helvetica, sans-serif\n\t\t\t}\n\t\t</style>\n\t</head>\n\t<body>\n\t\t<table>")
 
-    # browser = webdriver.Chrome('/Users/kduez/git/raspberryPi/chromedriver') # for Windows 10
     browser = webdriver.Chrome('/usr/lib/chromium-browser/chromedriver') # for Raspberry Pi
 
     browser.get('http://307.joomla.schule.bremen.de/index.php/component/users/?view=login&Itemid=171')
@@ -43,20 +42,6 @@ while True:
     file.write("\n\t\t</table>\n\t</body>\n</html>")
     browser.quit()
     file.close()
-    
-    #cmdOne = "cd /home/pi/djd4rkn355.github.io"
-    #cmdTwo = "git add --all"
-    #cmdThree = "git commit"
-    #cmdFour = "git push"
-    
-    #processOne = subprocess.Popen(cmdOne.split(), stdout=subprocess.PIPE, cwd='/home/pi/djd4rkn355.github.io')
-    #output, error = processOne.communicate
-    #processTwo = subprocess.Popen(cmdTwo.split(), stdout=subprocess.PIPE, cwd='/home/pi/djd4rkn355.github.io')
-    #output, error = processTwo.communicate
-    #processThree = subprocess.Popen(cmdThree.split(), stdout=subprocess.PIPE, cwd='/home/pi/djd4rkn355.github.io')
-    #output, error = processThree.communicate
-    #processFour = subprocess.Popen(cmdFour.split(), stdout=subprocess.PIPE, cwd='/home/pi/djd4rkn355.github.io')
-    #output, error = processFour.communicate
     
     def subprocess_cmd(command):
         process = subprocess.Popen(command,stdout=subprocess.PIPE, shell=True)
