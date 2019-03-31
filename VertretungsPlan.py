@@ -5,7 +5,7 @@ import time
 import codecs
 import subprocess
 
-file = codecs.open("index2.html", "w", "utf-8")
+file = codecs.open("index.html", "w", "utf-8")
 file.truncate()
 file.write("<!DOCTYPE HTML>\n<html>\n\t<head>\n\t\t<meta charset=\"utf-8\">\n\t\t<style>\n\t\t\tbody {\n\t\t\t\tfont-family: Arial, Helvetica, sans-serif\n\t\t\t}\n\t\t</style>\n\t</head>\n\t<body>\n\t\t<table>")
 
