@@ -24,39 +24,7 @@ while True:
 
     browser.get('http://307.joomla.schule.bremen.de/index.php/service/sch%C3%BCler')
 
-    try: # first information table
-        dateDay = browser.find_element_by_xpath('//*[@id="jsn-mainbody"]/div[2]/p[2]')
-        stringDate = dateDay.find_elements_by_tag_name("b")
-        for strings in stringDate:
-            print(strings.text)
-            file.write("\n\t\t<p>" + strings.text + "</p>")
-
-        colsInfo = browser.find_element_by_xpath('//*[@id="jsn-mainbody"]/div[2]/table[1]/tbody/tr[2]')
-        #for info in colsInfo:
-        print(colsInfo.text)
-        file.write("\n\t\t<p>" + colsInfo.text + "</p>")
-        secondRow = browser.find_element_by_xpath('//*[@id="jsn-mainbody"]/div[2]/table[1]/tbody/tr[3]')
-        print(secondRow.text)
-        file.write("\n\t\t<p>" + secondRow.text + "</p>")
-    except:
-        print("NullPointerException")
-
-    try: # second information table
-        dateDay2 = browser.find_element_by_xpath('//*[@id="jsn-mainbody"]/div[2]/p[7]')
-        stringDate2 = dateDay2.find_elements_by_tag_name("b")
-        for strings2 in stringDate2:
-            print(strings2.text)
-            file.write("\n\t\t<p>" + strings2.text + "</p>")
-
-        colsInfo2 = browser.find_element_by_xpath('//*[@id="jsn-mainbody"]/div[2]/table[3]/tbody/tr[2]')
-        # for info2 in colsInfo2:
-        print(colsInfo2.text)
-        file.write("\n\t\t<p>" + colsInfo2.text + "</p>")
-        secondRow2 = browser.find_element_by_xpath('//*[@id="jsn-mainbody"]/div[2]/table[3]/tbody/tr[3]')
-        print(secondRow2.text)
-        file.write("\n\t\t<p>" + secondRow2.text + "</p>")
-    except:
-        print("NullPointerException")
+    
 
     try:
         table_id = browser.find_element_by_xpath('//*[@id="jsn-mainbody"]/div[2]/table[2]')
@@ -101,7 +69,39 @@ while True:
         file.write("\n\t\t</table>")
 
     
+    try: # first information table
+        dateDay = browser.find_element_by_xpath('//*[@id="jsn-mainbody"]/div[2]/p[2]')
+        stringDate = dateDay.find_elements_by_tag_name("b")
+        for strings in stringDate:
+            print(strings.text)
+            file.write("\n\t\t<p>" + strings.text + "</p>")
 
+        colsInfo = browser.find_element_by_xpath('//*[@id="jsn-mainbody"]/div[2]/table[1]/tbody/tr[2]')
+        #for info in colsInfo:
+        print(colsInfo.text)
+        file.write("\n\t\t<p>" + colsInfo.text + "</p>")
+        secondRow = browser.find_element_by_xpath('//*[@id="jsn-mainbody"]/div[2]/table[1]/tbody/tr[3]')
+        print(secondRow.text)
+        file.write("\n\t\t<p>" + secondRow.text + "</p>")
+    except:
+        print("NullPointerException")
+
+    try: # second information table
+        dateDay2 = browser.find_element_by_xpath('//*[@id="jsn-mainbody"]/div[2]/p[7]')
+        stringDate2 = dateDay2.find_elements_by_tag_name("b")
+        for strings2 in stringDate2:
+            print(strings2.text)
+            file.write("\n\t\t<p>" + strings2.text + "</p>")
+
+        colsInfo2 = browser.find_element_by_xpath('//*[@id="jsn-mainbody"]/div[2]/table[3]/tbody/tr[2]')
+        # for info2 in colsInfo2:
+        print(colsInfo2.text)
+        file.write("\n\t\t<p>" + colsInfo2.text + "</p>")
+        secondRow2 = browser.find_element_by_xpath('//*[@id="jsn-mainbody"]/div[2]/table[3]/tbody/tr[3]')
+        print(secondRow2.text)
+        file.write("\n\t\t<p>" + secondRow2.text + "</p>")
+    except:
+        print("NullPointerException")
 
     # try:
     #     substBlock = browser.find_element(By.CLASS_NAME, 'item-page')
