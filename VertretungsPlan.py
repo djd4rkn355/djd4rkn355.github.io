@@ -59,7 +59,7 @@ while True:
         print("NullPointerException")
 
     try:
-        table_id = browser.find_element(By.CLASS_NAME, 'subst')
+        table_id = browser.find_element_by_xpath('//*[@id="jsn-mainbody"]/div[2]/table[2]')
         rowCount = table_id.find_elements_by_tag_name("tr")
         intRow = 1
         file.write("\n\t\t<table>")
@@ -78,7 +78,7 @@ while True:
             file.write("\n\t\t\t</tr>")
             intRow += 1
 
-        table_id2 = browser.find_element(By.CLASS_NAME, 'subst')
+        table_id2 = browser.find_element_by_xpath('//*[@id="jsn-mainbody"]/div[2]/table[4]')
         rowCount2 = table_id2.find_elements_by_tag_name("tr")
         intRow2 = 1
 
