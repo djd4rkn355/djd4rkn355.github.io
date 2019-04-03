@@ -31,10 +31,10 @@ while True:
             print(strings.text)
             file.write("\n\t\t<p>" + strings.text + "</p>")
 
-        colsInfo = browser.find_elements_by_xpath('//*[@id="jsn-mainbody"]/div[2]/table[1]/tbody/tr[2]')
-        for info in colsInfo:
-            print(info.text)
-            file.write("\n\t\t<p>" + info.text + "</p>")
+        colsInfo = browser.find_element_by_xpath('//*[@id="jsn-mainbody"]/div[2]/table[1]/tbody/tr[2]')
+        #for info in colsInfo:
+        print(colsInfo.text)
+        file.write("\n\t\t<p>" + colsInfo.text + "</p>")
         secondRow = browser.find_element_by_xpath('//*[@id="jsn-mainbody"]/div[2]/table[1]/tbody/tr[3]')
         print(secondRow.text)
         file.write("\n\t\t<p>" + secondRow.text + "</p>")
@@ -48,10 +48,10 @@ while True:
             print(strings2.text)
             file.write("\n\t\t<p>" + strings2.text + "</p>")
 
-        colsInfo2 = browser.find_elements_by_xpath('//*[@id="jsn-mainbody"]/div[2]/table[3]/tbody/tr[2]')
-        for info2 in colsInfo2:
-            print(info2.text)
-            file.write("\n\t\t<p>" + info2.text + "</p>")
+        colsInfo2 = browser.find_element_by_xpath('//*[@id="jsn-mainbody"]/div[2]/table[3]/tbody/tr[2]')
+        # for info2 in colsInfo2:
+        print(colsInfo2.text)
+        file.write("\n\t\t<p>" + colsInfo2.text + "</p>")
         secondRow2 = browser.find_element_by_xpath('//*[@id="jsn-mainbody"]/div[2]/table[3]/tbody/tr[3]')
         print(secondRow2.text)
         file.write("\n\t\t<p>" + secondRow2.text + "</p>")
