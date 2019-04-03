@@ -37,65 +37,23 @@ while True:
             for intCol in range(0, 6): # iterates through every column in a row (horizontally) minus the student groups
                 cols = rows.find_elements_by_xpath('.//td')[intCol]
                 print(cols.text)
-                file.write("\n\t\t\t\t<th>" + cols.text + "</th>")
+                file.write("\n\t\t\t\t<th>" + cols.text + "<th>")
                 intCol += 1
                 
             file.write("\n\t\t\t</tr>")
             intRow += 1
-
-        table_id2 = browser.find_element(By.CLASS_NAME, 'subst')
-        rowCount2 = table_id.find_elements_by_tag_name("tr")
-        intRow2 = 1
-
-        for intRow2 in range(1, len(rowCount2)): # iterates through every row (vertically) and skips the first one (header)
-            file.write("\n\t\t\t<tr>")
-            intCol2 = 0
-            rows2 = browser.find_elements_by_xpath('//table[4]/tbody/tr')[intRow2]
-            
-            for intCol2 in range(0, 6): # iterates through every column in a row (horizontally) minus the student groups
-                cols2 = rows2.find_elements_by_xpath('.//td')[intCol2]
-                print(cols2.text)
-                file.write("\n\t\t\t\t<th>" + cols2.text + "</th>")
-                intCol2 += 1
-                
-            file.write("\n\t\t\t</tr>")
-            intRow2 += 1
+        file.write("\n\t\t</table>")
     except:
         print("NullPointerException")
-    finally:
-        file.write("\n\t\t</table>")
 
-    try: # first information table
-        dateDay = browser.find_element_by_xpath('//*[@id="jsn-mainbody"]/div[2]/p[2]')
-        stringDate = dateDay.find_elements_by_tag_name("b")
-        for strings in stringDate:
-            print(strings.text)
-            file.write("\n\t\t<p>" + strings.text + "</p>")
 
+    try:
+        # dayInfo = browser.find_elements_by_xpath('//div[2]/table[1]')
         colsInfo = browser.find_elements_by_xpath('//*[@id="jsn-mainbody"]/div[2]/table[1]/tbody/tr[2]')
         for info in colsInfo:
             print(info.text)
             file.write("\n\t\t<p>" + info.text + "</p>")
-        secondRow = browser.find_element_by_xpath('//*[@id="jsn-mainbody"]/div[2]/table[1]/tbody/tr[3]')
-        print(secondRow.text)
-        file.write("\n\t\t<p>" + secondRow.text + "</p>")
-    except:
-        print("NullPointerException")
 
-    try: # second information table
-        dateDay2 = browser.find_element_by_xpath('//*[@id="jsn-mainbody"]/div[2]/p[7]')
-        stringDate2 = dateDay2.find_elements_by_tag_name("b")
-        for strings2 in stringDate2:
-            print(strings2.text)
-            file.write("\n\t\t<p>" + strings2.text + "</p>")
-
-        colsInfo2 = browser.find_elements_by_xpath('//*[@id="jsn-mainbody"]/div[2]/table[3]/tbody/tr[2]')
-        for info2 in colsInfo2:
-            print(info2.text)
-            file.write("\n\t\t<p>" + info2.text + "</p>")
-        secondRow2 = browser.find_element_by_xpath('//*[@id="jsn-mainbody"]/div[2]/table[3]/tbody/tr[3]')
-        print(secondRow2.text)
-        file.write("\n\t\t<p>" + secondRow2.text + "</p>")
     except:
         print("NullPointerException")
 
