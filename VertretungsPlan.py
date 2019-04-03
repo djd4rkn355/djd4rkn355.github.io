@@ -44,7 +44,7 @@ while True:
             intRow += 1
 
         table_id2 = browser.find_element(By.CLASS_NAME, 'subst')
-        rowCount2 = table_id.find_elements_by_tag_name("tr")
+        rowCount2 = table_id2.find_elements_by_tag_name("tr")
         intRow2 = 1
 
         for intRow2 in range(1, len(rowCount2)): # iterates through every row (vertically) and skips the first one (header)
