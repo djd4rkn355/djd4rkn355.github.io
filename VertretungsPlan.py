@@ -82,7 +82,7 @@ while True:
         file.write("\n\t\t<p>" + colsInfo.text + "</p>")
         secondRow = browser.find_element_by_xpath('//*[@id="jsn-mainbody"]/div[2]/table[1]/tbody/tr[3]')
         print(secondRow.text)
-        file.write("\n\t\t<p>\"" + secondRow.text + "\"</p>")
+        file.write("\n\t\t<p>" + secondRow.text + "</p>")
     except:
         print("NullPointerException")
 
@@ -96,7 +96,7 @@ while True:
         colsInfo2 = browser.find_element_by_xpath('//*[@id="jsn-mainbody"]/div[2]/table[3]/tbody/tr[2]')
         # for info2 in colsInfo2:
         print(colsInfo2.text)
-        file.write("\n\t\t<p>\"" + colsInfo2.text + "\"</p>")
+        file.write("\n\t\t<p>" + colsInfo2.text + "</p>")
         secondRow2 = browser.find_element_by_xpath('//*[@id="jsn-mainbody"]/div[2]/table[3]/tbody/tr[3]')
         print(secondRow2.text)
         file.write("\n\t\t<p>" + secondRow2.text + "</p>")
