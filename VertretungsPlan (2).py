@@ -123,7 +123,7 @@ while True:
     #     print("NullPointerException")
 
     file.write("\n\t</body>\n</html>")
-    browser.quit()
+    #browser.quit()
     file.close()
 
     def subprocess_cmd(command):
