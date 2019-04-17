@@ -4,15 +4,17 @@ from io import TextIOWrapper
 import time
 import codecs
 import subprocess
+import smtplib
+import traceback
 
 while True:
 
-    file = codecs.open("index.html", "w", "utf-8")
+    file = codecs.open("subst.html", "w", "utf-8")
     file.truncate()
     file.write("<!DOCTYPE HTML>\n<html>\n\t<head>\n\t\t<meta charset=\"utf-8\">\n\t\t<style>\n\t\t\tbody {\n\t\t\t\tfont-family: Arial, Helvetica, sans-serif\n\t\t\t}\n\t\t</style>\n\t</head>\n\t<body>")
 
     # browser = webdriver.Chrome('/Users/kduez/git/raspberryPi/chromedriver') # for Windows 10
-    browser = webdriver.Chrome('/usr/lib/chromium-browser/chromedriver') # for Raspberry Pi
+    browser = webdriver.Chrome('/usr/bin/chromedriver') # for Raspberry Pi, Chrome 72
 
     browser.get('http://307.joomla.schule.bremen.de/index.php/component/users/?view=login&Itemid=171')
 
@@ -90,6 +92,22 @@ while True:
             ic1 += 1
     except:
         print("fuck mate somethings wrong better fix it")
+        smtpUser = 'rpiavhplan@gmail.com'
+        smtpPass = 'avhplan307'
+        toAdd = 'k.duezgoeren@gmail.com'
+        fromAdd = smtpUser
+        subject = 'AvH Plan Server Issue'
+        header = 'To: ' + toAdd + '\n' + 'From: ' + fromAdd + '\n' + 'Subject: ' + subject
+        body = 'Plan could not be fetched. Please review the codebase.'
+        s = smtplib.SMTP('smtp.gmail.com', 587)
+        s.ehlo()
+        s.starttls()
+        s.ehlo()
+        s.login(smtpUser, smtpPass)
+        s.sendmail(fromAdd, toAdd, header + '\n\n' + body + '\n' + traceback.format_exc())
+        s.quit()
+        print('Email has been sent')
+
 
     try:
         dateDay2 = browser.find_element_by_xpath('//*[@id="jsn-mainbody"]/div[2]/p[2]/b')
