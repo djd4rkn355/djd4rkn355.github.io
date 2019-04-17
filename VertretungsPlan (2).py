@@ -42,7 +42,7 @@ while True:
             for intCol in range(0, 6): # iterates through every column in a row (horizontally) minus the student groups
                 cols = rows.find_elements_by_xpath('.//td')[intCol]
                 print(cols.text)
-                file.write("\n\t\t\t\t<th>" + cols.text + "<th>")
+                file.write("\n\t\t\t\t<th>" + cols.text + "</th>")
                 intCol += 1
                 
             file.write("\n\t\t\t</tr>")
@@ -60,7 +60,7 @@ while True:
             for intCol2 in range(0, 6): # iterates through every column in a row (horizontally) minus the student groups
                 cols2 = rows2.find_elements_by_xpath('.//td')[intCol2]
                 print(cols2.text)
-                file.write("\n\t\t\t\t<th>" + cols2.text + "<th>")
+                file.write("\n\t\t\t\t<th>" + cols2.text + "</th>")
                 intCol2 += 1
                 
             file.write("\n\t\t\t</tr>")
