@@ -10,8 +10,11 @@ import traceback
 while True:
 
     file = codecs.open("subst.html", "w", "utf-8")
+    fileFood = codecs.open("food.html", "w", "utf-8")
     file.truncate()
+    fileFood.truncate()
     file.write("<!DOCTYPE HTML>\n<html>\n\t<head>\n\t\t<meta charset=\"utf-8\">\n\t\t<style>\n\t\t\tbody {\n\t\t\t\tfont-family: Arial, Helvetica, sans-serif\n\t\t\t}\n\t\t</style>\n\t</head>\n\t<body>")
+    fileFood.write("<!DOCTYPE HTML>\n<html>\n\t<head>\n\t\t<meta charset=\"utf-8\">\n\t\t<style>\n\t\t\tbody {\n\t\t\t\tfont-family: Arial, Helvetica, sans-serif\n\t\t\t}\n\t\t</style>\n\t</head>\n\t<body>")
 
     # browser = webdriver.Chrome('/Users/kduez/git/raspberryPi/chromedriver') # for Windows 10
     browser = webdriver.Chrome('/usr/bin/chromedriver') # for Raspberry Pi, Chrome 72
@@ -72,7 +75,7 @@ while True:
 
 
     try: #first info table
-        dateDay = browser.find_element_by_xpath('//*[@id="jsn-mainbody"]/div[2]/p[1]/b')
+        dateDay = browser.find_element_by_xpath('//*[@id="jsn-mainbody"]/div[2]/p[4]/b')
         print(dateDay.text)
         file.write("\n\t\t<p>" + dateDay.text + "</p>")
         
@@ -141,8 +144,42 @@ while True:
     #     print("NullPointerException")
 
     file.write("\n\t</body>\n</html>")
-    browser.quit()
     file.close()
+
+    browser.get('https://www.schulkantine-gueven.de/speisekarte')
+
+    try:
+        fileFood.write("\n\t\t<table>\n\t\t\t<tr>\n\t\t\t\t<th>Für Schüler 3,00€, für Bedienstete 3,50€. Mittagstisch von 11:30 bis 14:30.</th>")
+        foodDateOne = browser.find_element_by_xpath('//*[@id="1302648704"]/div[1]/h3')
+        fileFood.write("\n\t\t\t\t<th>" + foodDateOne.text + "</th>")
+        print(foodDateOne.text)
+
+        foodTableOne = browser.find_elements_by_xpath('//*[@id="1302648704"]/div[1]/div/div[2]/div/div[1]/div[2]/div/p')
+        for intFoodOne in range(0, len(foodTableOne) - 3):
+            foodCol = browser.find_elements_by_xpath('//*[@id="1302648704"]/div[1]/div/div[2]/div/div[1]/div[2]/div/p')[intFoodOne]
+            fileFood.write("\n\t\t\t\t<th>" + foodCol.text + "</th>")
+            print(foodCol.text)
+
+        try:
+            foodDateTwo = browser.find_element_by_xpath('//*[@id="1302648704"]/div[2]/h3')
+            fileFood.write("\n\t\t\t\t<th>" + foodDateTwo.text + "</th>")
+            print(foodDateTwo.text)
+
+            foodTableTwo = browser.find_elements_by_xpath('//*[@id="1302648704"]/div[2]/div/div[2]/div/div[1]/div[2]/div/p')
+            for intFoodTwo in range(0, len(foodTableTwo) - 5):
+                foodColTwo = browser.find_elements_by_xpath('//*[@id="1302648704"]/div[2]/div/div[2]/div/div[1]/div[2]/div/p')[intFoodTwo]
+                fileFood.write("\n\t\t\t\t<th>" + foodColTwo.text + "</th>")
+                print(foodColTwo.text)
+        
+        except:
+            print("No second food for you huehuehue?")
+
+    except:
+        print("No food for you huehuehue!")
+    finally:
+        fileFood.write("\n\t\t\t</tr>\n\t\t</table>\n\t</body>\n<html>")
+        browser.quit()
+        fileFood.close()
 
     def subprocess_cmd(command):
         process = subprocess.Popen(command,stdout=subprocess.PIPE, shell=True)
