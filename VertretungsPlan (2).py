@@ -75,7 +75,7 @@ while True:
 
 
     try: #first info table
-        dateDay = browser.find_element_by_xpath('//*[@id="jsn-mainbody"]/div[2]/p[4]/b')
+        dateDay = browser.find_element_by_xpath('//*[@id="jsn-mainbody"]/div[2]/p[3]/b')
         print(dateDay.text)
         file.write("\n\t\t<p>" + dateDay.text + "</p>")
         
