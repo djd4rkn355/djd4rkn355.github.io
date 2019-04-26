@@ -32,7 +32,7 @@ while True:
     
 
     try:
-        table_id = browser.find_element_by_xpath('//*[@id="jsn-mainbody"]/div[2]/table[2]')
+        table_id = browser.find_element_by_xpath('//*[@id="vertretung"]/table[2]/tbody')
         rowCount = table_id.find_elements_by_tag_name("tr")
         intRow = 1
         file.write("\n\t\t<table>")
@@ -79,14 +79,14 @@ while True:
         print(dateDay.text)
         file.write("\n\t\t<p>" + dateDay.text + "</p>")
         
-        colsInfo = browser.find_element_by_xpath('//*[@id="vertretung"]/table[2]/tbody')
+        colsInfo = browser.find_element_by_xpath('//*[@id="vertretung"]/table[1]/tbody')
         infoRowCount = colsInfo.find_elements_by_tag_name("tr")
         ic1 = 0
         for ic1 in range(0, len(infoRowCount)): #len(infoRowCount) //*[@id="vertretung"]/table[1]/tbody/tr[2]/td[2]
-            rowsInfo1 = browser.find_elements_by_xpath('//*[@id="jsn-mainbody"]/div[2]/table[1]/tbody/tr')[ic1]
+            rowsInfo1 = browser.find_elements_by_xpath('//*[@id="vertretung"]/table[1]/tbody/tr')[ic1]
             ic0 = 0
             infoRowCount12 = rowsInfo1.find_elements_by_tag_name("td")
-            infoRows12 = browser.find_elements_by_xpath('//*[@id="jsn-mainbody"]/div[2]/table[1]/tbody/tr/td')[ic1]
+            infoRows12 = browser.find_elements_by_xpath('//*[@id="vertretung"]/table[1]/tbody/tr/td')[ic1]
             for ic0 in range(0, len(infoRowCount12)):
                 colsInfo1 = rowsInfo1.find_elements_by_xpath('.//td')[ic0]
                 print(colsInfo1.text)
