@@ -75,11 +75,11 @@ while True:
 
 
     try: #first info table
-        dateDay = browser.find_element_by_xpath('//*[@id="jsn-mainbody"]/div[2]/p[3]/b')
+        dateDay = browser.find_element_by_xpath('//*[@id="vertretung"]/p[1]/b')
         print(dateDay.text)
         file.write("\n\t\t<p>" + dateDay.text + "</p>")
         
-        colsInfo = browser.find_element_by_xpath('//*[@id="jsn-mainbody"]/div[2]/table[1]/tbody')
+        colsInfo = browser.find_element_by_xpath('//*[@id="vertretung"]/table[2]/tbody')
         infoRowCount = colsInfo.find_elements_by_tag_name("tr")
         ic1 = 0
         for ic1 in range(0, len(infoRowCount)): #len(infoRowCount) //*[@id="vertretung"]/table[1]/tbody/tr[2]/td[2]
