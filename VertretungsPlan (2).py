@@ -29,10 +29,10 @@ while True:
 
     browser.get('http://307.joomla.schule.bremen.de/index.php/service/sch%C3%BCler')
 
-    
 
+    # first substitution table
     try:
-        table_id = browser.find_element_by_xpath('//*[@id="jsn-mainbody"]/div[2]/table[2]/tbody')
+        table_id = browser.find_elements_by_tag_name("table")[1]
         rowCount = table_id.find_elements_by_tag_name("tr")
         intRow = 1
         file.write("\n\t\t<table>")
@@ -40,7 +40,7 @@ while True:
         for intRow in range(1, len(rowCount)): # iterates through every row (vertically) and skips the first one (header)
             file.write("\n\t\t\t<tr>")
             intCol = 0
-            rows = browser.find_elements_by_xpath('//*[@id="jsn-mainbody"]/div[2]/table[2]/tbody/tr')[intRow]
+            rows = table_id.find_elements_by_tag_name("tr")[intRow]
             
             for intCol in range(0, 6): # iterates through every column in a row (horizontally) minus the student groups
                 cols = rows.find_elements_by_xpath('.//td')[intCol]
@@ -50,15 +50,21 @@ while True:
                 
             file.write("\n\t\t\t</tr>")
             intRow += 1
+    except:
+        print("Error in first substitution table")
 
-        table_id2 = browser.find_element_by_xpath('//*[@id="jsn-mainbody"]/div[2]/table[4]')
+
+    # second substitution table
+    try:
+        table_id2 = browser.find_elements_by_tag_name("table")[3]
         rowCount2 = table_id2.find_elements_by_tag_name("tr")
         intRow2 = 1
+        file.write("\n\t\t<table>")
 
         for intRow2 in range(1, len(rowCount2)): # iterates through every row (vertically) and skips the first one (header)
             file.write("\n\t\t\t<tr>")
             intCol2 = 0
-            rows2 = browser.find_elements_by_xpath('//table[4]/tbody/tr')[intRow2]
+            rows2 = table_id2.find_elements_by_tag_name("tr")[intRow2]
             
             for intCol2 in range(0, 6): # iterates through every column in a row (horizontally) minus the student groups
                 cols2 = rows2.find_elements_by_xpath('.//td')[intCol2]
@@ -69,32 +75,36 @@ while True:
             file.write("\n\t\t\t</tr>")
             intRow2 += 1
     except:
-        print("NullPointerException")
+        print("Error in second substitution table")
     finally:
         file.write("\n\t\t</table>")
 
 
-    try: #first info table
-        dateDay = browser.find_element_by_xpath('//*[@id="jsn-mainbody"]/div[2]/p[4]/b')
-        print(dateDay.text)
-        file.write("\n\t\t<p>" + dateDay.text + "</p>")
+    # first info table
+    try:
+        # date
+        dateSucceeding = browser.find_elements_by_tag_name("table")[0]
+        dateElement = dateSucceeding.find_element_by_xpath('./preceding-sibling::p[1]')
+        dateB = dateElement.find_element_by_tag_name("b")
+        print(dateB.text)
+        file.write("\n\t\t<p>" + dateB.text + "</p>")
         
-        colsInfo = browser.find_element_by_xpath('//*[@id="jsn-mainbody"]/div[2]/table[1]/tbody')
+        # info table
+        colsInfo = browser.find_elements_by_tag_name("table")[0]
         infoRowCount = colsInfo.find_elements_by_tag_name("tr")
         ic1 = 0
-        for ic1 in range(0, len(infoRowCount)): #len(infoRowCount) //*[@id="vertretung"]/table[1]/tbody/tr[2]/td[2]
-            rowsInfo1 = browser.find_elements_by_xpath('//*[@id="jsn-mainbody"]/div[2]/table[1]/tbody/tr')[ic1]
+        for ic1 in range(0, len(infoRowCount)):
+            rowsInfo1 = colsInfo.find_elements_by_tag_name("tr")[ic1]
             ic0 = 0
             infoRowCount12 = rowsInfo1.find_elements_by_tag_name("td")
-            infoRows12 = browser.find_elements_by_xpath('//*[@id="jsn-mainbody"]/div[2]/table[1]/tbody/tr/td')[ic1]
             for ic0 in range(0, len(infoRowCount12)):
-                colsInfo1 = rowsInfo1.find_elements_by_xpath('.//td')[ic0]
+                colsInfo1 = rowsInfo1.find_elements_by_tag_name("td")[ic0]
                 print(colsInfo1.text)
                 file.write("\n\t\t<p>" + colsInfo1.text + "</p>")
                 ic0 += 1
             ic1 += 1
     except:
-        print("fuck mate somethings wrong better fix it")
+        print("Error in first informational table")
         smtpUser = 'rpiavhplan@gmail.com'
         smtpPass = 'avhplan307'
         toAdd = 'k.duezgoeren@gmail.com'
@@ -107,32 +117,49 @@ while True:
         s.starttls()
         s.ehlo()
         s.login(smtpUser, smtpPass)
-        s.sendmail(fromAdd, toAdd, header + '\n\n' + body + '\n' + traceback.format_exc())
+        s.sendmail(fromAdd, toAdd, header + '\n\n' + body + '\n\n' + traceback.format_exc())
         s.quit()
         print('Email has been sent')
 
 
+    # second info table
     try:
-        dateDay2 = browser.find_element_by_xpath('//*[@id="jsn-mainbody"]/div[2]/p[2]/b')
-        print(dateDay2.text)
-        file.write("\n\t\t<p>" + dateDay2.text + "</p>")
-
-        colsInfo2 = browser.find_element_by_xpath('//*[@id="jsn-mainbody"]/div[2]/table[3]/tbody')
+        # date
+        dateSucceeding2 = browser.find_elements_by_tag_name("table")[2]
+        dateElement2 = dateSucceeding2.find_element_by_xpath('./preceding-sibling::p[1]')
+        dateB2 = dateElement2.find_element_by_tag_name("b")
+        print(dateB2.text)
+        file.write("\n\t\t<p>" + dateB2.text + "</p>")
+        
+        # info table
+        colsInfo2 = browser.find_elements_by_tag_name("table")[2]
         infoRowCount2 = colsInfo2.find_elements_by_tag_name("tr")
         ic12 = 0
-        for ic12 in range(0, len(infoRowCount2)): #len(infoRowCount) //*[@id="vertretung"]/table[1]/tbody/tr[2]/td[2]
-            rowsInfo12 = browser.find_elements_by_xpath('//*[@id="jsn-mainbody"]/div[2]/table[3]/tbody/tr')[ic12]
+        for ic12 in range(0, len(infoRowCount2)):
+            rowsInfo12 = colsInfo2.find_elements_by_tag_name("tr")[ic12]
             ic02 = 0
-            infoRowCount12 = rowsInfo12.find_elements_by_tag_name("td")
-            infoRows22 = browser.find_elements_by_xpath('//*[@id="jsn-mainbody"]/div[2]/table[3]/tbody/tr/td')[ic12]
-            for ic02 in range(0, len(infoRowCount12)):
-                colsInfo12 = rowsInfo12.find_elements_by_xpath('.//td')[ic02]
+            infoRowCount122 = rowsInfo12.find_elements_by_tag_name("td")
+            for ic02 in range(0, len(infoRowCount122)):
+                colsInfo12 = rowsInfo12.find_elements_by_tag_name("td")[ic02]
                 print(colsInfo12.text)
                 file.write("\n\t\t<p>" + colsInfo12.text + "</p>")
                 ic02 += 1
             ic12 += 1
     except:
-        print("oi you broke it")
+        print("Error in second informational table")
+
+    
+    # trying to get the paragraphs
+    # try:
+    #     paragraphsSucceeding = browser.find_elements_by_tag_name("table")[0]
+    #     paragraphsElements = paragraphsSucceeding.find_elements_by_xpath('./preceding-sibling::p')
+    #     intPar = 0
+    #     for intPar in range(0, len(paragraphsSucceeding) - 1):
+    #         paragraphsText= paragraphsSucceeding.find_element_by_xpath('./preceding-sibling::p')[intPar]
+    #         print(paragraphsText.text)
+    #         intPar += 1
+    # except:
+    #     print("well that didnt work did it")
 
     # try:
     #     substBlock = browser.find_element(By.CLASS_NAME, 'item-page')
