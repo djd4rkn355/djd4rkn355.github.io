@@ -84,7 +84,7 @@ while True:
     try:
         # date
         dateSucceeding = browser.find_elements_by_tag_name("table")[0]
-        dateElement = dateSucceeding.find_element_by_xpath('./preceding-sibling::p[1]')
+        dateElement = dateSucceeding.find_element_by_xpath('./preceding-sibling::p[2]')
         dateB = dateElement.find_element_by_tag_name("b")
         print(dateB.text)
         file.write("\n\t\t<p>" + dateB.text + "</p>")
@@ -126,7 +126,7 @@ while True:
     try:
         # date
         dateSucceeding2 = browser.find_elements_by_tag_name("table")[2]
-        dateElement2 = dateSucceeding2.find_element_by_xpath('./preceding-sibling::p[1]')
+        dateElement2 = dateSucceeding2.find_element_by_xpath('./preceding-sibling::p[2]')
         dateB2 = dateElement2.find_element_by_tag_name("b")
         print(dateB2.text)
         file.write("\n\t\t<p>" + dateB2.text + "</p>")
