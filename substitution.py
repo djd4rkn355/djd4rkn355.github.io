@@ -65,14 +65,12 @@ while True:
                 # date
 
                 try:
-                    dateElement = table_id_previous.find_element_by_xpath('./preceding-sibling::p[1]')
+                    dateElement = table_id_previous.find_element_by_xpath('./preceding-sibling::p[2]')
+                    dateB = dateElement.find_element_by_tag_name("b")
                 except:
-                    try:
-                        dateElement = table_id_previous.find_element_by_xpath('./preceding-sibling::p[2]')
-                    except:
-                        dateElement = table_id_previous.find_element_by_xpath('./preceding-sibling::p[0]')
+                    dateElement = table_id_previous.find_element_by_xpath('./preceding-sibling::p[1]')
+                    dateB = dateElement.find_element_by_tag_name("b")
 
-                dateB = dateElement.find_element_by_tag_name("b")
                 print(dateB.text)
                 file.write("\n\t\t<p>" + dateB.text + "</p>")
                 
