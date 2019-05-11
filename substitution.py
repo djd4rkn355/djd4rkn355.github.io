@@ -162,7 +162,8 @@ while True:
             proc_stdout = process.communicate()[0].strip()
             print(proc_stdout)
 
-        subprocess_cmd('cd /home/pi/djd4rkn355.github.io; git add --all; git commit -m "Pi Push"; git push')
+        subprocess_cmd('cd /home/pi/djd4rkn355.github.io; git add --all; git commit -m "Pi Push"')
+        subprocess_cmd("git push")
         print("Success")
     
     except:
