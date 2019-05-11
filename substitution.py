@@ -163,7 +163,7 @@ while True:
             print(proc_stdout)
 
         subprocess_cmd('cd /home/pi/djd4rkn355.github.io; git add --all; git commit -m "Pi Push"')
-        subprocess_cmd("git push")
+        subprocess_cmd("cd /home/pi/djd4rkn355.github.io; git push")
         print("Success")
     
     except:
