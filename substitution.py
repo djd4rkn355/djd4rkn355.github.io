@@ -47,21 +47,23 @@ while True:
                 file.write("\n\t\t<table>")
 
                 for intRow in range(1, len(rowCount)): # iterates through every row (vertically) and skips the first one (header)
-                    try:
-                        file.write("\n\t\t\t<tr>")
-                        intCol = 0
-                        rows = table_id.find_elements_by_tag_name("tr")[intRow]
-                        
-                        for intCol in range(0, 6): # iterates through every column in a row (horizontally) minus the student groups
+                    file.write("\n\t\t\t<tr>")
+                    intCol = 0
+                    rows = table_id.find_elements_by_tag_name("tr")[intRow]
+                    
+                    for intCol in range(0, 6): # iterates through every column in a row (horizontally) minus the student groups
+                        try:
                             cols = rows.find_elements_by_xpath('.//td')[intCol]
                             print(cols.text)
                             file.write("\n\t\t\t\t<th>" + cols.text + "</th>")
+                        except:
+                            print("oh no")
+                            file.write("\n\t\t\t\t<th> </th>")
+                        finally:
                             intCol += 1
-                            
-                        file.write("\n\t\t\t</tr>")
-                        intRow += 1
-                    except:
-                        print("Fuck this I'm not fixing that")
+                        
+                    file.write("\n\t\t\t</tr>")
+                    intRow += 1
 
                 file.write("\n\t\t</table>")
 
