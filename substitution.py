@@ -167,5 +167,8 @@ while True:
     
     except:
         print("Timeout")
+        file.close()
+        fileFood.close()
+        browser.quit()
 
     time.sleep(480)
