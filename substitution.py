@@ -70,10 +70,10 @@ while True:
                 # date
 
                 try:
-                    dateElement = table_id_previous.find_element_by_xpath('./preceding-sibling::p[2]')
+                    dateElement = table_id_previous.find_element_by_xpath('./preceding-sibling::p[1]')
                     dateB = dateElement.find_element_by_tag_name("b")
                 except:
-                    dateElement = table_id_previous.find_element_by_xpath('./preceding-sibling::p[1]')
+                    dateElement = table_id_previous.find_element_by_xpath('./preceding-sibling::p[2]')
                     dateB = dateElement.find_element_by_tag_name("b")
 
                 print(dateB.text)
@@ -95,10 +95,10 @@ while True:
 
                 sendEmail = False
             except:
-                print("Error in substitution table " + str(planInteger))
-                print(traceback.format_exc())
-
-            planInteger += 1
+                print("Substitution table " + str(planInteger) + " not found")
+                # print(traceback.format_exc())
+            finally:
+                planInteger += 1
 
         # send email if no data could be fetched
         if sendEmail is True:
