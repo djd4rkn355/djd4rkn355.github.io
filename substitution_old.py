@@ -51,37 +51,16 @@ while True:
                     intCol = 0
                     rows = table_id.find_elements_by_tag_name("tr")[intRow]
                     
-                    # for intCol in range(0, 6): # iterates through every column in a row (horizontally) minus the student groups
-                    try:
-                        cols = rows.find_elements_by_xpath('.//td')[2]
-                        print(cols.text)
-                        file.write("\n\t\t\t\t<th>" + cols.text + "</th>")
-                            
-                        cols = rows.find_elements_by_xpath('.//td')[1]
-                        print(cols.text)
-                        file.write("\n\t\t\t\t<th>" + cols.text + "</th>")
-                            
-                        cols = rows.find_elements_by_xpath('.//td')[3]
-                        print(cols.text)
-                        file.write("\n\t\t\t\t<th>" + cols.text + "</th>")
-                            
-                        cols = rows.find_elements_by_xpath('.//td')[6]
-                        print(cols.text)
-                        file.write("\n\t\t\t\t<th>" + cols.text + "</th>")
-                            
-                        cols = rows.find_elements_by_xpath('.//td')[5]
-                        print(cols.text)
-                        file.write("\n\t\t\t\t<th>" + cols.text + "</th>")
-                            
-                        cols = rows.find_elements_by_xpath('.//td')[7]
-                        print(cols.text)
-                        file.write("\n\t\t\t\t<th>" + cols.text + "</th>")
-                            
-                    except:
-                        print("oh no")
-                        file.write("\n\t\t\t\t<th> </th>")
-                    # finally:
-                    #     intCol += 1
+                    for intCol in range(0, 6): # iterates through every column in a row (horizontally) minus the student groups
+                        try:
+                            cols = rows.find_elements_by_xpath('.//td')[intCol]
+                            print(cols.text)
+                            file.write("\n\t\t\t\t<th>" + cols.text + "</th>")
+                        except:
+                            print("oh no")
+                            file.write("\n\t\t\t\t<th> </th>")
+                        finally:
+                            intCol += 1
                         
                     file.write("\n\t\t\t</tr>")
                     intRow += 1
