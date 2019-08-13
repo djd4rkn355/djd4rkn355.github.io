@@ -279,7 +279,7 @@ def subprocess_cmd(command):
 
 def send_notifications():
     timeImport.sleep(120)
-    cred = credentials.Certificate("C:/Users/kduez/git/avh-plan-firebase-adminsdk-5iy97-2a377ca3d3.json")
+    cred = credentials.Certificate("/home/pi/Desktop/avh-plan-firebase-adminsdk-5iy97-2a377ca3d3.json")
     firebase_admin.initialize_app(cred)
     topic_android = 'substitutions-android'
     message_android = messaging.Message(
