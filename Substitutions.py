@@ -14,6 +14,51 @@ import firebase_admin
 from firebase_admin import messaging
 from firebase_admin import credentials
 
+def subprocess_cmd(command):
+    process = subprocess.Popen(command, stdout=subprocess.PIPE, shell=True)
+    proc_stdout = process.communicate()[0].strip()
+    print(proc_stdout)
+
+def send_notifications():
+    timeImport.sleep(120)
+    cred = credentials.Certificate("C:/Users/kduez/git/avh-plan-firebase-adminsdk-5iy97-2a377ca3d3.json")
+    firebase_admin.initialize_app(cred)
+    topic_android = 'substitutions-android'
+    message_android = messaging.Message(
+        data={},
+        topic=topic_android,
+    )
+    response_android = messaging.send(message_android)
+    print('Successfully sent message to Android clients: ', response_android)
+
+    topic_ios = 'substitutions-ios'
+    message_ios = messaging.Message(
+        notification=messaging.Notification(
+            title='AvH-Vertretungsplan',
+            body='Der Plan wurde aktualisiert.',
+        ),
+        topic=topic_ios,
+    )
+    response_ios = messaging.send(message_ios)
+    print('Successfully sent message to iOS clients: ', response_ios)
+
+def send_email(currentTime, body):
+    print("Sending email.")
+    smtpUser = 'rpiavhplan@gmail.com'
+    smtpPass = 'avhplan307'
+    toAdd = 'k.duezgoeren@gmail.com'
+    fromAdd = smtpUser
+    subject = 'AvH Plan Server Issue'
+    header = 'To: ' + toAdd + '\n' + 'From: ' + fromAdd + '\n' + 'Subject: ' + subject
+    s = smtplib.SMTP('smtp.gmail.com', 587)
+    s.ehlo()
+    s.starttls()
+    s.ehlo()
+    s.login(smtpUser, smtpPass)
+    s.sendmail(fromAdd, toAdd, header + '\n\n' + body + '\n\nFetch started at: ' + currentTime)
+    s.quit()
+    print('Email has been sent.')
+
 while True:
 
     try:
@@ -40,7 +85,7 @@ while True:
         password.send_keys("Cinemassacre")
         password.send_keys(u'\ue007') # Unicode 'Enter'
 
-        browser.get('C:/Users/kduez/git/raspberryPi/VertretungsPlanZweiPläne.html')
+        browser.get('http://307.joomla.schule.bremen.de/index.php/service/sch%C3%BCler')
         print("Fetching of the substitution plan starts now.")
 
         planInteger = 0
@@ -60,17 +105,17 @@ while True:
         # do not remove the "psa" string in the second <th> tag
         # you may append a link without a space between "psa" and the link
 
-        # file.write(
-        #     "\n\t\t<table>" +
-        #     "\n\t\t\t<tr>" + 
-        #     "\n\t\t\t\t<th></th>" + 
-        #     "\n\t\t\t\t<th>psa</th>" + 
-        #     "\n\t\t\t\t<th></th>" + 
-        #     "\n\t\t\t\t<th>PSA text</th>" + 
-        #     "\n\t\t\t\t<th></th>" + 
-        #     "\n\t\t\t\t<th></th>" + 
-        #     "\n\t\t\t</tr>" + 
-        #     "\n\t\t</table>")
+        file.write(
+            "\n\t\t<table>" +
+            "\n\t\t\t<tr>" + 
+            "\n\t\t\t\t<th></th>" + 
+            "\n\t\t\t\t<th>psahttps://307.joomla.schule.bremen.de/index.php/schulleben/477-2019-08-infos-zum-ersten-schultag</th>" + 
+            "\n\t\t\t\t<th></th>" + 
+            "\n\t\t\t\t<th>Klick hier, um die Informationen zum ersten Schultag auf der Schulwebsite einzusehen.</th>" + 
+            "\n\t\t\t\t<th></th>" + 
+            "\n\t\t\t\t<th></th>" + 
+            "\n\t\t\t</tr>" + 
+            "\n\t\t</table>")
 
         for planInteger in range(0, 14):
 
@@ -174,40 +219,42 @@ while True:
         file.write("\n\t</body>\n</html>")
         file.close()
 
-        browser.get('https://www.schulkantine-gueven.de/speisekarte')
+        # browser.get('https://www.schulkantine-gueven.de/speisekarte')
 
-        try:
-            fileFood.write("\n\t\t<table>\n\t\t\t<tr>\n\t\t\t\t<th>Für Schüler 3,00€, für Bedienstete 3,50€. Mittagstisch von 11:30 bis 14:30.</th>")
-            foodDateOne = browser.find_element_by_xpath('//*[@id="1302648704"]/div[1]/h3')
-            fileFood.write("\n\t\t\t\t<th>" + foodDateOne.text + "</th>")
-            # print(foodDateOne.text)
+        # try:
+        #     fileFood.write("\n\t\t<table>\n\t\t\t<tr>\n\t\t\t\t<th>Für Schüler 3,00€, für Bedienstete 3,50€. Mittagstisch von 11:30 bis 14:30.</th>")
+        #     foodDateOne = browser.find_element_by_xpath('//*[@id="1302648704"]/div[1]/h3')
+        #     fileFood.write("\n\t\t\t\t<th>" + foodDateOne.text + "</th>")
+        #     # print(foodDateOne.text)
 
-            foodTableOne = browser.find_elements_by_xpath('//*[@id="1302648704"]/div[1]/div/div[2]/div/div[1]/div[2]/div/p')
-            for intFoodOne in range(0, len(foodTableOne) - 3):
-                foodCol = browser.find_elements_by_xpath('//*[@id="1302648704"]/div[1]/div/div[2]/div/div[1]/div[2]/div/p')[intFoodOne]
-                fileFood.write("\n\t\t\t\t<th>" + foodCol.text + "</th>")
-                # print(foodCol.text)
+        #     foodTableOne = browser.find_elements_by_xpath('//*[@id="1302648704"]/div[1]/div/div[2]/div/div[1]/div[2]/div/p')
+        #     for intFoodOne in range(0, len(foodTableOne) - 3):
+        #         foodCol = browser.find_elements_by_xpath('//*[@id="1302648704"]/div[1]/div/div[2]/div/div[1]/div[2]/div/p')[intFoodOne]
+        #         fileFood.write("\n\t\t\t\t<th>" + foodCol.text + "</th>")
+        #         # print(foodCol.text)
 
-            try:
-                foodDateTwo = browser.find_element_by_xpath('//*[@id="1302648704"]/div[2]/h3')
-                fileFood.write("\n\t\t\t\t<th>" + foodDateTwo.text + "</th>")
-                # print(foodDateTwo.text)
+        #     try:
+        #         foodDateTwo = browser.find_element_by_xpath('//*[@id="1302648704"]/div[2]/h3')
+        #         fileFood.write("\n\t\t\t\t<th>" + foodDateTwo.text + "</th>")
+        #         # print(foodDateTwo.text)
 
-                foodTableTwo = browser.find_elements_by_xpath('//*[@id="1302648704"]/div[2]/div/div[2]/div/div[1]/div[2]/div/p')
-                for intFoodTwo in range(0, len(foodTableTwo) - 5):
-                    foodColTwo = browser.find_elements_by_xpath('//*[@id="1302648704"]/div[2]/div/div[2]/div/div[1]/div[2]/div/p')[intFoodTwo]
-                    fileFood.write("\n\t\t\t\t<th>" + foodColTwo.text + "</th>")
-                    # print(foodColTwo.text)
+        #         foodTableTwo = browser.find_elements_by_xpath('//*[@id="1302648704"]/div[2]/div/div[2]/div/div[1]/div[2]/div/p')
+        #         for intFoodTwo in range(0, len(foodTableTwo) - 5):
+        #             foodColTwo = browser.find_elements_by_xpath('//*[@id="1302648704"]/div[2]/div/div[2]/div/div[1]/div[2]/div/p')[intFoodTwo]
+        #             fileFood.write("\n\t\t\t\t<th>" + foodColTwo.text + "</th>")
+        #             # print(foodColTwo.text)
             
-            except:
-                print("No second food for you huehuehue? :((")
+        #     except:
+        #         print("No second food for you huehuehue? :((")
 
-        except:
-            print("No food for you huehuehue! :(")
-        finally:
-            fileFood.write("\n\t\t\t</tr>\n\t\t</table>\n\t</body>\n<html>")
-            browser.quit()
-            fileFood.close()
+        # except:
+        #     print("No food for you huehuehue! :(")
+        # finally:
+        #     fileFood.write("\n\t\t\t</tr>\n\t\t</table>\n\t</body>\n<html>")
+        #     browser.quit()
+        #     fileFood.close()
+
+
 
         # fplan = open("subst.json", "a+")
         # fplan.truncate()
@@ -271,48 +318,3 @@ while True:
         send_email(currentTime, 'The connection appears to have timed out. Please check the status of the school website.')
 
     timeImport.sleep(480)
-
-def subprocess_cmd(command):
-    process = subprocess.Popen(command, stdout=subprocess.PIPE, shell=True)
-    proc_stdout = process.communicate()[0].strip()
-    print(proc_stdout)
-
-def send_notifications():
-    timeImport.sleep(120)
-    cred = credentials.Certificate("/home/pi/Desktop/avh-plan-firebase-adminsdk-5iy97-2a377ca3d3.json")
-    firebase_admin.initialize_app(cred)
-    topic_android = 'substitutions-android'
-    message_android = messaging.Message(
-        data={},
-        topic=topic_android,
-    )
-    response_android = messaging.send(message_android)
-    print('Successfully sent message to Android clients: ', response_android)
-
-    topic_ios = 'substitutions-ios'
-    message_ios = messaging.Message(
-        notification=messaging.Notification(
-            title='AvH-Vertretungsplan',
-            body='Der Plan wurde aktualisiert.',
-        ),
-        topic=topic_ios,
-    )
-    response_ios = messaging.send(message_ios)
-    print('Successfully sent message to iOS clients: ', response_ios)
-
-def send_email(currentTime, body):
-    print("Sending email.")
-    smtpUser = 'rpiavhplan@gmail.com'
-    smtpPass = 'avhplan307'
-    toAdd = 'k.duezgoeren@gmail.com'
-    fromAdd = smtpUser
-    subject = 'AvH Plan Server Issue'
-    header = 'To: ' + toAdd + '\n' + 'From: ' + fromAdd + '\n' + 'Subject: ' + subject
-    s = smtplib.SMTP('smtp.gmail.com', 587)
-    s.ehlo()
-    s.starttls()
-    s.ehlo()
-    s.login(smtpUser, smtpPass)
-    s.sendmail(fromAdd, toAdd, header + '\n\n' + body + '\n\nFetch started at: ' + currentTime)
-    s.quit()
-    print('Email has been sent.')
