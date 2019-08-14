@@ -219,40 +219,40 @@ while True:
         file.write("\n\t</body>\n</html>")
         file.close()
 
-        # browser.get('https://www.schulkantine-gueven.de/speisekarte')
+        browser.get('https://www.schulkantine-gueven.de/speisekarte')
 
-        # try:
-        #     fileFood.write("\n\t\t<table>\n\t\t\t<tr>\n\t\t\t\t<th>Für Schüler 3,00€, für Bedienstete 3,50€. Mittagstisch von 11:30 bis 14:30.</th>")
-        #     foodDateOne = browser.find_element_by_xpath('//*[@id="1302648704"]/div[1]/h3')
-        #     fileFood.write("\n\t\t\t\t<th>" + foodDateOne.text + "</th>")
-        #     # print(foodDateOne.text)
+        try:
+            fileFood.write("\n\t\t<table>\n\t\t\t<tr>\n\t\t\t\t<th>Für Schüler 3,00€, für Bedienstete 3,50€. Mittagstisch von 11:30 bis 14:30.</th>")
+            foodDateOne = browser.find_element_by_xpath('//*[@id="1302648704"]/div[1]/h3')
+            fileFood.write("\n\t\t\t\t<th>" + foodDateOne.text + "</th>")
+            # print(foodDateOne.text)
 
-        #     foodTableOne = browser.find_elements_by_xpath('//*[@id="1302648704"]/div[1]/div/div[2]/div/div[1]/div[2]/div/p')
-        #     for intFoodOne in range(0, len(foodTableOne) - 3):
-        #         foodCol = browser.find_elements_by_xpath('//*[@id="1302648704"]/div[1]/div/div[2]/div/div[1]/div[2]/div/p')[intFoodOne]
-        #         fileFood.write("\n\t\t\t\t<th>" + foodCol.text + "</th>")
-        #         # print(foodCol.text)
+            foodTableOne = browser.find_elements_by_xpath('//*[@id="1302648704"]/div[1]/div/div[2]/div/div[1]/div[2]/div/p')
+            for intFoodOne in range(0, len(foodTableOne) - 3):
+                foodCol = browser.find_elements_by_xpath('//*[@id="1302648704"]/div[1]/div/div[2]/div/div[1]/div[2]/div/p')[intFoodOne]
+                fileFood.write("\n\t\t\t\t<th>" + foodCol.text + "</th>")
+                # print(foodCol.text)
 
-        #     try:
-        #         foodDateTwo = browser.find_element_by_xpath('//*[@id="1302648704"]/div[2]/h3')
-        #         fileFood.write("\n\t\t\t\t<th>" + foodDateTwo.text + "</th>")
-        #         # print(foodDateTwo.text)
+            try:
+                foodDateTwo = browser.find_element_by_xpath('//*[@id="1302648704"]/div[2]/h3')
+                fileFood.write("\n\t\t\t\t<th>" + foodDateTwo.text + "</th>")
+                # print(foodDateTwo.text)
 
-        #         foodTableTwo = browser.find_elements_by_xpath('//*[@id="1302648704"]/div[2]/div/div[2]/div/div[1]/div[2]/div/p')
-        #         for intFoodTwo in range(0, len(foodTableTwo) - 5):
-        #             foodColTwo = browser.find_elements_by_xpath('//*[@id="1302648704"]/div[2]/div/div[2]/div/div[1]/div[2]/div/p')[intFoodTwo]
-        #             fileFood.write("\n\t\t\t\t<th>" + foodColTwo.text + "</th>")
-        #             # print(foodColTwo.text)
+                foodTableTwo = browser.find_elements_by_xpath('//*[@id="1302648704"]/div[2]/div/div[2]/div/div[1]/div[2]/div/p')
+                for intFoodTwo in range(0, len(foodTableTwo) - 5):
+                    foodColTwo = browser.find_elements_by_xpath('//*[@id="1302648704"]/div[2]/div/div[2]/div/div[1]/div[2]/div/p')[intFoodTwo]
+                    fileFood.write("\n\t\t\t\t<th>" + foodColTwo.text + "</th>")
+                    # print(foodColTwo.text)
             
-        #     except:
-        #         print("No second food for you huehuehue? :((")
+            except:
+                print("No second food for you huehuehue? :((")
 
-        # except:
-        #     print("No food for you huehuehue! :(")
-        # finally:
-        #     fileFood.write("\n\t\t\t</tr>\n\t\t</table>\n\t</body>\n<html>")
-        #     browser.quit()
-        #     fileFood.close()
+        except:
+            print("No food for you huehuehue! :(")
+        finally:
+            fileFood.write("\n\t\t\t</tr>\n\t\t</table>\n\t</body>\n<html>")
+            browser.quit()
+            fileFood.close()
 
 
 
