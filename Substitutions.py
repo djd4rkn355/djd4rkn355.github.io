@@ -105,17 +105,17 @@ while True:
         # do not remove the "psa" string in the second <th> tag
         # you may append a link without a space between "psa" and the link
 
-        file.write(
-            "\n\t\t<table>" +
-            "\n\t\t\t<tr>" + 
-            "\n\t\t\t\t<th></th>" + 
-            "\n\t\t\t\t<th>psahttps://307.joomla.schule.bremen.de/index.php/schulleben/477-2019-08-infos-zum-ersten-schultag</th>" + 
-            "\n\t\t\t\t<th></th>" + 
-            "\n\t\t\t\t<th>Klick hier, um die Informationen zum ersten Schultag auf der Schulwebsite einzusehen.</th>" + 
-            "\n\t\t\t\t<th></th>" + 
-            "\n\t\t\t\t<th></th>" + 
-            "\n\t\t\t</tr>" + 
-            "\n\t\t</table>")
+##        file.write(
+##            "\n\t\t<table>" +
+##            "\n\t\t\t<tr>" + 
+##            "\n\t\t\t\t<th></th>" + 
+##            "\n\t\t\t\t<th>psahttps://307.joomla.schule.bremen.de/index.php/schulleben/477-2019-08-infos-zum-ersten-schultag</th>" + 
+##            "\n\t\t\t\t<th></th>" + 
+##            "\n\t\t\t\t<th>Klick hier, um die Informationen zum ersten Schultag auf der Schulwebsite einzusehen.</th>" + 
+##            "\n\t\t\t\t<th></th>" + 
+##            "\n\t\t\t\t<th></th>" + 
+##            "\n\t\t\t</tr>" + 
+##            "\n\t\t</table>")
 
         for planInteger in range(0, 14):
 
