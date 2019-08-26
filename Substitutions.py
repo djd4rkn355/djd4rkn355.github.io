@@ -21,8 +21,7 @@ def subprocess_cmd(command):
 
 def send_notifications():
     timeImport.sleep(120)
-    cred = credentials.Certificate("/home/pi/Desktop/avh-plan-firebase-adminsdk-5iy97-2a377ca3d3.json")
-    firebase_admin.initialize_app(cred)
+    
     topic_android = 'substitutions-android'
     message_android = messaging.Message(
         data={},
@@ -58,6 +57,9 @@ def send_email(currentTime, body):
     s.sendmail(fromAdd, toAdd, header + '\n\n' + body + '\n\nFetch started at: ' + currentTime)
     s.quit()
     print('Email has been sent.')
+
+cred = credentials.Certificate("/home/pi/Desktop/avh-plan-firebase-adminsdk-5iy97-2a377ca3d3.json")
+firebase_admin.initialize_app(cred)
 
 while True:
 
