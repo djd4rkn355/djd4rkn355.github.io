@@ -20,6 +20,17 @@ def subprocess_cmd(command):
     print(proc_stdout)
 
 def send_notifications():
+    topic_debug = 'substitutions-debug'
+    message_debug = messaging.Message(
+        notification=messaging.Notification(
+            title='Push successful',
+            body='Committed changes to GitHub.',
+        ),
+        topic=topic_debug,
+    )
+    response_debug = messaging.send(message_debug)
+    print('Successfully sent message to development clients: ', response_debug)
+    
     timeImport.sleep(120)
     
     topic_android = 'substitutions-android'
