@@ -149,16 +149,19 @@ while True:
                     intCol = 0
                     rows = table_id.find_elements_by_tag_name("tr")[intRow]
                     
-                    for intCol in range(0, 6): # iterates through every column in a row (horizontally) minus the student groups
-                        try:
-                            cols = rows.find_elements_by_xpath('.//td')[intCol]
-                            # print(cols.text)
-                            file.write("\n\t\t\t\t<th>" + cols.text + "</th>")
-                        except:
-                            # print("oh no")
-                            file.write("\n\t\t\t\t<th> </th>")
-                        finally:
-                            intCol += 1
+                    for intCol in range(0, 7): # iterates through every column in a row (horizontally) minus the student groups
+                        if (intCol == 5):
+                            break
+                        else:
+                            try:
+                                cols = rows.find_elements_by_xpath('.//td')[intCol]
+                                print(cols.text)
+                                file.write("\n\t\t\t\t<th>" + cols.text + "</th>")
+                            except:
+                                # print("oh no")
+                                file.write("\n\t\t\t\t<th> </th>")
+                            finally:
+                                intCol += 1
                         
                     # try:
                     #     group.append(rows.find_elements_by_xpath('.//td')[0].text)
