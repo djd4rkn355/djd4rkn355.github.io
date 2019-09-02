@@ -151,11 +151,11 @@ while True:
                     
                     for intCol in range(0, 7): # iterates through every column in a row (horizontally) minus the student groups
                         if (intCol == 5):
-                            break
+                            continue
                         else:
                             try:
                                 cols = rows.find_elements_by_xpath('.//td')[intCol]
-                                print(cols.text)
+                                # print(cols.text)
                                 file.write("\n\t\t\t\t<th>" + cols.text + "</th>")
                             except:
                                 # print("oh no")
