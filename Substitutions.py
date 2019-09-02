@@ -220,7 +220,7 @@ while True:
 
                 sendEmail = False
             except:
-                print("Substitution table " + str(planInteger) + " not found")
+                print("Table " + str(planInteger) + " not found")
                 # print(traceback.format_exc())
             finally:
                 planInteger += 1
@@ -281,7 +281,7 @@ while True:
             for line2 in f2:
                 if line1 != line2:
                     if line1[0:4] == "<h1>":
-                        print("ignore\n")
+                        print("Line ignored.")
                     else:
                         sameFiles = False
                 break
@@ -296,7 +296,7 @@ while True:
             for line2 in ff2:
                 if line1 != line2:
                     if line1[0:4] == "<h1>":
-                        print("Lines ignored.")
+                        print("Line ignored.")
                     else:
                         sameFoodFiles = False
                 break
