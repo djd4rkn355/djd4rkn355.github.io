@@ -151,7 +151,7 @@ while True:
 
                     teacher = ""
                     
-                    for intCol in range(0, 8): # iterates through every column in a row (horizontally) minus the student groups
+                    for intCol in range(0, 7): # iterates through every column in a row (horizontally) minus the student groups
                         if (intCol == 5):
                             try:
                                 cols = rows.find_elements_by_xpath('.//td')[intCol]
@@ -304,7 +304,8 @@ while True:
             subprocess_cmd('cd /home/pi/djd4rkn355.github.io; git add --all; git commit -m "Pi Push"; git push')
             print("Script successfully executed. Repository is up-to-date.")
             if sameFiles == False:
-                send_notifications()
+                #send_notifications()
+                pass
         elif sendEmail == True:
             print("Fetch has been unsuccessful. Changes have not been pushed to GitHub.")
     
