@@ -148,10 +148,16 @@ while True:
                     file.write("\n\t\t\t<tr>")
                     intCol = 0
                     rows = table_id.find_elements_by_tag_name("tr")[intRow]
+
+                    teacher = ""
                     
-                    for intCol in range(0, 7): # iterates through every column in a row (horizontally) minus the student groups
+                    for intCol in range(0, 8): # iterates through every column in a row (horizontally) minus the student groups
                         if (intCol == 5):
-                            continue
+                            try:
+                                cols = rows.find_elements_by_xpath('.//td')[intCol]
+                                teacher = cols.text
+                            except:
+                                teacher = " "
                         else:
                             try:
                                 cols = rows.find_elements_by_xpath('.//td')[intCol]
@@ -162,32 +168,8 @@ while True:
                                 file.write("\n\t\t\t\t<th> </th>")
                             finally:
                                 intCol += 1
-                        
-                    # try:
-                    #     group.append(rows.find_elements_by_xpath('.//td')[0].text)
-                    # except:
-                    #     group.append(" ")
-                    # try:
-                    #     date.append(rows.find_elements_by_xpath('.//td')[1].text)
-                    # except:
-                    #     date.append(" ")
-                    # try:
-                    #     time.append(rows.find_elements_by_xpath('.//td')[2].text)
-                    # except:
-                    #     time.append(" ")
-                    # try:
-                    #     course.append(rows.find_elements_by_xpath('.//td')[3].text)
-                    # except:
-                    #     course.append(" ")
-                    # try:
-                    #     room.append(rows.find_elements_by_xpath('.//td')[4].text)
-                    # except:
-                    #     room.append(" ")
-                    # try:
-                    #     additional.append(rows.find_elements_by_xpath('.//td')[5].text)
-                    # except:
-                    #     additional.append(" ")
-                        
+
+                    file.write("\n\t\t\t\t<th>" + teacher + "</th>")
                     file.write("\n\t\t\t</tr>")
                     intRow += 1
 
@@ -284,7 +266,7 @@ while True:
             for line2 in f2:
                 if line1 != line2:
                     if line1[0:4] == "<h1>":
-                        print("Line ignored.")
+                        print("Line ignored")
                     else:
                         sameFiles = False
                 break
@@ -299,7 +281,7 @@ while True:
             for line2 in ff2:
                 if line1 != line2:
                     if line1[0:4] == "<h1>":
-                        print("Line ignored.")
+                        print("Line ignored")
                     else:
                         sameFoodFiles = False
                 break
@@ -322,7 +304,8 @@ while True:
             subprocess_cmd('cd /home/pi/djd4rkn355.github.io; git add --all; git commit -m "Pi Push"; git push')
             print("Script successfully executed. Repository is up-to-date.")
             if sameFiles == False:
-                send_notifications()
+                #send_notifications()
+                pass
         elif sendEmail == True:
             print("Fetch has been unsuccessful. Changes have not been pushed to GitHub.")
     
