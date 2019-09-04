@@ -304,8 +304,7 @@ while True:
             subprocess_cmd('cd /home/pi/djd4rkn355.github.io; git add --all; git commit -m "Pi Push"; git push')
             print("Script successfully executed. Repository is up-to-date.")
             if sameFiles == False:
-                #send_notifications()
-                pass
+                send_notifications()
         elif sendEmail == True:
             print("Fetch has been unsuccessful. Changes have not been pushed to GitHub.")
     
