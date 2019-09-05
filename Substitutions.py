@@ -168,7 +168,6 @@ while True:
                                 file.write("\n\t\t\t\t<th> </th>")
                             finally:
                                 intCol += 1
-                        print(cols.text)
 
                     file.write("\n\t\t\t\t<th>" + teacher + "</th>")
                     file.write("\n\t\t\t</tr>")
