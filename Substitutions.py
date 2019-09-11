@@ -284,7 +284,7 @@ while True:
         for line1 in ff1:
             for line2 in ff2:
                 if line1 != line2:
-                    if line1[0:4] == "<h1>":
+                    if line1[0:8] == "\t\t<h1>":
                         print("Line ignored")
                     else:
                         sameFoodFiles = False
