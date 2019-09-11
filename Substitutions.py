@@ -83,7 +83,7 @@ while True:
         file.write("<!DOCTYPE html>\n<html>\n\t<head>\n\t\t<meta charset=\"utf-8\">\n\t\t<style>\n\t\t\tbody {\n\t\t\t\tfont-family: Arial, Helvetica, sans-serif\n\t\t\t}\n\t\t</style>\n\t</head>\n\t<body>")
         fileFood.write("<!DOCTYPE html>\n<html>\n\t<head>\n\t\t<meta charset=\"utf-8\">\n\t\t<style>\n\t\t\tbody {\n\t\t\t\tfont-family: Arial, Helvetica, sans-serif\n\t\t\t}\n\t\t</style>\n\t</head>\n\t<body>")
         currentTime = datetime.now().strftime('%Y-%m-%d, %H:%M')
-        timeHeader = "\n\n<h1>" + currentTime + "</h1>"
+        timeHeader = "\n\t\t<h1>" + currentTime + "</h1>"
         file.write(timeHeader)
         fileFood.write(timeHeader)
 
@@ -103,15 +103,6 @@ while True:
 
         planInteger = 0
         sendEmail = True
-
-        # group = []
-        # course = []
-        # additional = []
-        # date = []
-        # time = []
-        # room = []
-
-        # ------
 
         # PSA feature
         # uncomment this and edit only the fields that contain text
@@ -136,6 +127,32 @@ while True:
             try:
                 table_id_previous = browser.find_elements_by_tag_name("table")[planInteger]
 
+                try:
+                    dateElement = table_id_previous.find_element_by_xpath('./preceding-sibling::p[1]')
+                    dateB = dateElement.find_element_by_tag_name("b")
+                except:
+                    dateElement = table_id_previous.find_element_by_xpath('./preceding-sibling::p[2]')
+                    dateB = dateElement.find_element_by_tag_name("b")
+
+                # info table
+                infoRowCount = table_id_previous.find_elements_by_tag_name("tr")
+                info_test = infoRowCount[1]
+
+                file.write("\n\t\t<p>" + dateB.text + "</p>")
+
+                infoRowInt = 0
+                for infoRowInt in range(0, len(infoRowCount)):
+                    rowsInfo = table_id_previous.find_elements_by_tag_name("tr")[infoRowInt]
+                    infoColInt = 0
+                    infoColCount = rowsInfo.find_elements_by_tag_name("td")
+
+                    for infoColInt in range(0, len(infoColCount)):
+                        colsInfo1 = rowsInfo.find_elements_by_tag_name("td")[infoColInt]
+                        file.write("\n\t\t<p>" + colsInfo1.text + "</p>")
+                        infoColInt += 1
+
+                    infoRowInt += 1
+
                 table_id = browser.find_elements_by_tag_name("table")[planInteger + 1]
                 column_test = table_id.find_elements_by_xpath('.//tbody/tr[1]/th')[5] # throws an exception if the table doesnt exist
 
@@ -145,69 +162,66 @@ while True:
 
                 print("Table " + str(planInteger) + " has been found")
 
+                groupColInt = 0
+                courseColInt = 0
+                additionalColInt = 0
+                dateColInt = 0
+                timeColInt = 0
+                roomColInt = 0
+                teacherColInt = -1
+
+                firstRow = table_id.find_elements_by_tag_name("tr")[0]
+                for i in range(0, 9):
+                    col = firstRow.find_elements_by_xpath('.//th')[i]
+                    if col.text == "Klasse(n)":
+                        groupColInt = i
+                    elif col.text == "Datum":
+                        dateColInt = i
+                    elif col.text == "Stunde":
+                        timeColInt = i
+                    elif col.text == "Fach":
+                        courseColInt = i
+                    elif col.text == "Vertreter":
+                        teacherColInt = i
+                    elif col.text == "Raum":
+                        roomColInt = i
+                    elif col.text == "Vertretungs-Text":
+                        additionalColInt = i
+
                 for intRow in range(1, len(rowCount)): # iterates through every row (vertically) and skips the first one (header)
-                    file.write("\n\t\t\t<tr>")
-                    intCol = 0
-                    rows = table_id.find_elements_by_tag_name("tr")[intRow]
+                    try:
+                        intCol = 0
+                        rows = table_id.find_elements_by_tag_name("tr")[intRow]
+                        substs = rows.find_elements_by_xpath('.//td')
 
-                    teacher = ""
-                    
-                    for intCol in range(0, 7): # iterates through every column in a row (horizontally) minus the student groups
-                        if (intCol == 4):
-                            try:
-                                cols = rows.find_elements_by_xpath('.//td')[intCol]
-                                teacher = cols.text
-                            except:
-                                teacher = " "
+                        if teacherColInt == -1:
+                            teacher = ""
                         else:
-                            try:
-                                cols = rows.find_elements_by_xpath('.//td')[intCol]
-                                # print(cols.text)
-                                file.write("\n\t\t\t\t<th>" + cols.text + "</th>")
-                            except:
-                                # print("oh no")
-                                file.write("\n\t\t\t\t<th> </th>")
-                            finally:
-                                intCol += 1
+                            teacher = substs[teacherColInt].text
 
-                    file.write("\n\t\t\t\t<th>" + teacher + "</th>")
-                    file.write("\n\t\t\t</tr>")
-                    intRow += 1
+                        file.write( "\n\t\t\t<tr>" +
+                                    "\n\t\t\t\t<th>" + substs[groupColInt].text + "</th>" + 
+                                    "\n\t\t\t\t<th>" + substs[dateColInt].text + "</th>" + 
+                                    "\n\t\t\t\t<th>" + substs[timeColInt].text + "</th>" + 
+                                    "\n\t\t\t\t<th>" + substs[courseColInt].text + "</th>" + 
+                                    "\n\t\t\t\t<th>" + substs[roomColInt].text + "</th>" + 
+                                    "\n\t\t\t\t<th>" + substs[additionalColInt].text + "</th>" + 
+                                    "\n\t\t\t\t<th>" + teacher + "</th>" +
+                                    "\n\t\t\t</tr>")
+                        
+                        intRow += 1
+                    except:
+                        pass
 
                 file.write("\n\t\t</table>")
 
-                # date
-
-                try:
-                    dateElement = table_id_previous.find_element_by_xpath('./preceding-sibling::p[1]')
-                    dateB = dateElement.find_element_by_tag_name("b")
-                except:
-                    dateElement = table_id_previous.find_element_by_xpath('./preceding-sibling::p[2]')
-                    dateB = dateElement.find_element_by_tag_name("b")
-
-                # print(dateB.text)
-                file.write("\n\t\t<p>" + dateB.text + "</p>")
                 
-                # info table
-                infoRowCount = table_id_previous.find_elements_by_tag_name("tr")
-                infoRowInt = 0
-                for infoRowInt in range(0, len(infoRowCount)):
-                    rowsInfo = table_id_previous.find_elements_by_tag_name("tr")[infoRowInt]
-                    infoColInt = 0
-                    infoColCount = rowsInfo.find_elements_by_tag_name("td")
-
-                    for infoColInt in range(0, len(infoColCount)):
-                        colsInfo1 = rowsInfo.find_elements_by_tag_name("td")[infoColInt]
-                        # print(colsInfo1.text)
-                        file.write("\n\t\t<p>" + colsInfo1.text + "</p>")
-                        infoColInt += 1
-
-                    infoRowInt += 1
+                
+                
 
                 sendEmail = False
             except:
                 print("Table " + str(planInteger) + " not found")
-                # print(traceback.format_exc())
             finally:
                 planInteger += 1
 
@@ -224,41 +238,30 @@ while True:
             fileFood.write("\n\t\t<table>\n\t\t\t<tr>\n\t\t\t\t<th>Für Schüler 3,00€, für Bedienstete 3,50€. Mittagstisch von 11:30 bis 14:30.</th>")
             foodDateOne = browser.find_element_by_xpath('//*[@id="1302648704"]/div[1]/h3')
             fileFood.write("\n\t\t\t\t<th>" + foodDateOne.text + "</th>")
-            # print(foodDateOne.text)
 
             foodTableOne = browser.find_elements_by_xpath('//*[@id="1302648704"]/div[1]/div/div[2]/div/div[1]/div[2]/div/p')
             for intFoodOne in range(0, len(foodTableOne) - 3):
                 foodCol = browser.find_elements_by_xpath('//*[@id="1302648704"]/div[1]/div/div[2]/div/div[1]/div[2]/div/p')[intFoodOne]
                 fileFood.write("\n\t\t\t\t<th>" + foodCol.text + "</th>")
-                # print(foodCol.text)
 
             try:
                 foodDateTwo = browser.find_element_by_xpath('//*[@id="1302648704"]/div[2]/h3')
                 fileFood.write("\n\t\t\t\t<th>" + foodDateTwo.text + "</th>")
-                # print(foodDateTwo.text)
 
                 foodTableTwo = browser.find_elements_by_xpath('//*[@id="1302648704"]/div[2]/div/div[2]/div/div[1]/div[2]/div/p')
                 for intFoodTwo in range(0, len(foodTableTwo) - 5):
                     foodColTwo = browser.find_elements_by_xpath('//*[@id="1302648704"]/div[2]/div/div[2]/div/div[1]/div[2]/div/p')[intFoodTwo]
                     fileFood.write("\n\t\t\t\t<th>" + foodColTwo.text + "</th>")
-                    # print(foodColTwo.text)
             
             except:
-                print("No second food for you huehuehue? :((")
+                print("Food menu fetch unsuccessful")
 
         except:
-            print("No food for you huehuehue! :(")
+            print("Food menu fetch unsuccessful")
         finally:
             fileFood.write("\n\t\t\t</tr>\n\t\t</table>\n\t</body>\n<html>")
             browser.quit()
             fileFood.close()
-
-
-
-        # fplan = open("subst.json", "a+")
-        # fplan.truncate()
-        # fplan.write(json.dumps({"group": group, "course": course, "additional": additional, "date": date, "time": time, "room": room}))
-        # fplan.close()
 
         f1 = open("subst.html", "r")
         f2 = open("subst_check.html", "r")
