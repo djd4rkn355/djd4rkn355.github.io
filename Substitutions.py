@@ -83,7 +83,7 @@ while True:
         file.write("<!DOCTYPE html>\n<html>\n\t<head>\n\t\t<meta charset=\"utf-8\">\n\t\t<style>\n\t\t\tbody {\n\t\t\t\tfont-family: Arial, Helvetica, sans-serif\n\t\t\t}\n\t\t</style>\n\t</head>\n\t<body>")
         fileFood.write("<!DOCTYPE html>\n<html>\n\t<head>\n\t\t<meta charset=\"utf-8\">\n\t\t<style>\n\t\t\tbody {\n\t\t\t\tfont-family: Arial, Helvetica, sans-serif\n\t\t\t}\n\t\t</style>\n\t</head>\n\t<body>")
         currentTime = datetime.now().strftime('%Y-%m-%d, %H:%M')
-        timeHeader = "\n\t\t<h1>" + currentTime + "</h1>"
+        timeHeader = "\n<h1>" + currentTime + "</h1>"
         file.write(timeHeader)
         fileFood.write(timeHeader)
 
@@ -284,7 +284,7 @@ while True:
         for line1 in ff1:
             for line2 in ff2:
                 if line1 != line2:
-                    if line1[0:8] == "\t\t<h1>":
+                    if line1[0:4] == "<h1>":
                         print("Line ignored")
                     else:
                         sameFoodFiles = False
