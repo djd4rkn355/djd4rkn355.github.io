@@ -225,7 +225,7 @@ while True:
 
                 sendEmail = False
             except:
-                print("Table " + str(nextPlanInt) + " not found")
+                pass
             finally:
                 planInteger += 1
 
