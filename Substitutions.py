@@ -86,6 +86,7 @@ while True:
         timeHeader = "\n<h1>" + currentTime + "</h1>"
         file.write(timeHeader)
         fileFood.write(timeHeader)
+        print(currentTime)
 
         # browser = webdriver.Chrome('/Users/kduez/git/raspberryPi/chromedriver') # for Windows 10
         browser = webdriver.Chrome('/usr/bin/chromedriver') # for Raspberry Pi, Chrome 72
