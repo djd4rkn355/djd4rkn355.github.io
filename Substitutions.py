@@ -177,6 +177,7 @@ while True:
                 timeColInt = 0
                 roomColInt = 0
                 teacherColInt = -1
+                typeColInt = -1
 
                 firstRow = table_id.find_elements_by_tag_name("tr")[0]
                 for i in range(0, 9):
@@ -195,6 +196,8 @@ while True:
                         roomColInt = i
                     elif col.text == "Vertretungs-Text":
                         additionalColInt = i
+                    elif col.text == "Art":
+                        typeColInt = i
 
                 for intRow in range(1, len(rowCount)): # iterates through every row (vertically) and skips the first one (header)
                     try:
@@ -207,6 +210,11 @@ while True:
                         else:
                             teacher = substs[teacherColInt].text
 
+                        if typeColInt == -1:
+                            substType = ""
+                        else:
+                            substType = substs[typeColInt].text
+
                         file.write( "\n\t\t\t<tr>" +
                                     "\n\t\t\t\t<th>" + substs[groupColInt].text + "</th>" + 
                                     "\n\t\t\t\t<th>" + substs[dateColInt].text + "</th>" + 
@@ -215,6 +223,7 @@ while True:
                                     "\n\t\t\t\t<th>" + substs[roomColInt].text + "</th>" + 
                                     "\n\t\t\t\t<th>" + substs[additionalColInt].text + "</th>" + 
                                     "\n\t\t\t\t<th>" + teacher + "</th>" +
+                                    "\n\t\t\t\t<th>" + substType + "</th>" +
                                     "\n\t\t\t</tr>")
                         
                         intRow += 1
