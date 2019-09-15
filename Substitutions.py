@@ -53,21 +53,24 @@ def send_notifications():
     print('Successfully sent message to iOS clients: ', response_ios)
 
 def send_email(currentTime, body):
-    print("Sending email.")
-    smtpUser = 'rpiavhplan@gmail.com'
-    smtpPass = 'avhplan307'
-    toAdd = 'k.duezgoeren@gmail.com'
-    fromAdd = smtpUser
-    subject = 'AvH Plan Server Issue'
-    header = 'To: ' + toAdd + '\n' + 'From: ' + fromAdd + '\n' + 'Subject: ' + subject
-    s = smtplib.SMTP('smtp.gmail.com', 587)
-    s.ehlo()
-    s.starttls()
-    s.ehlo()
-    s.login(smtpUser, smtpPass)
-    s.sendmail(fromAdd, toAdd, header + '\n\n' + body + '\n\nFetch started at: ' + currentTime)
-    s.quit()
-    print('Email has been sent.')
+    try:
+        print("Sending email")
+        smtpUser = 'rpiavhplan@gmail.com'
+        smtpPass = 'subst307plan_bydeniz'
+        toAdd = 'k.duezgoeren@gmail.com'
+        fromAdd = smtpUser
+        subject = 'AvH Plan Server Issue'
+        header = 'To: ' + toAdd + '\n' + 'From: ' + fromAdd + '\n' + 'Subject: ' + subject
+        s = smtplib.SMTP('smtp.gmail.com', 587)
+        s.ehlo()
+        s.starttls()
+        s.ehlo()
+        s.login(smtpUser, smtpPass)
+        s.sendmail(fromAdd, toAdd, header + '\n\n' + body + '\n\nFetch started at: ' + currentTime)
+        s.quit()
+        print('Email has been sent')
+    except:
+        print("Email failed to send")
 
 cred = credentials.Certificate("/home/pi/Desktop/avh-plan-firebase-adminsdk-5iy97-2a377ca3d3.json")
 firebase_admin.initialize_app(cred)
