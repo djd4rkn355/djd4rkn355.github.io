@@ -141,25 +141,30 @@ while True:
 
                     # info table
                     infoRowCount = table_id_previous.find_elements_by_tag_name("tr")
-                    if infoRowCount[0].find_elements_by_tag_name("td")[0].text == "Klasse(n)":
-                        1/0
-                    info_test = infoRowCount[1]
+                    try:
+                        column_test = table_id_previous.find_elements_by_xpath('.//tbody/tr[1]/th')[5] # throws an exception if the table is not a substitution table
+                        isInfoTable = False
+                    except:
+                        isInfoTable = True
+                    if isInfoTable == True:
+                        info_test = infoRowCount[1]
 
-                    file.write("\n\t\t<p>" + dateB.text + "</p>")
+                        file.write("\n\t\t<p>" + dateB.text + "</p>")
 
-                    infoRowInt = 0
-                    for infoRowInt in range(0, len(infoRowCount)):
-                        rowsInfo = table_id_previous.find_elements_by_tag_name("tr")[infoRowInt]
-                        infoColInt = 0
-                        infoColCount = rowsInfo.find_elements_by_tag_name("td")
+                        infoRowInt = 0
+                        for infoRowInt in range(0, len(infoRowCount)):
+                            rowsInfo = table_id_previous.find_elements_by_tag_name("tr")[infoRowInt]
+                            infoColInt = 0
+                            infoColCount = rowsInfo.find_elements_by_tag_name("td")
 
-                        for infoColInt in range(0, len(infoColCount)):
-                            colsInfo1 = rowsInfo.find_elements_by_tag_name("td")[infoColInt]
-                            file.write("\n\t\t<p>" + colsInfo1.text + "</p>")
-                            infoColInt += 1
+                            for infoColInt in range(0, len(infoColCount)):
+                                colsInfo1 = rowsInfo.find_elements_by_tag_name("td")[infoColInt]
+                                file.write("\n\t\t<p>" + colsInfo1.text + "</p>")
+                                print(str(planInteger) + colsInfo1.text)
+                                infoColInt += 1
 
-                        infoRowInt += 1
-                    nextPlanInt = planInteger + 1
+                            infoRowInt += 1
+                        nextPlanInt = planInteger + 1
                 except:
                     file.write("\n\t\t<p> </p>")
                     nextPlanInt = planInteger
