@@ -160,23 +160,21 @@ while True:
                             for infoColInt in range(0, len(infoColCount)):
                                 colsInfo1 = rowsInfo.find_elements_by_tag_name("td")[infoColInt]
                                 file.write("\n\t\t<p>" + colsInfo1.text + "</p>")
-                                print(str(planInteger) + colsInfo1.text)
                                 infoColInt += 1
 
                             infoRowInt += 1
-                        nextPlanInt = planInteger + 1
+                        # planInteger = planInteger + 1
                 except:
                     file.write("\n\t\t<p> </p>")
-                    nextPlanInt = planInteger
                 
-                table_id = browser.find_elements_by_tag_name("table")[nextPlanInt]
+                table_id = browser.find_elements_by_tag_name("table")[planInteger]
                 column_test = table_id.find_elements_by_xpath('.//tbody/tr[1]/th')[5] # throws an exception if the table doesnt exist
 
                 rowCount = table_id.find_elements_by_tag_name("tr")
                 intRow = 1
                 file.write("\n\t\t<table>")
 
-                print("Table " + str(nextPlanInt) + " has been found")
+                print("Table " + str(planInteger) + " has been found")
 
                 groupColInt = 0
                 courseColInt = 0
