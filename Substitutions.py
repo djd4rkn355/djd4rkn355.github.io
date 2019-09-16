@@ -183,7 +183,8 @@ while True:
                 typeColInt = -1
 
                 firstRow = table_id.find_elements_by_tag_name("tr")[0]
-                for i in range(0, 9):
+                colCount = firstRow.find_elements_by_xpath('.//th')
+                for i in range(0, len(colCount)):
                     col = firstRow.find_elements_by_xpath('.//th')[i]
                     if col.text == "Klasse(n)":
                         groupColInt = i
