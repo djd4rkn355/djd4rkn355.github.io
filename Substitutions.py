@@ -123,6 +123,7 @@ while True:
                 "\n\t\t\t\t<th></th>" + 
                 "\n\t\t\t\t<th></th>" + 
                 "\n\t\t\t\t<th></th>" + 
+                "\n\t\t\t\t<th></th>" + 
                 "\n\t\t\t</tr>" + 
                 "\n\t\t</table>")
 
