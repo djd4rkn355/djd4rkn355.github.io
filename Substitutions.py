@@ -59,7 +59,7 @@ def send_notifications():
     print('Successfully sent message to iOS clients: ', response_ios)
 
 # sends an email if an error occurred during the fetch
-# i may have just copied this code from the internet, but it works, so don't change anything except the strings
+# I may have just copied this code from the internet, but it works, so don't change anything except the strings
 def send_email(currentTime, body):
     try:
         print("Sending email")
@@ -92,10 +92,12 @@ while True:
         header = "<!DOCTYPE html>\n<html>\n\t<head>\n\t\t<meta charset=\"utf-8\">\n\t\t<style>\n\t\t\tbody {\n\t\t\t\tfont-family: Arial, Helvetica, sans-serif\n\t\t\t}\n\t\t</style>\n\t</head>\n\t<body>\n<h1>" + currentTime + "</h1>"
 
         # initialise the substitution table file and the food menu file with some HTML
-        substitutionFile = codecs.open("subst.html", "w", "utf-8")
+        #substitutionFile = codecs.open("subst.html", "w", "utf-8")
+        substitutionFile = open('subst.html', 'w')
         substitutionFile.truncate()
         substitutionFile.write(header)
-        foodMenuFile = codecs.open("food.html", "w", "utf-8")
+        #foodMenuFile = codecs.open("food.html", "w", "utf-8")
+        foodMenuFile = open('food.html', 'w')
         foodMenuFile.truncate()
         foodMenuFile.write(header)
         
@@ -270,7 +272,6 @@ while True:
             send_email(currentTime, 'Plan could not be fetched; no substitution tables were found. No changes have been made to the GitHub repository. Please review the script as soon as possible.')
 
         substitutionFile.write("\n\t</body>\n</html>")
-        substitutionFile.flush()
         substitutionFile.close()
 
         # only continue if the substitution plan was fetched successfully
