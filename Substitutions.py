@@ -269,6 +269,7 @@ while True:
             send_email(currentTime, 'Plan could not be fetched; no substitution tables were found. No changes have been made to the GitHub repository. Please review the script as soon as possible.')
 
         substitutionFile.write("\n\t</body>\n</html>")
+        substitutionFile.flush()
         substitutionFile.close()
 
         # only continue if the substitution plan was fetched successfully
@@ -304,8 +305,9 @@ while True:
                 print("Food menu fetch unsuccessful")
             finally:
                 foodMenuFile.write("\n\t\t\t</tr>\n\t\t</table>\n\t</body>\n<html>")
-                browser.quit()
+                foodMenuFile.flush()
                 foodMenuFile.close()
+                browser.quit()
 
             # compares the newly-created substitution table file with a pre-existing file to check for any changes
             fsc = codecs.open("subst_check.html", "w", "utf-8") # creates subst_check.html if it does not exist
