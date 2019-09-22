@@ -1,7 +1,6 @@
 from selenium import webdriver
 from selenium.webdriver.common.by import By
-from io import TextIOWrapper
-import time as timeImport
+import time as delay
 import codecs
 import subprocess
 import smtplib
@@ -14,12 +13,15 @@ import firebase_admin
 from firebase_admin import messaging
 from firebase_admin import credentials
 
-def subprocess_cmd(command):
-    process = subprocess.Popen(command, stdout=subprocess.PIPE, shell=True)
+# used for pushing changes to GitHub via terminal
+def push_changes():
+    process = subprocess.Popen('cd /home/pi/djd4rkn355.github.io; git add --all; git commit -m "Pi Push"; git push', stdout=subprocess.PIPE, shell=True)
     proc_stdout = process.communicate()[0].strip()
     print(proc_stdout)
 
+# sends notifications to viable clients using Firebase Cloud Messaging
 def send_notifications():
+    # message for development clients before users are notified of any changes
     topic_debug = 'substitutions-debug'
     message_debug = messaging.Message(
         notification=messaging.Notification(
@@ -31,8 +33,10 @@ def send_notifications():
     response_debug = messaging.send(message_debug)
     print('Successfully sent message to development clients: ', response_debug)
     
-    timeImport.sleep(120)
+    # as GitHub takes around a minute to deploy changes to GitHub Pages, introduce a delay of two minutes
+    delay.sleep(120)
     
+    # data message for Android clients that locally refreshes the plan and notifies of any changes
     topic_android = 'substitutions-android'
     message_android = messaging.Message(
         data={},
@@ -41,6 +45,7 @@ def send_notifications():
     response_android = messaging.send(message_android)
     print('Successfully sent message to Android clients: ', response_android)
 
+    # text notification for iOS clients that notifies about changes without any further local processing
     topic_ios = 'substitutions-ios'
     message_ios = messaging.Message(
         notification=messaging.Notification(
@@ -52,25 +57,27 @@ def send_notifications():
     response_ios = messaging.send(message_ios)
     print('Successfully sent message to iOS clients: ', response_ios)
 
+# sends an email if an error occurred during the fetch
+# i may have just copied this code from the internet, but it works, so don't change anything except the strings
 def send_email(currentTime, body):
     try:
         print("Sending email")
         smtpUser = 'rpiavhplan@gmail.com'
         smtpPass = 'subst307plan_bydeniz'
-        toAdd = 'k.duezgoeren@gmail.com'
-        fromAdd = smtpUser
+        toAddress = 'k.duezgoeren@gmail.com'
+        fromAddress = smtpUser
         subject = 'AvH Plan Server Issue'
-        header = 'To: ' + toAdd + '\n' + 'From: ' + fromAdd + '\n' + 'Subject: ' + subject
-        s = smtplib.SMTP('smtp.gmail.com', 587)
+        header = 'To: ' + toAddress + '\n' + 'From: ' + fromAddress + '\n' + 'Subject: ' + subject # don't change this string
+        s = smtplib.SMTP('smtp.gmail.com', 587) # don't change the string in this
         s.ehlo()
         s.starttls()
         s.ehlo()
         s.login(smtpUser, smtpPass)
-        s.sendmail(fromAdd, toAdd, header + '\n\n' + body + '\n\nFetch started at: ' + currentTime)
+        s.sendmail(fromAddress, toAddress, header + '\n\n' + body + '\n\nFetch started at: ' + currentTime)
         s.quit()
         print('Email has been sent')
-    except:
-        print("Email failed to send")
+    except: # fail-safe in case the fetch was unsuccessful due to an internet disconnect
+        print('Email failed to send')
 
 cred = credentials.Certificate("/home/pi/Desktop/avh-plan-firebase-adminsdk-5iy97-2a377ca3d3.json")
 firebase_admin.initialize_app(cred)
@@ -79,23 +86,38 @@ while True:
 
     try:
 
-        file = codecs.open("subst.html", "w", "utf-8")
-        fileFood = codecs.open("food.html", "w", "utf-8")
-        file.truncate()
-        fileFood.truncate()
-        file.write("<!DOCTYPE html>\n<html>\n\t<head>\n\t\t<meta charset=\"utf-8\">\n\t\t<style>\n\t\t\tbody {\n\t\t\t\tfont-family: Arial, Helvetica, sans-serif\n\t\t\t}\n\t\t</style>\n\t</head>\n\t<body>")
-        fileFood.write("<!DOCTYPE html>\n<html>\n\t<head>\n\t\t<meta charset=\"utf-8\">\n\t\t<style>\n\t\t\tbody {\n\t\t\t\tfont-family: Arial, Helvetica, sans-serif\n\t\t\t}\n\t\t</style>\n\t</head>\n\t<body>")
         currentTime = datetime.now().strftime('%Y-%m-%d, %H:%M')
-        timeHeader = "\n<h1>" + currentTime + "</h1>"
-        file.write(timeHeader)
-        fileFood.write(timeHeader)
         print(currentTime)
+        header = "<!DOCTYPE html>\n<html>\n\t<head>\n\t\t<meta charset=\"utf-8\">\n\t\t<style>\n\t\t\tbody {\n\t\t\t\tfont-family: Arial, Helvetica, sans-serif\n\t\t\t}\n\t\t</style>\n\t</head>\n\t<body>\n<h1>" + currentTime + "</h1>"
 
-        # browser = webdriver.Chrome('/Users/kduez/git/raspberryPi/chromedriver') # for Windows 10
+        # initialise the substitution table file and the food menu file with some HTML
+        substitutionFile = codecs.open("subst.html", "w", "utf-8")
+        substitutionFile.truncate()
+        substitutionFile.write(header)
+        foodMenuFile = codecs.open("food.html", "w", "utf-8")
+        foodMenuFile.truncate()
+        foodMenuFile.write(header)
+        
+        # this right here is an instance of Selenium, a library made for prototyping quick web scraping tools. As I found it to be very useful
+        # for fetching any data required, as well as being able to log in without sending a POST request (the possible complexity of which in
+        # this case is described a few lines below), I have kept it in this script. Since it is not headless, it requires more resources than
+        # a headless library. A Raspberry Pi 3B with 512 MB of RAM, which has been used to develop this script, has proven, at least in my
+        # experience, to freeze occasionally, unless its page file is increased. I recommend at least a Raspberry Pi 3B+ for future deployments
+        # 
+        # a driver is required for this library, for which I have been using a Chromedriver. Place it anywhere on the deployment machine
+        # and include its path as a string here. Make sure the driver's version matches the version of the web browser
         browser = webdriver.Chrome('/usr/bin/chromedriver') # for Raspberry Pi, Chrome 72
 
-        browser.get('http://307.joomla.schule.bremen.de/index.php/component/users/?view=login&Itemid=171')
+        # use this for testing on another PC and change the directory string accordingly
+        # browser = webdriver.Chrome('/Users/kduez/git/raspberryPi/chromedriver') # for Windows 10
 
+        # using this URL instead of /users/?view=login&Itemid=171 significantly speeds up the login process,
+        # as it contains much fewer images that have to be loaded, since Selenium waits until the page finished loading
+        browser.get('http://307.joomla.schule.bremen.de/index.php/component/users/#top')
+
+        # finds the username and password text fields on the website and sends the corresponsing data
+        # this is advantageous over a POST request, as the school website generates tokens on login for security reasons,
+        # which cannot easily be included in a POST request, if at all
         username = browser.find_element_by_id("username")
         password = browser.find_element_by_id("password")
         username.send_keys("deniz130")
@@ -105,7 +127,6 @@ while True:
         browser.get('http://307.joomla.schule.bremen.de/index.php/service/sch%C3%BCler')
         print("Fetching of the substitution plan starts now.")
 
-        planInteger = 0
         sendEmail = True
 
         # PSA feature
@@ -113,7 +134,7 @@ while True:
         # do not remove the "psa" string in the second <th> tag
         # you may append a link without a space between "psa" and the link
 
-        file.write(
+        substitutionFile.write(
                 "\n\t\t<table>" +
                 "\n\t\t\t<tr>" + 
                 "\n\t\t\t\t<th></th>" + 
@@ -127,10 +148,14 @@ while True:
                 "\n\t\t\t</tr>" + 
                 "\n\t\t</table>")
 
+        # start iterating through HTML substitution tables
+
         for planInteger in range(0, 14):
 
             try:
                 table_id_previous = browser.find_elements_by_tag_name("table")[planInteger]
+
+                # start info table fetch
 
                 try:
                     try:
@@ -141,51 +166,48 @@ while True:
                         dateB = dateElement.find_element_by_tag_name("b")
 
                     # info table
-                    infoRowCount = table_id_previous.find_elements_by_tag_name("tr")
+                    infoRows = table_id_previous.find_elements_by_tag_name("tr")
                     try:
                         column_test = table_id_previous.find_elements_by_xpath('.//tbody/tr[1]/th')[5] # throws an exception if the table is not a substitution table
                         isInfoTable = False
                     except:
-                        isInfoTable = True
-                    if isInfoTable == True:
-                        info_test = infoRowCount[1]
+                        info_test = infoRows[1]
+                        substitutionFile.write("\n\t\t<p>" + dateB.text + "</p>")
 
-                        file.write("\n\t\t<p>" + dateB.text + "</p>")
+                        for infoRowInt in range(0, len(infoRows)):
+                            rowsInfo = infoRows[infoRowInt]
+                            infoCols = rowsInfo.find_elements_by_tag_name("td")
 
-                        infoRowInt = 0
-                        for infoRowInt in range(0, len(infoRowCount)):
-                            rowsInfo = table_id_previous.find_elements_by_tag_name("tr")[infoRowInt]
-                            infoColInt = 0
-                            infoColCount = rowsInfo.find_elements_by_tag_name("td")
+                            for infoColInt in range(0, len(infoCols)):
+                                colsInfo1 = infoCols[infoColInt]
+                                substitutionFile.write("\n\t\t<p>" + colsInfo1.text + "</p>")
 
-                            for infoColInt in range(0, len(infoColCount)):
-                                colsInfo1 = rowsInfo.find_elements_by_tag_name("td")[infoColInt]
-                                file.write("\n\t\t<p>" + colsInfo1.text + "</p>")
-                                infoColInt += 1
-
-                            infoRowInt += 1
-                        # planInteger = planInteger + 1
                 except:
-                    file.write("\n\t\t<p> </p>")
+                    substitutionFile.write("\n\t\t<p></p>")
+
+                # end info table fetch
+                # start substitution table fetch
                 
                 table_id = browser.find_elements_by_tag_name("table")[planInteger]
-                column_test = table_id.find_elements_by_xpath('.//tbody/tr[1]/th')[5] # throws an exception if the table doesnt exist
 
-                rowCount = table_id.find_elements_by_tag_name("tr")
-                intRow = 1
-                file.write("\n\t\t<table>")
-
+                # throws an exception if the table doesnt exist or is not a substitution table and skips it
+                column_test = table_id.find_elements_by_xpath('.//tbody/tr[1]/th')[5]
                 print("Table " + str(planInteger) + " has been found")
 
-                groupColInt = 0
-                courseColInt = 0
-                additionalColInt = 0
-                dateColInt = 0
-                timeColInt = 0
-                roomColInt = 0
+                substitutionFile.write("\n\t\t<table>")
+
+                groupColInt = -1
+                courseColInt = -1
+                additionalColInt = -1
+                dateColInt = -1
+                timeColInt = -1
+                roomColInt = -1
                 teacherColInt = -1
                 typeColInt = -1
 
+                # collect indexes for the substitution table's columns
+                # this is useful, as it makes the order of the columns on the website irrelevant
+                # TODO change this to something more pleasant than a cascade of if-else's
                 firstRow = table_id.find_elements_by_tag_name("tr")[0]
                 colCount = firstRow.find_elements_by_xpath('.//th')
                 for i in range(0, len(colCount)):
@@ -207,137 +229,160 @@ while True:
                     elif col.text == "Art":
                         typeColInt = i
 
-                for intRow in range(1, len(rowCount)): # iterates through every row (vertically) and skips the first one (header)
+                tableRows = table_id.find_elements_by_tag_name("tr")
+
+                for intRow in range(1, len(tableRows)): # iterates through every row (vertically) and skips the first one (header)
                     try:
-                        intCol = 0
-                        rows = table_id.find_elements_by_tag_name("tr")[intRow]
-                        substs = rows.find_elements_by_xpath('.//td')
+                        row = tableRows[intRow]
+                        substs = row.find_elements_by_xpath('.//td')
 
-                        if teacherColInt == -1:
-                            teacher = ""
-                        else:
-                            teacher = substs[teacherColInt].text
+                        substitutionIndexes = [groupColInt, dateColInt, timeColInt, courseColInt, roomColInt, additionalColInt, teacherColInt, typeColInt]
 
-                        if typeColInt == -1:
-                            substType = ""
-                        else:
-                            substType = substs[typeColInt].text
-
-                        file.write( "\n\t\t\t<tr>" +
-                                    "\n\t\t\t\t<th>" + substs[groupColInt].text + "</th>" + 
-                                    "\n\t\t\t\t<th>" + substs[dateColInt].text + "</th>" + 
-                                    "\n\t\t\t\t<th>" + substs[timeColInt].text + "</th>" + 
-                                    "\n\t\t\t\t<th>" + substs[courseColInt].text + "</th>" + 
-                                    "\n\t\t\t\t<th>" + substs[roomColInt].text + "</th>" + 
-                                    "\n\t\t\t\t<th>" + substs[additionalColInt].text + "</th>" + 
-                                    "\n\t\t\t\t<th>" + teacher + "</th>" +
-                                    "\n\t\t\t\t<th>" + substType + "</th>" +
-                                    "\n\t\t\t</tr>")
+                        substitutionFile.write("\n\t\t\t<tr>")
+                        for i in range(0, len(substitutionIndexes)):
+                            if substitutionIndexes[i] == -1:
+                                t = ""
+                            else:
+                                try: # if an incomplete row exists, as to not crash the script
+                                    t = substs[substitutionIndexes[i]].text
+                                except:
+                                    t = ""
+                            substitutionFile.write("\n\t\t\t\t<th>" + t + "</th>")
+                            print(t)
+                        substitutionFile.write("\n\t\t\t</tr>")
                         
-                        intRow += 1
                     except:
                         pass
 
-                file.write("\n\t\t</table>")
-
+                substitutionFile.write("\n\t\t</table>")
                 sendEmail = False
+
+                # end substitution table fetch
+
             except:
                 pass
-            finally:
-                planInteger += 1
 
-        # send email if no data could be fetched
+        # end iterating through HTML substitution tables
+
+        # send email if no substitution tables have been found
         if sendEmail == True:
             send_email(currentTime, 'Plan could not be fetched; no substitution tables were found. No changes have been made to the GitHub repository. Please review the script as soon as possible.')
 
-        file.write("\n\t</body>\n</html>")
-        file.close()
+        substitutionFile.write("\n\t</body>\n</html>")
+        substitutionFile.close()
 
-        browser.get('https://www.schulkantine-gueven.de/speisekarte')
+        # only continue if the substitution plan was fetched successfully
+        if sendEmail == False:
+            browser.get('https://www.schulkantine-gueven.de/speisekarte')
 
-        try:
-            fileFood.write("\n\t\t<table>\n\t\t\t<tr>\n\t\t\t\t<th>Für Schüler 3,00€, für Bedienstete 3,50€. Mittagstisch von 11:30 bis 14:30.</th>")
-            foodDateOne = browser.find_element_by_xpath('//*[@id="1302648704"]/div[1]/h3')
-            fileFood.write("\n\t\t\t\t<th>" + foodDateOne.text + "</th>")
-
-            foodTableOne = browser.find_elements_by_xpath('//*[@id="1302648704"]/div[1]/div/div[2]/div/div[1]/div[2]/div/p')
-            for intFoodOne in range(0, len(foodTableOne) - 3):
-                foodCol = browser.find_elements_by_xpath('//*[@id="1302648704"]/div[1]/div/div[2]/div/div[1]/div[2]/div/p')[intFoodOne]
-                fileFood.write("\n\t\t\t\t<th>" + foodCol.text + "</th>")
-
+            # this is a hard-coded mess, mostly because of the hideous HTML of the website. Unless it breaks, leave it as it is
+            # if it breaks, have fun and take some anti-depressants to preserve your sanity
             try:
-                foodDateTwo = browser.find_element_by_xpath('//*[@id="1302648704"]/div[2]/h3')
-                fileFood.write("\n\t\t\t\t<th>" + foodDateTwo.text + "</th>")
+                # hard-coded string for prices and serving times, the validity of which should be verified periodically
+                foodMenuFile.write("\n\t\t<table>\n\t\t\t<tr>\n\t\t\t\t<th>Für Schüler 3,00€, für Bedienstete 3,50€. Mittagstisch von 11:30 bis 14:30.</th>")
+                foodDateOne = browser.find_element_by_xpath('//*[@id="1302648704"]/div[1]/h3')
+                foodMenuFile.write("\n\t\t\t\t<th>" + foodDateOne.text + "</th>")
 
-                foodTableTwo = browser.find_elements_by_xpath('//*[@id="1302648704"]/div[2]/div/div[2]/div/div[1]/div[2]/div/p')
-                for intFoodTwo in range(0, len(foodTableTwo) - 5):
-                    foodColTwo = browser.find_elements_by_xpath('//*[@id="1302648704"]/div[2]/div/div[2]/div/div[1]/div[2]/div/p')[intFoodTwo]
-                    fileFood.write("\n\t\t\t\t<th>" + foodColTwo.text + "</th>")
-            
+                foodTableOne = browser.find_elements_by_xpath('//*[@id="1302648704"]/div[1]/div/div[2]/div/div[1]/div[2]/div/p')
+                for intFoodOne in range(0, len(foodTableOne) - 3):
+                    foodCol = browser.find_elements_by_xpath('//*[@id="1302648704"]/div[1]/div/div[2]/div/div[1]/div[2]/div/p')[intFoodOne]
+                    foodMenuFile.write("\n\t\t\t\t<th>" + foodCol.text + "</th>")
+
+                try:
+                    foodDateTwo = browser.find_element_by_xpath('//*[@id="1302648704"]/div[2]/h3')
+                    foodMenuFile.write("\n\t\t\t\t<th>" + foodDateTwo.text + "</th>")
+
+                    foodTableTwo = browser.find_elements_by_xpath('//*[@id="1302648704"]/div[2]/div/div[2]/div/div[1]/div[2]/div/p')
+                    for intFoodTwo in range(0, len(foodTableTwo) - 5):
+                        foodColTwo = browser.find_elements_by_xpath('//*[@id="1302648704"]/div[2]/div/div[2]/div/div[1]/div[2]/div/p')[intFoodTwo]
+                        foodMenuFile.write("\n\t\t\t\t<th>" + foodColTwo.text + "</th>")
+                
+                except:
+                    print("Food menu fetch unsuccessful")
+
             except:
                 print("Food menu fetch unsuccessful")
+            finally:
+                foodMenuFile.write("\n\t\t\t</tr>\n\t\t</table>\n\t</body>\n<html>")
+                browser.quit()
+                foodMenuFile.close()
 
-        except:
-            print("Food menu fetch unsuccessful")
-        finally:
-            fileFood.write("\n\t\t\t</tr>\n\t\t</table>\n\t</body>\n<html>")
-            browser.quit()
-            fileFood.close()
+            # compares the newly-created substitution table file with a pre-existing file to check for any changes
+            fsc = codecs.open("subst_check.html", "w", "utf-8") # creates subst_check.html if it does not exist
+            fsc.close()
+            substFileNew = open("subst.html", "r")
+            substFileCheck = open("subst_check.html", "r")
+            sameFiles = True
+            for line1 in substFileNew:
+                for line2 in substFileCheck:
+                    if line1 != line2:
+                        if line1[0:4] == "<h1>": # ignores any lines with data that may change on any iteration (e.g. starting time of fetch)
+                            print("Line ignored")
+                        else:
+                            sameFiles = False
+                    break
+            substFileNew.close()
+            substFileCheck.close()
+            print('Substitution files the same: ' + str(sameFiles))
 
-        f1 = open("subst.html", "r")
-        f2 = open("subst_check.html", "r")
-        sameFiles = True
-        for line1 in f1:
-            for line2 in f2:
-                if line1 != line2:
-                    if line1[0:4] == "<h1>":
-                        print("Line ignored")
-                    else:
-                        sameFiles = False
-                break
-        f1.close()
-        f2.close()
-        print(sameFiles)
+            # compares the newly-created food menu file with a pre-existing file to check for any changes
+            ffc = codecs.open("food_check.html", "w", "utf-8") # creates food_check.html if it does not exist
+            ffc.close()
+            foodFileNew = open("food.html", "r")
+            foodFileCheck = open("food_check.html", "r")
+            sameFoodFiles = True
+            for line1 in foodFileNew:
+                for line2 in foodFileCheck:
+                    if line1 != line2:
+                        if line1[0:4] == "<h1>": # ignores any lines with data that may change on any iteration (e.g. starting time of fetch)
+                            print("Line ignored")
+                        else:
+                            sameFoodFiles = False
+                    break
+            foodFileNew.close()
+            foodFileCheck.close()
+            print('Food menu files the same: ' + str(sameFoodFiles))
 
-        ff1 = open("food.html", "r")
-        ff2 = open("food_check.html", "r")
-        sameFoodFiles = True
-        for line1 in ff1:
-            for line2 in ff2:
-                if line1 != line2:
-                    if line1[0:4] == "<h1>":
-                        print("Line ignored")
-                    else:
-                        sameFoodFiles = False
-                break
-        ff1.close()
-        ff2.close()
-        print(sameFoodFiles)
+            if sameFiles == True:
+                # updates the new file with the data from the check file to copy its fetch time
+                # as such, users will not be able to refresh the plan with an equal copy
+                copyfile("subst_check.html", "subst.html")
+            else: # sameFiles == False
+                # in this case, an update to the substitution plan has been published; send notifications to all users
+                # copies the contents of the newly created file to the check file. By keeping the new file, its fetch time is preserved
+                # and users will be able to refresh the plan
+                copyfile("subst.html", "subst_check.html")
 
-        if sameFiles == True:
-            copyfile("subst_check.html", "subst.html")
-        else: # sameFiles == False
-            # in this case, an update to the substitution plan has been published; send notifications to all users
-            copyfile("subst.html", "subst_check.html")
+            if sameFoodFiles == True:
+                # updates the new file with the data from the check file to copy its fetch time
+                # as such, users will not be able to refresh the food menu with an equal copy
+                copyfile("food_check.html", "food.html")
+            else: # sameFoodFiles == False
+                # copies the contents of the newly created file to the check file. By keeping the new file, its fetch time is preserved
+                # and users will be able to refresh the food menu
+                copyfile("food.html", "food_check.html")
 
-        if sameFoodFiles == True:
-            copyfile("food_check.html", "food.html")
-        else: # sameFoodFiles == False
-            copyfile("food.html", "food_check.html")
-
-        if sendEmail == False:
-            subprocess_cmd('cd /home/pi/djd4rkn355.github.io; git add --all; git commit -m "Pi Push"; git push')
+            push_changes()
             print("Script successfully executed. Repository is up-to-date.")
+
+            # if changes to the substitution table have occurred, send notifications to all users
+            # this does not trigger if only the food menu has been updated in order to prevent some duplicate notifications
             if sameFiles == False:
                 send_notifications()
+
         elif sendEmail == True:
             print("Fetch has been unsuccessful. Changes have not been pushed to GitHub.")
     
+    # fail-safe in case a website could not be collected (e.g. intermittent internet outage)
     except:
         print("The connection has timed out.")
-        file.close()
-        fileFood.close()
+        substitutionFile.close()
+        foodMenuFile.close()
         browser.quit()
-        send_email(currentTime, 'The connection appears to have timed out. Please check the status of the school website.\n\n' + traceback.format_exc())
 
-    timeImport.sleep(480)
+        # sends an email with a stack trace for recognising exceptions without remoting into the server
+        send_email(currentTime, 'The connection likely has timed out. Please check the status of the school website as well as the script.\n\n' + traceback.format_exc())
+
+    # waits eight minutes until the next fetch. A successful fetch will likely take around two minutes, not including the notification delay,
+    # which will result in a refreshing time of around every ten minutes
+    delay.sleep(480)
