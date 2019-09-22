@@ -248,7 +248,7 @@ while True:
                                 except:
                                     t = ""
                             substitutionFile.write("\n\t\t\t\t<th>" + t + "</th>")
-                            print(t)
+                            
                         substitutionFile.write("\n\t\t\t</tr>")
                         
                     except:
