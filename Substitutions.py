@@ -310,8 +310,7 @@ while True:
                 browser.quit()
 
             # compares the newly-created substitution table file with a pre-existing file to check for any changes
-##            fsc = codecs.open("subst_check.html", "w", "utf-8") # creates subst_check.html if it does not exist
-##            fsc.close()
+            # make sure that the file 'subst_check.html' exists and contains some text, or else the check will fail
             substFileNew = open("subst.html", "r")
             substFileCheck = open("subst_check.html", "r")
             sameFiles = True
@@ -328,8 +327,7 @@ while True:
             print('Substitution files the same: ' + str(sameFiles))
 
             # compares the newly-created food menu file with a pre-existing file to check for any changes
-##            ffc = codecs.open("food_check.html", "w", "utf-8") # creates food_check.html if it does not exist
-##            ffc.close()
+            # make sure that the file 'food_check.html' exists and contains some text, or else the check will fail
             foodFileNew = open("food.html", "r")
             foodFileCheck = open("food_check.html", "r")
             sameFoodFiles = True
