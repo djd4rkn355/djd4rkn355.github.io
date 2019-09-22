@@ -313,19 +313,19 @@ while True:
             # compares the newly-created substitution table file with a pre-existing file to check for any changes
             fsc = codecs.open("subst_check.html", "w", "utf-8") # creates subst_check.html if it does not exist
             fsc.close()
-            substFileNew = open("subst.html", "r")
-            substFileCheck = open("subst_check.html", "r")
+##            substFileNew = open("subst.html", "r")
+##            substFileCheck = open("subst_check.html", "r")
             sameFiles = True
-            for line1 in substFileNew:
-                for line2 in substFileCheck:
-                    if line1 != line2:
-                        if line1[0:4] == "<h1>": # ignores any lines with data that may change on any iteration (e.g. starting time of fetch)
-                            print("Line ignored")
-                        else:
-                            sameFiles = False
-                    break
-            substFileNew.close()
-            substFileCheck.close()
+##            for line1 in substFileNew:
+##                for line2 in substFileCheck:
+##                    if line1 != line2:
+##                        if line1[0:4] == "<h1>": # ignores any lines with data that may change on any iteration (e.g. starting time of fetch)
+##                            print("Line ignored")
+##                        else:
+##                            sameFiles = False
+##                    break
+##            substFileNew.close()
+##            substFileCheck.close()
             print('Substitution files the same: ' + str(sameFiles))
 
             # compares the newly-created food menu file with a pre-existing file to check for any changes
