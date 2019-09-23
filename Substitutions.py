@@ -362,6 +362,8 @@ while True:
                 # and users will be able to refresh the food menu
                 copyfile("food.html", "food_check.html")
 
+            copyfile("subst.html", "avh_substitutions.html")
+
             push_changes()
             print("Script successfully executed. Repository is up-to-date.")
 
