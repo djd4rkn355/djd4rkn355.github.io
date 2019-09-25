@@ -95,6 +95,9 @@ while True:
         substitutionFile = codecs.open("subst.html", "w", "utf-8")
         substitutionFile.truncate()
         substitutionFile.write(header)
+        temporaryNewSubstitutionFile = codecs.open("avh_substitutions.html", "w", "utf-8")
+        temporaryNewSubstitutionFile.truncate()
+        temporaryNewSubstitutionFile.write(header)
         foodMenuFile = codecs.open("food.html", "w", "utf-8")
         foodMenuFile.truncate()
         foodMenuFile.write(header)
@@ -141,7 +144,7 @@ while True:
                 "\n\t\t\t\t<th></th>" + 
                 "\n\t\t\t\t<th>psa</th>" + 
                 "\n\t\t\t\t<th></th>" + 
-                "\n\t\t\t\t<th>Ein zukünftiges App-Update wird nach einem einmaligen Login fragen. Halte bitte deine Anmeldedaten bereit.</th>" + 
+                "\n\t\t\t\t<th>Ein Update wird in den kommenden Tagen verfügbar sein; alte Versionen der App werden ab dem 30.09. nicht mehr funktionieren.</th>" + 
                 "\n\t\t\t\t<th></th>" + 
                 "\n\t\t\t\t<th></th>" + 
                 "\n\t\t\t\t<th></th>" + 
@@ -174,6 +177,7 @@ while True:
                     except:
                         info_test = infoRows[1]
                         substitutionFile.write("\n\t\t<p>" + dateB.text + "</p>")
+                        temporaryNewSubstitutionFile.write("\n\t\t<p>" + dateB.text + "</p>")
 
                         for infoRowInt in range(0, len(infoRows)):
                             rowsInfo = infoRows[infoRowInt]
@@ -182,9 +186,10 @@ while True:
                             for infoColInt in range(0, len(infoCols)):
                                 colsInfo1 = infoCols[infoColInt]
                                 substitutionFile.write("\n\t\t<p>" + colsInfo1.text + "</p>")
+                                temporaryNewSubstitutionFile.write("\n\t\t<p>" + colsInfo1.text + "</p>")
 
                 except:
-                    substitutionFile.write("\n\t\t<p></p>")
+                    pass
 
                 # end info table fetch
                 # start substitution table fetch
@@ -196,6 +201,7 @@ while True:
                 print("Table " + str(planInteger) + " has been found")
 
                 substitutionFile.write("\n\t\t<table>")
+                temporaryNewSubstitutionFile.write("\n\t\t<table>")
 
                 groupColInt = -1
                 courseColInt = -1
@@ -210,9 +216,9 @@ while True:
                 # this is useful, as it makes the order of the columns on the website irrelevant
                 # TODO change this to something more pleasant than a cascade of if-else's
                 firstRow = table_id.find_elements_by_tag_name("tr")[0]
-                colCount = firstRow.find_elements_by_xpath('.//th')
-                for i in range(0, len(colCount)):
-                    col = firstRow.find_elements_by_xpath('.//th')[i]
+                columns = firstRow.find_elements_by_xpath('.//th')
+                for i in range(0, len(columns)):
+                    col = columns[i]
                     if col.text == "Klasse(n)":
                         groupColInt = i
                     elif col.text == "Datum":
@@ -240,6 +246,7 @@ while True:
                         substitutionIndexes = [groupColInt, dateColInt, timeColInt, courseColInt, roomColInt, additionalColInt, teacherColInt, typeColInt]
 
                         substitutionFile.write("\n\t\t\t<tr>")
+                        temporaryNewSubstitutionFile.write("\n\t\t\t<tr>")
                         for i in range(0, len(substitutionIndexes)):
                             if substitutionIndexes[i] == -1:
                                 t = ""
@@ -249,13 +256,16 @@ while True:
                                 except:
                                     t = ""
                             substitutionFile.write("\n\t\t\t\t<th>" + t + "</th>")
+                            temporaryNewSubstitutionFile.write("\n\t\t\t\t<th>" + t + "</th>")
                             
                         substitutionFile.write("\n\t\t\t</tr>")
+                        temporaryNewSubstitutionFile.write("\n\t\t\t</tr>")
                         
                     except:
                         pass
 
                 substitutionFile.write("\n\t\t</table>")
+                temporaryNewSubstitutionFile.write("\n\t\t</table>")
                 sendEmail = False
 
                 # end substitution table fetch
@@ -271,6 +281,8 @@ while True:
 
         substitutionFile.write("\n\t</body>\n</html>")
         substitutionFile.close()
+        temporaryNewSubstitutionFile.write("\n\t</body>\n</html>")
+        temporaryNewSubstitutionFile.close()
 
         # only continue if the substitution plan was fetched successfully
         if sendEmail == False:
@@ -361,8 +373,6 @@ while True:
                 # copies the contents of the newly created file to the check file. By keeping the new file, its fetch time is preserved
                 # and users will be able to refresh the food menu
                 copyfile("food.html", "food_check.html")
-
-            copyfile("subst.html", "avh_substitutions.html")
 
             push_changes()
             print("Script successfully executed. Repository is up-to-date.")
