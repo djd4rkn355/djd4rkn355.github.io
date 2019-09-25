@@ -338,6 +338,21 @@ while True:
             substFileCheck.close()
             print('Substitution files the same: ' + str(sameFiles))
 
+            tempSubstFileNew = open("avh_substitutions.html", "r")
+            tempSubstFileCheck = open("avh_substitutions_check.html", "r")
+            sameTempFiles = True
+            for line1 in tempSubstFileNew:
+                for line2 in tempSubstFileCheck:
+                    if line1 != line2:
+                        if line1[0:4] == "<h1>": # ignores any lines with data that may change on any iteration (e.g. starting time of fetch)
+                            print("Line ignored")
+                        else:
+                            sameTempFiles = False
+                    break
+            tempSubstFileNew.close()
+            tempSubstFileCheck.close()
+            print('Substitution files the same: ' + str(sameTempFiles))
+
             # compares the newly-created food menu file with a pre-existing file to check for any changes
             # make sure that the file 'food_check.html' exists and contains some text, or else the check will fail
             foodFileNew = open("food.html", "r")
@@ -364,6 +379,11 @@ while True:
                 # copies the contents of the newly created file to the check file. By keeping the new file, its fetch time is preserved
                 # and users will be able to refresh the plan
                 copyfile("subst.html", "subst_check.html")
+
+            if sameTempFiles == True:
+                copyfile("avh_substitutions_check.html", "avh_substitutions.html")
+            else:
+                copyfile("avh_substitutions.html", "avh_substitutions_check.html")
 
             if sameFoodFiles == True:
                 # updates the new file with the data from the check file to copy its fetch time
