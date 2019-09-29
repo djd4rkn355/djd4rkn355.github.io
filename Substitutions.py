@@ -95,7 +95,7 @@ while True:
         substitutionFile = codecs.open("avh_substitutions.html", "w", "utf-8")
         substitutionFile.truncate()
         substitutionFile.write(header)
-        foodMenuFile = codecs.open("food.html", "w", "utf-8")
+        foodMenuFile = codecs.open("foodUnused.html", "w", "utf-8")
         foodMenuFile.truncate()
         foodMenuFile.write(header)
         
@@ -329,20 +329,21 @@ while True:
 
             # compares the newly-created food menu file with a pre-existing file to check for any changes
             # make sure that the file 'food_check.html' exists and contains some text, or else the check will fail
-            foodFileNew = open("food.html", "r")
-            foodFileCheck = open("food_check.html", "r")
-            sameFoodFiles = True
-            for line1 in foodFileNew:
-                for line2 in foodFileCheck:
-                    if line1 != line2:
-                        if line1[0:4] == "<h1>": # ignores any lines with data that may change on any iteration (e.g. starting time of fetch)
-                            print("Line ignored")
-                        else:
-                            sameFoodFiles = False
-                    break
-            foodFileNew.close()
-            foodFileCheck.close()
-            print('Food menu files the same: ' + str(sameFoodFiles))
+##            foodFileNew = open("food.html", "r")
+##            foodFileCheck = open("food_check.html", "r")
+##            sameFoodFiles = True
+##            for line1 in foodFileNew:
+##                for line2 in foodFileCheck:
+##                    if line1 != line2:
+##                        if line1[0:4] == "<h1>": # ignores any lines with data that may change on any iteration (e.g. starting time of fetch)
+##                            print("Line ignored")
+##                        else:
+##                            sameFoodFiles = False
+##                    break
+##            foodFileNew.close()
+##            foodFileCheck.close()
+##            print('Food menu files the same: ' + str(sameFoodFiles))
+            sameFoodFiles = False
 
             if sameFiles == True:
                 # updates the new file with the data from the check file to copy its fetch time
