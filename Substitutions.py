@@ -92,12 +92,9 @@ while True:
         header = "<!DOCTYPE html>\n<html>\n\t<head>\n\t\t<meta charset=\"utf-8\">\n\t\t<style>\n\t\t\tbody {\n\t\t\t\tfont-family: Arial, Helvetica, sans-serif\n\t\t\t}\n\t\t</style>\n\t</head>\n\t<body>\n<h1>" + currentTime + "</h1>"
 
         # initialise the substitution table file and the food menu file with some HTML
-        substitutionFile = codecs.open("subst.html", "w", "utf-8")
+        substitutionFile = codecs.open("avh_substitutions.html", "w", "utf-8")
         substitutionFile.truncate()
         substitutionFile.write(header)
-        temporaryNewSubstitutionFile = codecs.open("avh_substitutions.html", "w", "utf-8")
-        temporaryNewSubstitutionFile.truncate()
-        temporaryNewSubstitutionFile.write(header)
         foodMenuFile = codecs.open("food.html", "w", "utf-8")
         foodMenuFile.truncate()
         foodMenuFile.write(header)
@@ -138,19 +135,19 @@ while True:
         # do not remove the "psa" string in the second <th> tag
         # you may append a link without a space between "psa" and the link
 
-        substitutionFile.write(
-                "\n\t\t<table>" +
-                "\n\t\t\t<tr>" + 
-                "\n\t\t\t\t<th></th>" + 
-                "\n\t\t\t\t<th>psa</th>" + 
-                "\n\t\t\t\t<th></th>" + 
-                "\n\t\t\t\t<th>Ein Update wird in den kommenden Tagen verfügbar sein; alte Versionen der App werden ab dem 30.09. nicht mehr funktionieren.</th>" + 
-                "\n\t\t\t\t<th></th>" + 
-                "\n\t\t\t\t<th></th>" + 
-                "\n\t\t\t\t<th></th>" + 
-                "\n\t\t\t\t<th></th>" + 
-                "\n\t\t\t</tr>" + 
-                "\n\t\t</table>")
+##        substitutionFile.write(
+##                "\n\t\t<table>" +
+##                "\n\t\t\t<tr>" + 
+##                "\n\t\t\t\t<th></th>" + 
+##                "\n\t\t\t\t<th>psa</th>" + 
+##                "\n\t\t\t\t<th></th>" + 
+##                "\n\t\t\t\t<th>Ein Update wird in den kommenden Tagen verfügbar sein; alte Versionen der App werden ab dem 30.09. nicht mehr funktionieren.</th>" + 
+##                "\n\t\t\t\t<th></th>" + 
+##                "\n\t\t\t\t<th></th>" + 
+##                "\n\t\t\t\t<th></th>" + 
+##                "\n\t\t\t\t<th></th>" + 
+##                "\n\t\t\t</tr>" + 
+##                "\n\t\t</table>")
 
         # start iterating through HTML substitution tables
 
@@ -177,8 +174,7 @@ while True:
                     except:
                         info_test = infoRows[1]
                         substitutionFile.write("\n\t\t<p>" + dateB.text + "</p>")
-                        temporaryNewSubstitutionFile.write("\n\t\t<p>" + dateB.text + "</p>")
-
+                        
                         for infoRowInt in range(0, len(infoRows)):
                             rowsInfo = infoRows[infoRowInt]
                             infoCols = rowsInfo.find_elements_by_tag_name("td")
@@ -186,8 +182,7 @@ while True:
                             for infoColInt in range(0, len(infoCols)):
                                 colsInfo1 = infoCols[infoColInt]
                                 substitutionFile.write("\n\t\t<p>" + colsInfo1.text + "</p>")
-                                temporaryNewSubstitutionFile.write("\n\t\t<p>" + colsInfo1.text + "</p>")
-
+                                
                 except:
                     pass
 
@@ -201,7 +196,7 @@ while True:
                 print("Table " + str(planInteger) + " has been found")
 
                 substitutionFile.write("\n\t\t<table>")
-                temporaryNewSubstitutionFile.write("\n\t\t<table>")
+
 
                 groupColInt = -1
                 courseColInt = -1
@@ -246,7 +241,6 @@ while True:
                         substitutionIndexes = [groupColInt, dateColInt, timeColInt, courseColInt, roomColInt, additionalColInt, teacherColInt, typeColInt]
 
                         substitutionFile.write("\n\t\t\t<tr>")
-                        temporaryNewSubstitutionFile.write("\n\t\t\t<tr>")
                         for i in range(0, len(substitutionIndexes)):
                             if substitutionIndexes[i] == -1:
                                 t = ""
@@ -256,16 +250,13 @@ while True:
                                 except:
                                     t = ""
                             substitutionFile.write("\n\t\t\t\t<th>" + t + "</th>")
-                            temporaryNewSubstitutionFile.write("\n\t\t\t\t<th>" + t + "</th>")
                             
                         substitutionFile.write("\n\t\t\t</tr>")
-                        temporaryNewSubstitutionFile.write("\n\t\t\t</tr>")
                         
                     except:
                         pass
 
                 substitutionFile.write("\n\t\t</table>")
-                temporaryNewSubstitutionFile.write("\n\t\t</table>")
                 sendEmail = False
 
                 # end substitution table fetch
@@ -281,8 +272,6 @@ while True:
 
         substitutionFile.write("\n\t</body>\n</html>")
         substitutionFile.close()
-        temporaryNewSubstitutionFile.write("\n\t</body>\n</html>")
-        temporaryNewSubstitutionFile.close()
 
         # only continue if the substitution plan was fetched successfully
         if sendEmail == False:
@@ -323,8 +312,8 @@ while True:
 
             # compares the newly-created substitution table file with a pre-existing file to check for any changes
             # make sure that the file 'subst_check.html' exists and contains some text, or else the check will fail
-            substFileNew = open("subst.html", "r")
-            substFileCheck = open("subst_check.html", "r")
+            substFileNew = open("avh_substitutions.html", "r")
+            substFileCheck = open("avh_substitutions_check.html", "r")
             sameFiles = True
             for line1 in substFileNew:
                 for line2 in substFileCheck:
@@ -337,21 +326,6 @@ while True:
             substFileNew.close()
             substFileCheck.close()
             print('Substitution files the same: ' + str(sameFiles))
-
-            tempSubstFileNew = open("avh_substitutions.html", "r")
-            tempSubstFileCheck = open("avh_substitutions_check.html", "r")
-            sameTempFiles = True
-            for line1 in tempSubstFileNew:
-                for line2 in tempSubstFileCheck:
-                    if line1 != line2:
-                        if line1[0:4] == "<h1>": # ignores any lines with data that may change on any iteration (e.g. starting time of fetch)
-                            print("Line ignored")
-                        else:
-                            sameTempFiles = False
-                    break
-            tempSubstFileNew.close()
-            tempSubstFileCheck.close()
-            print('Substitution files the same: ' + str(sameTempFiles))
 
             # compares the newly-created food menu file with a pre-existing file to check for any changes
             # make sure that the file 'food_check.html' exists and contains some text, or else the check will fail
@@ -373,16 +347,11 @@ while True:
             if sameFiles == True:
                 # updates the new file with the data from the check file to copy its fetch time
                 # as such, users will not be able to refresh the plan with an equal copy
-                copyfile("subst_check.html", "subst.html")
+                copyfile("avh_substitutions_check.html", "avh_substitutions.html")
             else: # sameFiles == False
                 # in this case, an update to the substitution plan has been published; send notifications to all users
                 # copies the contents of the newly created file to the check file. By keeping the new file, its fetch time is preserved
                 # and users will be able to refresh the plan
-                copyfile("subst.html", "subst_check.html")
-
-            if sameTempFiles == True:
-                copyfile("avh_substitutions_check.html", "avh_substitutions.html")
-            else:
                 copyfile("avh_substitutions.html", "avh_substitutions_check.html")
 
             if sameFoodFiles == True:
