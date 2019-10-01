@@ -329,7 +329,6 @@ while True:
             foodFileNew.close()
             foodFileCheck.close()
             print('Food menu files the same: ' + str(sameFoodFiles))
-            sameFoodFiles = False
 
             if sameFiles == True:
                 # updates the new file with the data from the check file to copy its fetch time
