@@ -275,38 +275,24 @@ while True:
 
         # only continue if the substitution plan was fetched successfully
         if sendEmail == False:
-            browser.get('https://www.schulkantine-gueven.de/speisekarte')
-
-            # this is a hard-coded mess, mostly because of the hideous HTML of the website. Unless it breaks, leave it as it is
-            # if it breaks, have fun and take some anti-depressants to preserve your sanity
             try:
-                # hard-coded string for prices and serving times, the validity of which should be verified periodically
+                browser.get('https://www.schulkantine-gueven.de/speisekarte')
                 foodMenuFile.write("\n\t\t<table>\n\t\t\t<tr>\n\t\t\t\t<th>Für Schüler 3,00€, für Bedienstete 3,50€. Mittagstisch von 11:30 bis 14:30.</th>")
-                foodDateOne = browser.find_element_by_xpath('//*[@id="1302648704"]/div[1]/h3')
-                foodMenuFile.write("\n\t\t\t\t<th>" + foodDateOne.text + "</th>")
-
-                foodTableOne = browser.find_elements_by_xpath('//*[@id="1302648704"]/div[1]/div/div[2]/div/div[1]/div[2]/div/p')
-                for intFoodOne in range(0, len(foodTableOne) - 3):
-                    foodCol = browser.find_elements_by_xpath('//*[@id="1302648704"]/div[1]/div/div[2]/div/div[1]/div[2]/div/p')[intFoodOne]
-                    foodMenuFile.write("\n\t\t\t\t<th>" + foodCol.text + "</th>")
-
-                try:
-                    foodDateTwo = browser.find_element_by_xpath('//*[@id="1302648704"]/div[2]/h3')
-                    foodMenuFile.write("\n\t\t\t\t<th>" + foodDateTwo.text + "</th>")
-
-                    foodTableTwo = browser.find_elements_by_xpath('//*[@id="1302648704"]/div[2]/div/div[2]/div/div[1]/div[2]/div/p')
-                    for intFoodTwo in range(0, len(foodTableTwo) - 5):
-                        foodColTwo = browser.find_elements_by_xpath('//*[@id="1302648704"]/div[2]/div/div[2]/div/div[1]/div[2]/div/p')[intFoodTwo]
-                        foodMenuFile.write("\n\t\t\t\t<th>" + foodColTwo.text + "</th>")
                 
-                except:
-                    print("Food menu fetch unsuccessful")
+                i = browser.find_elements_by_class_name('richText')
+                
+                for a in range(0, len(i)):
+                    p = i[a].find_elements_by_tag_name('p')
+
+                    for a2 in range(0, len(p)):
+                        if 'FÜR SCHÜLER/ INNEN' in p[a2].text:
+                            break
+                        foodMenuFile.write("\n\t\t\t\t<th>" + p[a2].text + "</th>")
 
             except:
                 print("Food menu fetch unsuccessful")
             finally:
                 foodMenuFile.write("\n\t\t\t</tr>\n\t\t</table>\n\t</body>\n<html>")
-                foodMenuFile.flush()
                 foodMenuFile.close()
                 browser.quit()
 
@@ -329,20 +315,20 @@ while True:
 
             # compares the newly-created food menu file with a pre-existing file to check for any changes
             # make sure that the file 'food_check.html' exists and contains some text, or else the check will fail
-##            foodFileNew = open("food.html", "r")
-##            foodFileCheck = open("food_check.html", "r")
-##            sameFoodFiles = True
-##            for line1 in foodFileNew:
-##                for line2 in foodFileCheck:
-##                    if line1 != line2:
-##                        if line1[0:4] == "<h1>": # ignores any lines with data that may change on any iteration (e.g. starting time of fetch)
-##                            print("Line ignored")
-##                        else:
-##                            sameFoodFiles = False
-##                    break
-##            foodFileNew.close()
-##            foodFileCheck.close()
-##            print('Food menu files the same: ' + str(sameFoodFiles))
+            foodFileNew = open("food.html", "r")
+            foodFileCheck = open("food_check.html", "r")
+            sameFoodFiles = True
+            for line1 in foodFileNew:
+                for line2 in foodFileCheck:
+                    if line1 != line2:
+                        if line1[0:4] == "<h1>": # ignores any lines with data that may change on any iteration (e.g. starting time of fetch)
+                            print("Line ignored")
+                        else:
+                            sameFoodFiles = False
+                    break
+            foodFileNew.close()
+            foodFileCheck.close()
+            print('Food menu files the same: ' + str(sameFoodFiles))
             sameFoodFiles = False
 
             if sameFiles == True:
