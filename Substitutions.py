@@ -282,6 +282,8 @@ while True:
                 i = browser.find_elements_by_class_name('richText')
                 
                 for a in range(0, len(i)):
+                    d = browser.find_elements_by_class_name('menuCategroyTitle')[a]
+                    foodMenuFile.write("\n\t\t\t\t<th>" + d.text + "</th>")
                     p = i[a].find_elements_by_tag_name('p')
 
                     for a2 in range(0, len(p)):
