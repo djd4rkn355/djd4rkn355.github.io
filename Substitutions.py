@@ -95,7 +95,7 @@ while True:
         substitutionFile = codecs.open("avh_substitutions.html", "w", "utf-8")
         substitutionFile.truncate()
         substitutionFile.write(header)
-        foodMenuFile = codecs.open("foodUnused.html", "w", "utf-8")
+        foodMenuFile = codecs.open("food.html", "w", "utf-8")
         foodMenuFile.truncate()
         foodMenuFile.write(header)
         
