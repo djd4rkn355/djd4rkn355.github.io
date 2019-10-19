@@ -5,7 +5,7 @@ import time as delay
 import codecs
 import subprocess
 import smtplib
-import traceback
+import traceback # use 'print(traceback.format_exc())' in an except-block to print a stack trace
 import json
 from datetime import datetime
 from shutil import copyfile
@@ -80,6 +80,38 @@ def send_email(currentTime, body):
     except: # fail-safe in case the fetch was unsuccessful due to an internet disconnect
         print('Email failed to send')
 
+def writeInfoText(element):
+    # p tag for Android app version 2.3.3 and below
+    writeSubstText("\n\t\t<p>" + element.text + "</p>")
+
+    # h2 tag for Android app version 2.3.4+
+    # this allows for removing html tags without the need of deploying a new app version
+    # I've added all HTML formatting tags that I found on an article on w3schools.com
+    # aren't online programming resources just delightful?
+    textToWrite = element.get_attribute('innerHTML') \
+        .replace('<b>', '') \
+        .replace('</b>', '') \
+        .replace('&nbsp;', '') \
+        .replace('<i>', '') \
+        .replace('<strong>', '') \
+        .replace('<em>', '') \
+        .replace('<mark>', '') \
+        .replace('<small>', '') \
+        .replace('<del>', '') \
+        .replace('<ins>', '') \
+        .replace('<sub>', '') \
+        .replace('<sup>', '')
+    writeSubstText("\n\t\t<h6>" + textToWrite + "</h6>")
+
+# these two functions allow for changing the way the script writes the required HTML files
+# this can be useful if, for example, an identical copy of the substitution plan file is required 
+def writeSubstText(text):
+    substitutionFile.write(text)
+
+def writeFoodText(text):
+    foodMenuFile.write(text)
+        
+
 cred = credentials.Certificate("/home/pi/Desktop/avh-plan-firebase-adminsdk-5iy97-2a377ca3d3.json")
 firebase_admin.initialize_app(cred)
 
@@ -94,10 +126,10 @@ while True:
         # initialise the substitution table file and the food menu file with some HTML
         substitutionFile = codecs.open("avh_substitutions.html", "w", "utf-8")
         substitutionFile.truncate()
-        substitutionFile.write(header)
+        writeSubstText(header)
         foodMenuFile = codecs.open("food.html", "w", "utf-8")
         foodMenuFile.truncate()
-        foodMenuFile.write(header)
+        writeFoodText(header)
         
         # this right here is an instance of Selenium, a library made for prototyping quick web scraping tools. As I found it to be very useful
         # for fetching any data required, as well as being able to log in without sending a POST request (the possible complexity of which in
@@ -114,6 +146,7 @@ while True:
 
         # using this URL instead of /users/?view=login&Itemid=171 significantly speeds up the login process,
         # as it contains much fewer images that have to be loaded, since Selenium waits until the page finished loading
+        # it also keeps the script from timing out on my slow-as-molasses internet connection
         browser.get('http://307.joomla.schule.bremen.de/index.php/component/users/#top')
 
         # finds the username and password text fields on the website and sends the corresponsing data
@@ -135,7 +168,7 @@ while True:
         # do not remove the "psa" string in the second <th> tag
         # you may append a link without a space between "psa" and the link
 
-##        substitutionFile.write(
+##        writeSubstText(
 ##                "\n\t\t<table>" +
 ##                "\n\t\t\t<tr>" + 
 ##                "\n\t\t\t\t<th></th>" + 
@@ -173,15 +206,14 @@ while True:
                         isInfoTable = False
                     except:
                         info_test = infoRows[1]
-                        substitutionFile.write("\n\t\t<p>" + dateB.text + "</p>")
+                        writeInfoText(dateB)
                         
                         for infoRowInt in range(0, len(infoRows)):
                             rowsInfo = infoRows[infoRowInt]
                             infoCols = rowsInfo.find_elements_by_tag_name("td")
 
                             for infoColInt in range(0, len(infoCols)):
-                                colsInfo1 = infoCols[infoColInt]
-                                substitutionFile.write("\n\t\t<p>" + colsInfo1.text + "</p>")
+                                writeInfoText(infoCols[infoColInt])
                                 
                 except:
                     pass
@@ -195,7 +227,7 @@ while True:
                 column_test = table_id.find_elements_by_xpath('.//tbody/tr[1]/th')[5]
                 print("Table " + str(planInteger) + " has been found")
 
-                substitutionFile.write("\n\t\t<table>")
+                writeSubstText("\n\t\t<table>")
 
 
                 groupColInt = -1
@@ -240,7 +272,7 @@ while True:
 
                         substitutionIndexes = [groupColInt, dateColInt, timeColInt, courseColInt, roomColInt, additionalColInt, teacherColInt, typeColInt]
 
-                        substitutionFile.write("\n\t\t\t<tr>")
+                        writeSubstText("\n\t\t\t<tr>")
                         for i in range(0, len(substitutionIndexes)):
                             if substitutionIndexes[i] == -1:
                                 t = ""
@@ -249,14 +281,14 @@ while True:
                                     t = substs[substitutionIndexes[i]].text
                                 except:
                                     t = ""
-                            substitutionFile.write("\n\t\t\t\t<th>" + t + "</th>")
+                            writeSubstText("\n\t\t\t\t<th>" + t + "</th>")
                             
-                        substitutionFile.write("\n\t\t\t</tr>")
+                        writeSubstText("\n\t\t\t</tr>")
                         
                     except:
                         pass
 
-                substitutionFile.write("\n\t\t</table>")
+                writeSubstText("\n\t\t</table>")
                 sendEmail = False
 
                 # end substitution table fetch
@@ -268,33 +300,41 @@ while True:
 
         # send email if no substitution tables have been found
         if sendEmail == True:
-            send_email(currentTime, 'Plan could not be fetched; no substitution tables were found. No changes have been made to the GitHub repository. Please review the script as soon as possible.')
+            try:
+                mainPage = browser.find_element_by_class_name('item-page')
+                mainPageItems = mainPage.find_elements_by_tag_name('p')
+                sendEmail = False
+                for i in range(0, len(mainPageItems)):
+                    writeInfoText(mainPageItems[i])
+            except:
+                send_email(currentTime, 'Plan could not be fetched; no substitution tables were found. No changes have been made to the GitHub repository. Please review the script as soon as possible.')
+                sendEmail = True
 
-        substitutionFile.write("\n\t</body>\n</html>")
+        writeSubstText("\n\t</body>\n</html>")
         substitutionFile.close()
 
         # only continue if the substitution plan was fetched successfully
         if sendEmail == False:
             try:
                 browser.get('https://www.schulkantine-gueven.de/speisekarte')
-                foodMenuFile.write("\n\t\t<table>\n\t\t\t<tr>\n\t\t\t\t<th>Für Schüler 3,00€, für Bedienstete 3,50€. Mittagstisch von 11:30 bis 14:30.</th>")
+                writeFoodText("\n\t\t<table>\n\t\t\t<tr>\n\t\t\t\t<th>Für Schüler 3,00€, für Bedienstete 3,50€. Mittagstisch von 11:30 bis 14:30.</th>")
                 
                 i = browser.find_elements_by_class_name('richText')
                 
                 for a in range(0, len(i)):
                     d = browser.find_elements_by_class_name('menuCategroyTitle')[a]
-                    foodMenuFile.write("\n\t\t\t\t<th>" + d.text + "</th>")
+                    writeFoodText("\n\t\t\t\t<th>" + d.text + "</th>")
                     p = i[a].find_elements_by_tag_name('p')
 
                     for a2 in range(0, len(p)):
                         if 'FÜR SCHÜLER/ INNEN' in p[a2].text:
                             break
-                        foodMenuFile.write("\n\t\t\t\t<th>" + p[a2].text + "</th>")
+                        writeFoodText("\n\t\t\t\t<th>" + p[a2].text + "</th>")
 
             except:
                 print("Food menu fetch unsuccessful")
             finally:
-                foodMenuFile.write("\n\t\t\t</tr>\n\t\t</table>\n\t</body>\n<html>")
+                writeFoodText("\n\t\t\t</tr>\n\t\t</table>\n\t</body>\n<html>")
                 foodMenuFile.close()
                 browser.quit()
 
