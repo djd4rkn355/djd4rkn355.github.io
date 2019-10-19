@@ -397,7 +397,10 @@ while True:
             # if changes to the substitution table have occurred, send notifications to all users
             # this does not trigger if only the food menu has been updated in order to prevent some duplicate notifications
             if sameFiles == False:
+                print("Notifications will be prepared.")
                 send_notifications()
+            else:
+                print("No notifications will be sent.")
 
         elif sendEmail == True:
             print("Fetch has been unsuccessful. Changes have not been pushed to GitHub.")
