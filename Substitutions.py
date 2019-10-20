@@ -327,9 +327,10 @@ while True:
                     p = i[a].find_elements_by_tag_name('p')
 
                     for a2 in range(0, len(p)):
-                        if p[a2].text.find('FÜR SCHÜLER') != -1 or p[a2].text.find('Speiseplan') != -1:
+                        if 'FÜR SCHÜLER' in p[a2].text or 'Speiseplan' in p[a2].text:
                             break
-                        writeFoodText("\n\t\t\t\t<th>" + p[a2].text + "</th>")
+                        else:
+                            writeFoodText("\n\t\t\t\t<th>" + p[a2].text + "</th>")
 
             except:
                 print("Food menu fetch unsuccessful")
