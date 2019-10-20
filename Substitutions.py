@@ -327,7 +327,7 @@ while True:
                     p = i[a].find_elements_by_tag_name('p')
 
                     for a2 in range(0, len(p)):
-                        if 'FÜR SCHÜLER' in p[a2].text:
+                        if 'FÜR SCHÜLER' in p[a2].text or 'Speiseplan' in p[a2].text:
                             break
                         writeFoodText("\n\t\t\t\t<th>" + p[a2].text + "</th>")
 
