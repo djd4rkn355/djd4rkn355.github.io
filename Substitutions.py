@@ -323,14 +323,15 @@ while True:
                 
                 for a in range(0, len(i)):
                     d = browser.find_elements_by_class_name('menuCategroyTitle')[a]
+                    if 'Speiseplan' in d.text:
+                        break
                     writeFoodText("\n\t\t\t\t<th>" + d.text + "</th>")
                     p = i[a].find_elements_by_tag_name('p')
 
                     for a2 in range(0, len(p)):
-                        if 'FÜR SCHÜLER' in p[a2].text or 'Speiseplan' in p[a2].text:
+                        if 'FÜR SCHÜLER' in p[a2].text:
                             break
-                        else:
-                            writeFoodText("\n\t\t\t\t<th>" + p[a2].text + "</th>")
+                        writeFoodText("\n\t\t\t\t<th>" + p[a2].text + "</th>")
 
             except:
                 print("Food menu fetch unsuccessful")
