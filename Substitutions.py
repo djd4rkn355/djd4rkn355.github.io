@@ -120,7 +120,7 @@ while True:
     try:
 
         currentTime = datetime.now().strftime('%Y-%m-%d, %H:%M')
-        print(currentTime)
+        print("----- " + currentTime + " -----")
         header = "<!DOCTYPE html>\n<html>\n\t<head>\n\t\t<meta charset=\"utf-8\">\n\t\t<style>\n\t\t\tbody {\n\t\t\t\tfont-family: Arial, Helvetica, sans-serif\n\t\t\t}\n\t\t</style>\n\t</head>\n\t<body>\n<h1>" + currentTime + "</h1>"
 
         # initialise the substitution table file and the food menu file with some HTML
@@ -327,7 +327,7 @@ while True:
                     p = i[a].find_elements_by_tag_name('p')
 
                     for a2 in range(0, len(p)):
-                        if 'FÜR SCHÜLER/ INNEN' in p[a2].text:
+                        if 'FÜR SCHÜLER' in p[a2].text:
                             break
                         writeFoodText("\n\t\t\t\t<th>" + p[a2].text + "</th>")
 
