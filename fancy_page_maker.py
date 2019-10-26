@@ -46,10 +46,24 @@ def assign_ranking(group):
             return -int(group[:2])
         except:
             if check_string_for_array(group[:1]):
-                return -101
+                return get_junior_ranking(group[:1])
             else:
                 return -100
     except:
+        return 0
+
+def get_junior_ranking(string):
+    if '5' in string:
+        return -105
+    if '6' in string:
+        return -104
+    if '7' in string:
+        return -103
+    if '8' in string:
+        return -102
+    if '9' in string:
+        return -101
+    else:
         return 0
 
 def check_string_for_array(string):
