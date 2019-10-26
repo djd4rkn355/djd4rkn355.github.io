@@ -292,10 +292,9 @@ while True:
                             
                         writeSubstText("\n\t\t\t</tr>")
                         substitutions.append(Substitution(subst_list[0], subst_list[3], subst_list[5], subst_list[1], subst_list[2], subst_list[4], assign_ranking(subst_list[0])))
-                        print(subst_list[0] + str(assign_ranking(subst_list[0])))
                         
                     except:
-                        print(traceback.format_exc())
+                        # print(traceback.format_exc())
                         pass
 
                 writeSubstText("\n\t\t</table>")
@@ -393,7 +392,7 @@ while True:
                 # copies the contents of the newly created file to the check file. By keeping the new file, its fetch time is preserved
                 # and users will be able to refresh the plan
                 copyfile("avh_substitutions.html", "avh_substitutions_check.html")
-            make_page(substitutions)
+                make_page(substitutions)
 
             if sameFoodFiles == True:
                 # updates the new file with the data from the check file to copy its fetch time
