@@ -119,7 +119,7 @@ while True:
 
     try:
 
-        currentTime = datetime.now().strftime('%Y-%m-%d, %H:%M')
+        currentTime = datetime.now().strftime('%d.%m.%Y, %H:%M')
         print("----- " + currentTime + " -----")
         header = "<!DOCTYPE html>\n<html>\n\t<head>\n\t\t<meta charset=\"utf-8\">\n\t\t<style>\n\t\t\tbody {\n\t\t\t\tfont-family: Arial, Helvetica, sans-serif\n\t\t\t}\n\t\t</style>\n\t</head>\n\t<body>\n<h1>" + currentTime + "</h1>"
 
@@ -419,4 +419,4 @@ while True:
 
     # waits eight minutes until the next fetch. A successful fetch will likely take around two minutes, not including the notification delay,
     # which will result in a refreshing time of around every ten minutes
-    delay.sleep(480)
+    delay.sleep(360)
