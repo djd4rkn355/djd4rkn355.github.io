@@ -291,7 +291,8 @@ while True:
                             subst_list.append(t)
                             
                         writeSubstText("\n\t\t\t</tr>")
-                        substitutions.append(Substitution(subst_list[0], subst_list[3], subst_list[5], subst_list[1], subst_list[2], subst_list[4], assign_ranking(subst_list[3])))
+                        substitutions.append(Substitution(subst_list[0], subst_list[3], subst_list[5], subst_list[1], subst_list[2], subst_list[4], assign_ranking(subst_list[0])))
+                        print(subst_list[0] + assign_ranking(subst_list[0]))
                         
                     except:
                         pass
