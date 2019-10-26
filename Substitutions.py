@@ -295,6 +295,7 @@ while True:
                         print(subst_list[0] + assign_ranking(subst_list[0]))
                         
                     except:
+                        print(traceback.format_exc())
                         pass
 
                 writeSubstText("\n\t\t</table>")
