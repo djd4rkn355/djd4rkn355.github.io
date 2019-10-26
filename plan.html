@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+	<html>
+		<head>
+			<meta name="viewport" content="width=device-width, initial-scale=1.0">
+			<meta charset="UTF-8">
+			<style>
+body {
+	background-color: #e0e0e0
+}
+.card {
+	box-shadow: 1px 1px 1px 1px rgba(0.1, 0.1, 0.1, 0.1);
+	transition: 0.3s;
+	border-radius: 12px;
+	padding: 4px 16px;
+	margin: 3px 8px 3px 8px;
+}
+p {
+	display: flex;
+	justify-content: space-between;
+	font-family: -apple-system, BlinkMacSystemFont, 'Lato', sans-serif;
+}
+h1 {
+	margin-top: -16px;
+	margin-bottom: 12px;
+	margin-left: 12px;
+	font-family: -apple-system, BlinkMacSystemFont, 'Lato', sans-serif;
+}
+h2 {
+	margin-top: 16px;
+	margin-left: 12px;
+	font-family: -apple-system, BlinkMacSystemFont, 'Lato', sans-serif;
+}
+			</style>
+		</head>
+		<body>
+			<h2 id='greeting'></h2>
+			<script>
+var person = '';
+var greetings_morning = [`Hallo, ${person}!`, `Guten Morgen, ${person}!`, `Hab einen schönen Tag, ${person}.`, `Wie geht\'s dir, ${person}?`, `Gut geschlafen, ${person}?`, `Hey, ${person}!`, `Hi ${person}!`, `Schön dich zu sehen, ${person}.`, `Wie geht\'s dir so, ${person}?`];
+var greetings_noon = [`Hallo, ${person}!`, `Guten Tag, ${person}!`, `Einen schönen Tag noch, ${person}.`, `Wie geht\'s dir, ${person}?`, `Hab einen schönen Tag, ${person}.`, `Hey, ${person}!`, `Hi ${person}!`, `Schön dich zu sehen, ${person}.`, `Genieß\' deinen Tag, ${person}.`];
+var greetings_evening = [`Hallo, ${person}!`, `Schönen Abend, ${person}!`, `Genieß\' deinen Abend, ${person}.`, `Wie geht\'s dir, ${person}?`, `Hey, ${person}!`, `Hi ${person}!`];
+var greeting = '';
+var time = new Date().getHours();
+if (time >= 4 && time <= 10) {
+	greeting = greetings_morning[Math.floor(Math.random() * greetings_morning.length)];
+} else if (time >= 11 && time <= 17) {
+	greeting = greetings_noon[Math.floor(Math.random() * greetings_noon.length)];
+} else {
+	greeting = greetings_evening[Math.floor(Math.random() * greetings_evening.length)];
+}
+if (person == '') {
+	document.getElementById('greeting').innerHTML = '‎';
+} else {
+	document.getElementById('greeting').innerHTML = greeting;
+}
+			</script>
+			<h1>AvH-Vertretungsplan</h1>			<div class='card' style='background-color: #f5f5f5'>
+				<div>
+				<p><span>9a</span><span>BIO</span></p>
+				</div>
+				<div>
+				<p><span><img src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=' height='18' width='18' style='position: relative; bottom: -2px; margin: 0px 4px 0px 0px'/>25.10.</span><span>C204?A311</span></p>
+				</div>
+				<div
+>				<p><span>1</span><span>Vertretung im Klassenraum</span></p>
+				</div>
+			</div>
+			<div class='card' style='background-color: #f5f5f5'>
+				<div>
+				<p><span>9a</span><span>BIO</span></p>
+				</div>
+				<div>
+				<p><span><img src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=' height='18' width='18' style='position: relative; bottom: -2px; margin: 0px 4px 0px 0px'/>25.10.</span><span>C204?A311</span></p>
+				</div>
+				<div
+>				<p><span>2</span><span>Vertretung im Klassenraum</span></p>
+				</div>
+			</div>
+			<div class='card' style='background-color: #f5f5f5'>
+				<div>
+				<p><span>8c</span><span>CHE</span></p>
+				</div>
+				<div>
+				<p><span><img src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=' height='18' width='18' style='position: relative; bottom: -2px; margin: 0px 4px 0px 0px'/>25.10.</span><span>C213</span></p>
+				</div>
+				<div
+>				<p><span>3</span><span>Vertretung</span></p>
+				</div>
+			</div>
+			<div class='card' style='background-color: #f5f5f5'>
+				<div>
+				<p><span>8c</span><span>CHE</span></p>
+				</div>
+				<div>
+				<p><span><img src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=' height='18' width='18' style='position: relative; bottom: -2px; margin: 0px 4px 0px 0px'/>25.10.</span><span>C213</span></p>
+				</div>
+				<div
+>				<p><span>4</span><span>Vertretung</span></p>
+				</div>
+			</div>
+			<div class='card' style='background-color: #f5f5f5'>
+				<div>
+				<p><span>5d</span><span>REL</span></p>
+				</div>
+				<div>
+				<p><span><img src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=' height='18' width='18' style='position: relative; bottom: -2px; margin: 0px 4px 0px 0px'/>25.10.</span><span>A211?A211, MrBeam1</span></p>
+				</div>
+				<div
+>				<p><span>5 - 6</span><span>Beamer</span></p>
+				</div>
+			</div>
+			<div class='card' style='background-color: #f5f5f5'>
+				<div>
+				<p><span>9a</span><span>MAT</span></p>
+				</div>
+				<div>
+				<p><span><img src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=' height='18' width='18' style='position: relative; bottom: -2px; margin: 0px 4px 0px 0px'/>25.10.</span><span>A311</span></p>
+				</div>
+				<div
+>				<p><span>5</span><span>Hofdienst</span></p>
+				</div>
+			</div>
+			<div class='card' style='background-color: #f5f5f5'>
+				<div>
+				<p><span>9d</span><span>CHE</span></p>
+				</div>
+				<div>
+				<p><span><img src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=' height='18' width='18' style='position: relative; bottom: -2px; margin: 0px 4px 0px 0px'/>25.10.</span><span>C211?A101</span></p>
+				</div>
+				<div
+>				<p><span>5</span><span>Raumänderung/ Vertretung</span></p>
+				</div>
+			</div>
+			<div class='card' style='background-color: #f5f5f5'>
+				<div>
+				<p><span>9d</span><span>CHE</span></p>
+				</div>
+				<div>
+				<p><span><img src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=' height='18' width='18' style='position: relative; bottom: -2px; margin: 0px 4px 0px 0px'/>25.10.</span><span>C211?A101</span></p>
+				</div>
+				<div
+>				<p><span>6</span><span>Raumänderung/ Vertretung</span></p>
+				</div>
+			</div>
+			<div class='card' style='background-color: #f5f5f5'>
+				<div>
+				<p><span>19a, 19b, 19d</span><span>phy2</span></p>
+				</div>
+				<div>
+				<p><span><img src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=' height='18' width='18' style='position: relative; bottom: -2px; margin: 0px 4px 0px 0px'/>25.10.</span><span>C103</span></p>
+				</div>
+				<div
+>				<p><span>1</span><span>eigenverantwortliches Arbeiten</span></p>
+				</div>
+			</div>
+			<div class='card' style='background-color: #f5f5f5'>
+				<div>
+				<p><span>19a, 19b, 19ca, 19cb</span><span>bio3</span></p>
+				</div>
+				<div>
+				<p><span><img src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=' height='18' width='18' style='position: relative; bottom: -2px; margin: 0px 4px 0px 0px'/>25.10.</span><span>C203</span></p>
+				</div>
+				<div
+>				<p><span>1</span><span>eigenverantwortliches Arbeiten</span></p>
+				</div>
+			</div>
+			<div class='card' style='background-color: #f5f5f5'>
+				<div>
+				<p><span>19a, 19b, 19ca, 19cb, 19d</span><span>che3</span></p>
+				</div>
+				<div>
+				<p><span><img src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=' height='18' width='18' style='position: relative; bottom: -2px; margin: 0px 4px 0px 0px'/>25.10.</span><span>C213</span></p>
+				</div>
+				<div
+>				<p><span>2</span><span>eigenverantwortliches Arbeiten</span></p>
+				</div>
+			</div>
+			<div class='card' style='background-color: #f5f5f5'>
+				<div>
+				<p><span>19a, 19b, 19ca, 19cb, 19d</span><span>che1</span></p>
+				</div>
+				<div>
+				<p><span><img src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=' height='18' width='18' style='position: relative; bottom: -2px; margin: 0px 4px 0px 0px'/>25.10.</span><span>C211</span></p>
+				</div>
+				<div
+>				<p><span>3 - 4</span><span>eigenverantwortliches Arbeiten</span></p>
+				</div>
+			</div>
+			<div class='card' style='background-color: #f5f5f5'>
+				<div>
+				<p><span>19a, 19b, 19ca, 19cb</span><span>bio2</span></p>
+				</div>
+				<div>
+				<p><span><img src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=' height='18' width='18' style='position: relative; bottom: -2px; margin: 0px 4px 0px 0px'/>25.10.</span><span>C204</span></p>
+				</div>
+				<div
+>				<p><span>3 - 4</span><span>eigenverantwortliches Arbeiten</span></p>
+				</div>
+			</div>
+			<div class='card' style='background-color: #f5f5f5'>
+				<div>
+				<p><span>18</span><span>eng1</span></p>
+				</div>
+				<div>
+				<p><span><img src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=' height='18' width='18' style='position: relative; bottom: -2px; margin: 0px 4px 0px 0px'/>25.10.</span><span>A311?A310</span></p>
+				</div>
+				<div
+>				<p><span>1</span><span>Raumwechsel</span></p>
+				</div>
+			</div>
+			<div class='card' style='background-color: #f5f5f5'>
+				<div>
+				<p><span>18</span><span>bio2</span></p>
+				</div>
+				<div>
+				<p><span><img src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=' height='18' width='18' style='position: relative; bottom: -2px; margin: 0px 4px 0px 0px'/>25.10.</span><span>C203</span></p>
+				</div>
+				<div
+>				<p><span>2</span><span>eigenverantwortliches Arbeiten</span></p>
+				</div>
+			</div>
+			<div class='card' style='background-color: #f5f5f5'>
+				<div>
+				<p><span>18</span><span>pop1</span></p>
+				</div>
+				<div>
+				<p><span><img src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=' height='18' width='18' style='position: relative; bottom: -2px; margin: 0px 4px 0px 0px'/>25.10.</span><span>A311</span></p>
+				</div>
+				<div
+>				<p><span>3</span><span>eigenverantwortliches Arbeiten</span></p>
+				</div>
+			</div>
+			<div class='card' style='background-color: #f5f5f5'>
+				<div>
+				<p><span>18</span><span>phy1</span></p>
+				</div>
+				<div>
+				<p><span><img src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=' height='18' width='18' style='position: relative; bottom: -2px; margin: 0px 4px 0px 0px'/>25.10.</span><span>C103</span></p>
+				</div>
+				<div
+>				<p><span>5</span><span>eigenverantwortliches Arbeiten</span></p>
+				</div>
+			</div>
+			<div class='card' style='background-color: #f5f5f5'>
+				<div>
+				<p><span>18</span><span>pol2</span></p>
+				</div>
+				<div>
+				<p><span><img src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=' height='18' width='18' style='position: relative; bottom: -2px; margin: 0px 4px 0px 0px'/>25.10.</span><span>A207</span></p>
+				</div>
+				<div
+>				<p><span>7</span><span> </span></p>
+				</div>
+			</div>
+			<div class='card' style='background-color: #f5f5f5'>
+				<div>
+				<p><span>17</span><span>BIO7</span></p>
+				</div>
+				<div>
+				<p><span><img src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=' height='18' width='18' style='position: relative; bottom: -2px; margin: 0px 4px 0px 0px'/>25.10.</span><span>C203</span></p>
+				</div>
+				<div
+>				<p><span>3 - 4</span><span>eigenverantwortliches Arbeiten</span></p>
+				</div>
+			</div>
+			<div class='card' style='background-color: #f5f5f5'>
+				<div>
+				<p><span>17</span><span>pop1</span></p>
+				</div>
+				<div>
+				<p><span><img src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=' height='18' width='18' style='position: relative; bottom: -2px; margin: 0px 4px 0px 0px'/>25.10.</span><span>A104</span></p>
+				</div>
+				<div
+>				<p><span>5 - 6</span><span>eigenverantwortliches Arbeiten</span></p>
+				</div>
+			</div>
+		</body>
+	</html>

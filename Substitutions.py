@@ -14,6 +14,10 @@ import firebase_admin
 from firebase_admin import messaging
 from firebase_admin import credentials
 
+from fancy_page_maker import make_page
+from fancy_page_maker import assign_ranking
+from fancy_page_maker import Substitution
+
 # used for pushing changes to GitHub via terminal
 def push_changes():
     process = subprocess.Popen('cd /home/pi/djd4rkn355.github.io; git add --all; git commit -m "Pi Push"; git push', stdout=subprocess.PIPE, shell=True)
@@ -228,7 +232,8 @@ while True:
                 print("Table " + str(planInteger) + " has been found")
 
                 writeSubstText("\n\t\t<table>")
-
+                
+                substitutions = []
 
                 groupColInt = -1
                 courseColInt = -1
@@ -273,6 +278,7 @@ while True:
                         substitutionIndexes = [groupColInt, dateColInt, timeColInt, courseColInt, roomColInt, additionalColInt, teacherColInt, typeColInt]
 
                         writeSubstText("\n\t\t\t<tr>")
+                        subst_list = []
                         for i in range(0, len(substitutionIndexes)):
                             if substitutionIndexes[i] == -1:
                                 t = ""
@@ -282,8 +288,10 @@ while True:
                                 except:
                                     t = ""
                             writeSubstText("\n\t\t\t\t<th>" + t + "</th>")
+                            subst_list.append(t)
                             
                         writeSubstText("\n\t\t\t</tr>")
+                        substitutions.append(Substitution(subst_list[0], subst_list[1], subst_list[2], subst_list[3], subst_list[4], subst_list[5], assign_ranking(subst_list[0])))
                         
                     except:
                         pass
@@ -383,6 +391,7 @@ while True:
                 # copies the contents of the newly created file to the check file. By keeping the new file, its fetch time is preserved
                 # and users will be able to refresh the plan
                 copyfile("avh_substitutions.html", "avh_substitutions_check.html")
+            make_page(substitutions)
 
             if sameFoodFiles == True:
                 # updates the new file with the data from the check file to copy its fetch time
