@@ -343,7 +343,7 @@ while True:
                     if 'Speiseplan' in d.text:
                         break
                     writeFoodText("\n\t\t\t\t<th>" + d.text + "</th>")
-                    food_item + "\\n\\n" + d.text
+                    food_item += "\\n\\n" + d.text
                     p = i[a].find_elements_by_tag_name('p')
 
                     for a2 in range(0, len(p)):
