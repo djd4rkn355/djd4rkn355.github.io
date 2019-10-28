@@ -403,7 +403,6 @@ while True:
                 # and users will be able to refresh the plan
                 copyfile("avh_substitutions.html", "avh_substitutions_check.html")
 
-            if True:
                 make_page(substitutions, info_content)
                 make_page(
                     substitutions,
@@ -422,7 +421,7 @@ while True:
                 # copies the contents of the newly created file to the check file. By keeping the new file, its fetch time is preserved
                 # and users will be able to refresh the food menu
                 copyfile("food.html", "food_check.html")
-            make_food_menu([food_item])
+                make_food_menu([food_item])
 
             push_changes()
             print("Script successfully executed. Repository is up-to-date.")
