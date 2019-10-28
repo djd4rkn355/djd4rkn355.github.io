@@ -60,9 +60,14 @@ if (person == '') {
 } else {
 	document.getElementById('greeting').innerHTML = greeting;
 }
-var user = ""
+var user = "";
+var htmlIndex = 0;
+if (window.location.href.indexOf(".html") == -1) {
+	htmlIndex = window.location.href.length;} else {
+	htmlIndex = window.location.href.indexOf(".html");
+}
 if (new URL(window.location.href).searchParams.get("user") == null) {
-	user = window.location.href.substring(window.location.href.indexOf("io/") + 3, window.location.href.length);
+	user = window.location.href.substring(window.location.href.indexOf("io/") + 3, htmlIndex);
 } else {
 	user = new URL(window.location.href).searchParams.get("user");
 }
