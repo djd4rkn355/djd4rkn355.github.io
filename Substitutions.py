@@ -334,29 +334,21 @@ while True:
                 browser.get('https://www.schulkantine-gueven.de/speisekarte')
                 prices_header = "Für Schüler 3,00€, für Bedienstete 3,50€. Mittagstisch von 11:30 bis 14:30."
                 writeFoodText("\n\t\t<table>\n\t\t\t<tr>\n\t\t\t\t<th>" + prices_header + "</th>")
-                food_items.append(prices_header)
+                food_item += prices_header
                 
-                i = browser.find_elements_by_class_name('richText')
-                
+                i = browser.find_elements_by_class_name('richText')                
                 for a in range(0, len(i)):
                     d = browser.find_elements_by_class_name('menuCategroyTitle')[a]
                     if 'Speiseplan' in d.text:
-                        print("ERROR")
                         break
-                    print(d.text)
                     writeFoodText("\n\t\t\t\t<th>" + d.text + "</th>")
 
-                    if food_item == '':
-                        food_item += d.text
-                    else:
-                        food_item += "\\n\\n" + d.text
+                    food_item += "\\n\\n" + d.text
                     p = i[a].find_elements_by_tag_name('p')
 
                     for a2 in range(0, len(p)):
                         if 'FÜR SCHÜLER' in p[a2].text:
-                            print("ERROR")
                             break
-                        print(p[a2].text)
                         writeFoodText("\n\t\t\t\t<th>" + p[a2].text + "</th>")
                         food_item += "\\n\\n" + p[a2].text
 
