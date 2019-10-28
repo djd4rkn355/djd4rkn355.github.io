@@ -214,7 +214,7 @@ while True:
                     except:
                         info_test = infoRows[1]
                         writeInfoText(dateB)
-                        info_content += "\\n" + dateB.text
+                        info_content += "\\n\\n" + dateB.text
                         
                         for infoRowInt in range(0, len(infoRows)):
                             rowsInfo = infoRows[infoRowInt]
@@ -222,7 +222,7 @@ while True:
 
                             for infoColInt in range(0, len(infoCols)):
                                 writeInfoText(infoCols[infoColInt])
-                                info_content += "\\n" + infoCols[infoColInt].text
+                                info_content += "\\n\\n" + infoCols[infoColInt].text
                                 
                 except:
                     pass
@@ -329,7 +329,7 @@ while True:
 
         # only continue if the substitution plan was fetched successfully
         if sendEmail == False:
-            food_items = []
+            food_item = ''
             try:
                 browser.get('https://www.schulkantine-gueven.de/speisekarte')
                 prices_header = "Für Schüler 3,00€, für Bedienstete 3,50€. Mittagstisch von 11:30 bis 14:30."
@@ -343,14 +343,14 @@ while True:
                     if 'Speiseplan' in d.text:
                         break
                     writeFoodText("\n\t\t\t\t<th>" + d.text + "</th>")
-                    food_items.append(d.text)
+                    food_item + "\\n\\n" + d.text
                     p = i[a].find_elements_by_tag_name('p')
 
                     for a2 in range(0, len(p)):
                         if 'FÜR SCHÜLER' in p[a2].text:
                             break
                         writeFoodText("\n\t\t\t\t<th>" + p[a2].text + "</th>")
-                        food_items.append(p[a2].text)
+                        food_item += "\\n\\n" + p[a2].text
 
             except:
                 print("Food menu fetch unsuccessful")
@@ -422,7 +422,7 @@ while True:
                 # copies the contents of the newly created file to the check file. By keeping the new file, its fetch time is preserved
                 # and users will be able to refresh the food menu
                 copyfile("food.html", "food_check.html")
-            make_food_menu(food_items)
+            make_food_menu([food_item])
 
             push_changes()
             print("Script successfully executed. Repository is up-to-date.")
