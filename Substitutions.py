@@ -15,6 +15,7 @@ from firebase_admin import messaging
 from firebase_admin import credentials
 
 from fancy_page_maker import make_page
+from fancy_page_maker import make_food_menu
 from fancy_page_maker import assign_ranking
 from fancy_page_maker import Substitution
 
@@ -324,9 +325,12 @@ while True:
 
         # only continue if the substitution plan was fetched successfully
         if sendEmail == False:
+            food_items = []
             try:
                 browser.get('https://www.schulkantine-gueven.de/speisekarte')
-                writeFoodText("\n\t\t<table>\n\t\t\t<tr>\n\t\t\t\t<th>Für Schüler 3,00€, für Bedienstete 3,50€. Mittagstisch von 11:30 bis 14:30.</th>")
+                prices_header = "Für Schüler 3,00€, für Bedienstete 3,50€. Mittagstisch von 11:30 bis 14:30."
+                writeFoodText("\n\t\t<table>\n\t\t\t<tr>\n\t\t\t\t<th>" + prices_header + "</th>")
+                food_items.append(prices_header)
                 
                 i = browser.find_elements_by_class_name('richText')
                 
@@ -335,12 +339,14 @@ while True:
                     if 'Speiseplan' in d.text:
                         break
                     writeFoodText("\n\t\t\t\t<th>" + d.text + "</th>")
+                    food_items.append(d.text)
                     p = i[a].find_elements_by_tag_name('p')
 
                     for a2 in range(0, len(p)):
                         if 'FÜR SCHÜLER' in p[a2].text:
                             break
                         writeFoodText("\n\t\t\t\t<th>" + p[a2].text + "</th>")
+                        food_items.append(p[a2].text)
 
             except:
                 print("Food menu fetch unsuccessful")
@@ -392,7 +398,16 @@ while True:
                 # copies the contents of the newly created file to the check file. By keeping the new file, its fetch time is preserved
                 # and users will be able to refresh the plan
                 copyfile("avh_substitutions.html", "avh_substitutions_check.html")
+
+            if True:
                 make_page(substitutions)
+                make_page(
+                    substitutions,
+                    'Deniz',
+                    '17',
+                    'ENP1 INF7 dap1 pop1 mat3 deu1 bio1 ges2 phy1 phi999 spo2',
+                    'dLwwwwwwwGwPORwBVwYwwwwww'
+                )
 
             if sameFoodFiles == True:
                 # updates the new file with the data from the check file to copy its fetch time
@@ -402,6 +417,7 @@ while True:
                 # copies the contents of the newly created file to the check file. By keeping the new file, its fetch time is preserved
                 # and users will be able to refresh the food menu
                 copyfile("food.html", "food_check.html")
+            make_food_menu(food_items)
 
             push_changes()
             print("Script successfully executed. Repository is up-to-date.")

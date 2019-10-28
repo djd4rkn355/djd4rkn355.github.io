@@ -377,16 +377,3 @@ def make_food_menu(items):
         '\t\t</body>\n' +
         '\t</html>\n'
     )
-
-make_page(
-    []
-)
-
-make_page(
-    substitutions=[],
-    person='denny'
-)
-
-make_food_menu(
-    []
-)
