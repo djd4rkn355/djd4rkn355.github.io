@@ -62,12 +62,12 @@ if (person == '') {
 }
 var user = ""
 if (new URL(window.location.href).searchParams.get("user") == null) {
-	user = window.location.href.substring(window.location.href.indexOf("io/"), window.location.href.length);
+	user = window.location.href.substring(window.location.href.indexOf("io/") + 3, window.location.href.length);
 } else {
 	user = new URL(window.location.href).searchParams.get("user");
 }
 function goToGeneral() { location.href = `https://djd4rkn355.github.io/plan.html?user=${user}`; }
-function goToPersonal() { location.href = `https://djd4rkn355.github.io/${user}`; }
+function goToPersonal() { location.href = `https://djd4rkn355.github.io/${user}`.html; }
 function openInfo() { alert(""); }
 function goToFood() { location.href = `https://djd4rkn355.github.io/food_menu.html?user=${user}`; }
 			</script>
