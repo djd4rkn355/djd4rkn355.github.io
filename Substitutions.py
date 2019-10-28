@@ -341,6 +341,7 @@ while True:
                 for a in range(0, len(i)):
                     d = browser.find_elements_by_class_name('menuCategroyTitle')[a]
                     if 'Speiseplan' in d.text:
+                        print("ERROR")
                         break
                     print(d.text)
                     writeFoodText("\n\t\t\t\t<th>" + d.text + "</th>")
@@ -353,6 +354,7 @@ while True:
 
                     for a2 in range(0, len(p)):
                         if 'FÜR SCHÜLER' in p[a2].text:
+                            print("ERROR")
                             break
                         print(p[a2].text)
                         writeFoodText("\n\t\t\t\t<th>" + p[a2].text + "</th>")
