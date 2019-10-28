@@ -189,6 +189,8 @@ while True:
 
         # start iterating through HTML substitution tables
 
+        info_content = ''
+
         for planInteger in range(0, 14):
 
             try:
@@ -196,7 +198,6 @@ while True:
 
                 # start info table fetch
 
-                info_content = ''
                 try:
                     try:
                         dateElement = table_id_previous.find_element_by_xpath('./preceding-sibling::p[1]')
