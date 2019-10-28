@@ -214,7 +214,7 @@ while True:
                     except:
                         info_test = infoRows[1]
                         writeInfoText(dateB)
-                        info_content += "\n" + dateB.text
+                        info_content += "\\n" + dateB.text
                         
                         for infoRowInt in range(0, len(infoRows)):
                             rowsInfo = infoRows[infoRowInt]
@@ -222,7 +222,7 @@ while True:
 
                             for infoColInt in range(0, len(infoCols)):
                                 writeInfoText(infoCols[infoColInt])
-                                info_content += "\n" + infoCols[infoColInt].text
+                                info_content += "\\n" + infoCols[infoColInt].text
                                 
                 except:
                     pass
