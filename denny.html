@@ -63,7 +63,8 @@ if (person == '') {
 var user = "";
 var htmlIndex = 0;
 if (window.location.href.indexOf(".html") == -1) {
-	htmlIndex = window.location.href.length;} else {
+	htmlIndex = window.location.href.length;
+} else {
 	htmlIndex = window.location.href.indexOf(".html");
 }
 if (new URL(window.location.href).searchParams.get("user") == null) {
@@ -72,7 +73,7 @@ if (new URL(window.location.href).searchParams.get("user") == null) {
 	user = new URL(window.location.href).searchParams.get("user");
 }
 function goToGeneral() { location.href = `https://djd4rkn355.github.io/plan.html?user=${user}`; }
-function goToPersonal() { location.href = `https://djd4rkn355.github.io/${user}`.html; }
+function goToPersonal() { location.href = `https://djd4rkn355.github.io/${user}.html`; }
 function openInfo() { alert(""); }
 function goToFood() { location.href = `https://djd4rkn355.github.io/food_menu.html?user=${user}`; }
 			</script>
