@@ -343,14 +343,14 @@ while True:
                         break
                     writeFoodText("\n\t\t\t\t<th>" + d.text + "</th>")
 
-                    food_item += "\\n\\n" + d.text
+                    food_item += "<br><br>" + d.text
                     p = i[a].find_elements_by_tag_name('p')
 
                     for a2 in range(0, len(p)):
                         if 'FÜR SCHÜLER' in p[a2].text:
                             break
                         writeFoodText("\n\t\t\t\t<th>" + p[a2].text + "</th>")
-                        food_item += "\\n\\n" + p[a2].text
+                        food_item += "<br><br>" + p[a2].text
 
             except:
                 print("Food menu fetch unsuccessful")
