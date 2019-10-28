@@ -40,44 +40,34 @@ forder = 'svg+xml;base64,PHN2ZwogICAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3Z
 wp = 'svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIj8+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiBoZWlnaHQ9IjUxMnB4IiB2aWV3Qm94PSIwIDAgNTEyIDUxMiIgd2lkdGg9IjUxMnB4Ij48cGF0aCBkPSJtMTEyLjUxNTYyNSA5NS4zMTI1Yy00LjYyNSAwLTguOTcyNjU2IDEuODAwNzgxLTEyLjI1IDUuMDc0MjE5LTYuNzUgNi43NTM5MDYtNi43NDYwOTQgMTcuNzQyMTg3LjAwMzkwNiAyNC40OTIxODcgMy4yNzM0MzggMy4yNzM0MzggNy42MjEwOTQgNS4wNzQyMTkgMTIuMjQ2MDk0IDUuMDc0MjE5czguOTc2NTYzLTEuODAwNzgxIDEyLjI1LTUuMDc0MjE5YzYuNzUtNi43NSA2Ljc1LTE3LjczODI4MS0uMDAzOTA2LTI0LjQ5NjA5NC0zLjI3MzQzOC0zLjI2OTUzMS03LjYyMTA5NC01LjA3MDMxMi0xMi4yNDYwOTQtNS4wNzAzMTJ6bTAgMCIgZmlsbD0iIzAwMDAwMCIvPjxwYXRoIGQ9Im00NDQuOTI1NzgxIDE3Mi43ODkwNjIgNjcuMDE5NTMxLTE3Mi43ODkwNjItMTcyLjc4OTA2MiA2Ny4wMTk1MzEtNzkuMDE1NjI1IDc5LjAxNTYyNS0xNDUuOTIxODc1LTE0NS45MTc5NjgtMTE0LjIxODc1IDExNC4yMTg3NSAxNDUuOTIxODc1IDE0NS45MjE4NzQtMTA3Ljg5MDYyNSAxMDcuODkwNjI2LTI0LjI4MTI1IDI0LjI3NzM0M2MtOC43NTc4MTIgOC43NjE3MTktMTMuNTg1OTM4IDIwLjQxMDE1Ny0xMy41ODU5MzggMzIuODAwNzgxIDAgMTIuMzkwNjI2IDQuODI4MTI2IDI0LjAzNTE1NyAxMy41ODU5MzggMzIuODAwNzgybDQwLjE2Nzk2OSA0MC4xNjc5NjhjOS4wNDI5NjkgOS4wNDI5NjkgMjAuOTIxODc1IDEzLjU2MjUgMzIuODAwNzgxIDEzLjU2MjVzMjMuNzU3ODEyLTQuNTE5NTMxIDMyLjgwMDc4MS0xMy41NjI1bDEzMi4xNzE4NzUtMTMyLjE3MTg3NCAxNDUuOTcyNjU2IDE0NS45NzY1NjIgMTE0LjIxODc1LTExNC4yMTg3NS0xNDUuOTcyNjU2LTE0NS45NzY1NjJ6bS0zMjIuMjAzMTI1IDIzNy42NDA2MjYgMjY3LjA4NTkzOC0yNjcuMDg1OTM4IDIxLjA3NDIxOCAyMS4wNzQyMTktMjY3LjA4NTkzNyAyNjcuMDg1OTM3em0zMDMuNzAzMTI1LTI3Mi44Nzg5MDctNTIuMDMxMjUtNTIuMDMxMjUgODUuMDAzOTA3LTMyLjk2ODc1em0tMjgwLjMwNDY4NyA4MC40OTYwOTQgMjcuODAwNzgxLTI3LjgwMDc4MS0yMS4yMDcwMzEtMjEuMjA3MDMyLTI3LjgwMDc4MiAyNy44MDA3ODItODIuNS04Mi41MDM5MDYgNzEuODA0Njg4LTcxLjgwODU5NCAxMjQuNzE0ODQ0IDEyNC43MTQ4NDQtNzEuODA0Njg4IDcxLjgwODU5M3ptMjAxLjQwNjI1LTExNi45ODQzNzUgMjEuMDc0MjE4IDIxLjA3NDIxOS0yNjcuMDgyMDMxIDI2Ny4wODU5MzctMjEuMDc4MTI1LTIxLjA3NDIxOHptLTI0OS4yMTA5MzggMzc1LjkyNTc4MWMtMy4wOTc2NTYgMy4wOTc2NTctNy4yMTQ4NDQgNC44MDA3ODEtMTEuNTk3NjU2IDQuODAwNzgxLTQuMzc4OTA2IDAtOC40OTYwOTQtMS43MDMxMjQtMTEuNTkzNzUtNC44MDA3ODFsLTQwLjE2Nzk2OS00MC4xNjc5NjljLTMuMDkzNzUtMy4wOTc2NTYtNC44MDA3ODEtNy4yMTQ4NDMtNC44MDA3ODEtMTEuNTkzNzUgMC00LjM3ODkwNiAxLjcwNzAzMS04LjUgNC44MDA3ODEtMTEuNTkzNzVsMjQuMjgxMjUtMjQuMjgxMjUgNjMuMzU1NDY5IDYzLjM1OTM3NnptMzcxLjE1NjI1LTc5LjIwNzAzMS03MS44MDg1OTQgNzEuODA4NTk0LTQwLjEzNjcxOC00MC4xMzY3MTkgMjcuODAwNzgxLTI3LjgwMDc4MS0yMS4yMDcwMzEtMjEuMjA3MDMyLTI3Ljc5Njg3NSAyNy44MDA3ODItMjEuMDc4MTI1LTIxLjA3NDIxOSAyNy44MDA3ODEtMjcuODAwNzgxLTIxLjIwNzAzMS0yMS4yMDcwMzItMjcuODAwNzgyIDI3LjgwMDc4Mi0yMS4xNDQ1MzEtMjEuMTQ0NTMyIDcxLjgwODU5NC03MS44MDg1OTN6bTAgMCIgZmlsbD0iIzAwMDAwMCIvPjwvc3ZnPgo='
 nothing = 'png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII='
 
+general_plan_icon = 'svg+xml;base64,PHN2ZwogICAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogICAgdmlld0JveD0iMCAwIDUxMiA1MTIiCiAgICBpZD0idmVjdG9yIj4KICAgIDxwYXRoCiAgICAgICAgaWQ9InBhdGhfMSIKICAgICAgICBkPSJNIDM1Mi40NTkgMjIwIEMgMzUyLjQ1OSAyMDguOTU0IDM0My41MDUgMjAwIDMzMi40NTkgMjAwIEwgMTI2LjQ1OSAyMDAgQyAxMTUuNDEzIDIwMCAxMDYuNDU5IDIwOC45NTQgMTA2LjQ1OSAyMjAgQyAxMDYuNDU5IDIzMS4wNDYgMTE1LjQxMyAyNDAgMTI2LjQ1OSAyNDAgTCAzMzIuNDU5IDI0MCBDIDM0My41MDUgMjQwIDM1Mi40NTkgMjMxLjA0NiAzNTIuNDU5IDIyMCBaIgogICAgICAgIGZpbGw9IiMwMDAwMDAiLz4KICAgIDxwYXRoCiAgICAgICAgaWQ9InBhdGhfMiIKICAgICAgICBkPSJNIDEyNi40NTkgMjgwIEMgMTE1LjQxMyAyODAgMTA2LjQ1OSAyODguOTU0IDEwNi40NTkgMzAwIEMgMTA2LjQ1OSAzMTEuMDQ2IDExNS40MTMgMzIwIDEyNi40NTkgMzIwIEwgMjUxLjU3IDMyMCBDIDI2Mi42MTYgMzIwIDI3MS41NyAzMTEuMDQ2IDI3MS41NyAzMDAgQyAyNzEuNTcgMjg4Ljk1NCAyNjIuNjE2IDI4MCAyNTEuNTcgMjgwIEwgMTI2LjQ1OSAyODAgWiIKICAgICAgICBmaWxsPSIjMDAwMDAwIi8+CiAgICA8cGF0aAogICAgICAgIGlkPSJwYXRoXzMiCiAgICAgICAgZD0iTSAxNzMuNDU5IDQ3MiBMIDEwNi41NyA0NzIgQyA4NC41MTQgNDcyIDY2LjU3IDQ1NC4wNTYgNjYuNTcgNDMyIEwgNjYuNTcgODAgQyA2Ni41NyA1Ny45NDQgODQuNTE0IDQwIDEwNi41NyA0MCBMIDM1Mi40NTkgNDAgQyAzNzQuNTE1IDQwIDM5Mi40NTkgNTcuOTQ0IDM5Mi40NTkgODAgTCAzOTIuNDU5IDIwMyBDIDM5Mi40NTkgMjE0LjA0NiA0MDEuNDEzIDIyMyA0MTIuNDU5IDIyMyBDIDQyMy41MDUgMjIzIDQzMi40NTkgMjE0LjA0NiA0MzIuNDU5IDIwMyBMIDQzMi40NTkgODAgQyA0MzIuNDU5IDM1Ljg4OCAzOTYuNTcxIDAgMzUyLjQ1OSAwIEwgMTA2LjU3IDAgQyA2Mi40NTggMCAyNi41NyAzNS44ODggMjYuNTcgODAgTCAyNi41NyA0MzIgQyAyNi41NyA0NzYuMTEyIDYyLjQ1OCA1MTIgMTA2LjU3IDUxMiBMIDE3My40NTkgNTEyIEMgMTg0LjUwNSA1MTIgMTkzLjQ1OSA1MDMuMDQ2IDE5My40NTkgNDkyIEMgMTkzLjQ1OSA0ODAuOTU0IDE4NC41MDUgNDcyIDE3My40NTkgNDcyIFoiCiAgICAgICAgZmlsbD0iIzAwMDAwMCIvPgogICAgPHBhdGgKICAgICAgICBpZD0icGF0aF85IgogICAgICAgIGQ9Ik0gNDY3Ljg4NCAyODkuNTcyIEMgNDQ0LjQ5IDI2Ni4xNzggNDA2LjQyNiAyNjYuMTc3IDM4My4wNDcgMjg5LjU1NiBMIDI3My4yNDQgMzk5LjExNiBDIDI3MC45MTIgNDAxLjQ0MyAyNjkuMTkyIDQwNC4zMDkgMjY4LjIzNCA0MDcuNDYxIEwgMjQ0LjMyMSA0ODYuMTg2IEMgMjQyLjIwMSA0OTMuMTY2IDI0NC4wNDggNTAwLjc0NSAyNDkuMTQyIDUwNS45NjYgQyAyNTIuOTU4IDUwOS44NzcgMjU4LjE0MiA1MTIgMjYzLjQ1OSA1MTIgQyAyNjUuMjM4IDUxMiAyNjcuMDM0IDUxMS43NjIgMjY4Ljc5NyA1MTEuMjczIEwgMzQ5LjUyMiA0ODguOTEyIEMgMzUyLjg0NCA0ODcuOTkyIDM1NS44NzIgNDg2LjIyOSAzNTguMzEyIDQ4My43OTMgTCA0NjcuODg1IDM3NC40MjYgQyA0OTEuMjc5IDM1MS4wMzIgNDkxLjI3OSAzMTIuOTY4IDQ2Ny44ODQgMjg5LjU3MiBaIE0gMzMzLjc3NiA0NTEuNzY4IEwgMjkzLjE2NCA0NjMuMDE4IEwgMzA1LjA0OSA0MjMuODg5IEwgMzc5LjEzOCAzNDkuOTY0IEwgNDA3LjQyOCAzNzguMjU0IEwgMzMzLjc3NiA0NTEuNzY4IFogTSA0MzkuNjE1IDM0Ni4xMyBMIDQzNS43NCAzNDkuOTk3IEwgNDA3LjQ1NSAzMjEuNzEyIEwgNDExLjMxNyAzMTcuODU4IEMgNDE5LjExNSAzMTAuMDYgNDMxLjgwMyAzMTAuMDYgNDM5LjYwMSAzMTcuODU4IEMgNDQ3LjM5OSAzMjUuNjU2IDQ0Ny4zOTkgMzM4LjM0NCA0MzkuNjE1IDM0Ni4xMyBaIgogICAgICAgIGZpbGw9IiMwMDAwMDAiLz4KICAgIDxwYXRoCiAgICAgICAgaWQ9InBhdGhfMTAiCiAgICAgICAgZD0iTSAzMzIuNDU5IDEyMCBMIDEyNi40NTkgMTIwIEMgMTE1LjQxMyAxMjAgMTA2LjQ1OSAxMjguOTU0IDEwNi40NTkgMTQwIEMgMTA2LjQ1OSAxNTEuMDQ2IDExNS40MTMgMTYwIDEyNi40NTkgMTYwIEwgMzMyLjQ1OSAxNjAgQyAzNDMuNTA1IDE2MCAzNTIuNDU5IDE1MS4wNDYgMzUyLjQ1OSAxNDAgQyAzNTIuNDU5IDEyOC45NTQgMzQzLjUwNSAxMjAgMzMyLjQ1OSAxMjAgWiIKICAgICAgICBmaWxsPSIjMDAwMDAwIi8+Cjwvc3ZnPgo='
+personal_plan_icon = 'svg+xml;base64,PHN2ZwogICAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogICAgdmlld0JveD0iMCAwIDMxIDQ2IgogICAgaWQ9InZlY3RvciI+CiAgICA8cGF0aAogICAgICAgIGlkPSJwYXRoIgogICAgICAgIGQ9Ik0gMTUuNjc2IDAgQyA3LjAzMiAwIDAgNy4wMzIgMCAxNS42NzYgQyAwIDE5LjIxMyAxLjE2IDIyLjU1NiAzLjM1MyAyNS4zNCBDIDMuNzg2IDI1Ljg5MiA0LjI0IDI2LjQxOSA0LjcyMiAyNi45NzggTCA0Ljc0OCAyNy4wMDggQyA2LjIyMiAyOC43MTggNy43NDUgMzAuNDg1IDguMzE0IDMyLjU2NyBDIDguNDQyIDMzLjA0NCA4LjQ2MSAzMy45NTkgOC40NTMgMzQuNjYzIEwgOC40NTMgMzUuODYxIEMgOC40NTMgMzYuOTU3IDkuMzQyIDM3Ljg0NSAxMC40MzggMzcuODQ1IEwgMjAuODI4IDM3Ljg0NSBDIDIxLjkyNCAzNy44NDUgMjIuODEzIDM2Ljk1NyAyMi44MTMgMzUuODYxIEwgMjIuODEzIDM0LjY1IEMgMjIuODA2IDMzLjcyOSAyMi44NTQgMzMuMDU4IDIyLjk1IDMyLjcwOSBDIDIzLjUyMiAzMC42NDEgMjUuMjEgMjguNjU2IDI2LjcxMyAyNi44ODggTCAyNi43NzcgMjYuODEyIEMgMjcuMjExIDI2LjMwMiAyNy42MjEgMjUuODIxIDI3Ljk5NCAyNS4zNDcgQyAzMC4xOSAyMi41NjEgMzEuMzUxIDE5LjIxNyAzMS4zNTEgMTUuNjc2IEMgMzEuMzUxIDcuMDMyIDI0LjMxOSAwIDE1LjY3NiAwIFogTSAyNC44NzUgMjIuODkyIEMgMjQuNTQ5IDIzLjMwOCAyNC4xNjMgMjMuNzYgMjMuNzU1IDI0LjIzOSBMIDIzLjY3NSAyNC4zMzMgQyAyMS45MiAyNi4zOTggMTkuOTMgMjguNzM4IDE5LjEyNCAzMS42NTQgQyAxOS4wMSAzMi4wNjcgMTguODgzIDMyLjY4NyAxOC44NTEgMzMuODc3IEwgMTIuNDE4IDMzLjg3NyBDIDEyLjM5MSAzMi42MTMgMTIuMjYyIDMxLjk2NSAxMi4xNDQgMzEuNTI4IEMgMTEuMzM3IDI4LjU3NCA5LjM1MSAyNi4yNjkgNy43NTUgMjQuNDE3IEwgNy43MjggMjQuMzg2IEMgNy4yNzcgMjMuODYzIDYuODUxIDIzLjM2OSA2LjQ3MiAyMi44ODcgQyA0LjgzNSAyMC44MDcgMy45NjkgMTguMzE0IDMuOTY5IDE1LjY3NiBDIDMuOTY5IDkuMjIxIDkuMjIxIDMuOTY5IDE1LjY3NiAzLjk2OSBDIDIyLjEzMSAzLjk2OSAyNy4zODIgOS4yMjEgMjcuMzgyIDE1LjY3NiBDIDI3LjM4MiAxOC4zMTYgMjYuNTE2IDIwLjgxMSAyNC44NzUgMjIuODkyIFoiCiAgICAgICAgZmlsbD0iIzAwMDAwMCIvPgogICAgPHBhdGgKICAgICAgICBpZD0icGF0aF80IgogICAgICAgIGQ9Ik0gMjAuODI4IDM4LjQwOSBMIDEwLjQzOCAzOC40MDkgQyA5LjM0MiAzOC40MDkgOC40NTMgMzkuMjk3IDguNDUzIDQwLjM5MyBDIDguNDUzIDQxLjQ4OSA5LjM0MiA0Mi4zNzggMTAuNDM4IDQyLjM3OCBMIDIwLjgyOCA0Mi4zNzggQyAyMS45MjQgNDIuMzc4IDIyLjgxMyA0MS40ODkgMjIuODEzIDQwLjM5MyBDIDIyLjgxMyAzOS4yOTcgMjEuOTI0IDM4LjQwOSAyMC44MjggMzguNDA5IFoiCiAgICAgICAgZmlsbD0iIzAwMDAwMCIvPgogICAgPHBhdGgKICAgICAgICBpZD0icGF0aF81IgogICAgICAgIGQ9Ik0gMTguMjMgNDIuOTM1IEwgMTMuMDM1IDQyLjkzNSBDIDExLjkzOSA0Mi45MzUgMTEuMDUxIDQzLjgyNCAxMS4wNTEgNDQuOTIgQyAxMS4wNTEgNDYuMDE2IDExLjkzOSA0Ni45MDQgMTMuMDM1IDQ2LjkwNCBMIDE4LjIzIDQ2LjkwNCBDIDE5LjMyNiA0Ni45MDQgMjAuMjE1IDQ2LjAxNiAyMC4yMTUgNDQuOTIgQyAyMC4yMTUgNDMuODI0IDE5LjMyNiA0Mi45MzUgMTguMjMgNDIuOTM1IFoiCiAgICAgICAgZmlsbD0iIzAwMDAwMCIvPgogICAgPHBhdGgKICAgICAgICBpZD0icGF0aF82IgogICAgICAgIGQ9Ik0gMTUuNjc2IDAgQyA3LjAzMiAwIDAgNy4wMzIgMCAxNS42NzYgQyAwIDE5LjIxMyAxLjE2IDIyLjU1NiAzLjM1MyAyNS4zNCBDIDMuNzg2IDI1Ljg5MiA0LjI0IDI2LjQxOSA0LjcyMiAyNi45NzggTCA0Ljc0OCAyNy4wMDggQyA2LjIyMiAyOC43MTggNy43NDUgMzAuNDg1IDguMzE0IDMyLjU2NyBDIDguNDQyIDMzLjA0NCA4LjQ2MSAzMy45NTkgOC40NTMgMzQuNjYzIEwgOC40NTMgMzUuODYxIEMgOC40NTMgMzYuOTU3IDkuMzQyIDM3Ljg0NSAxMC40MzggMzcuODQ1IEwgMjAuODI4IDM3Ljg0NSBDIDIxLjkyNCAzNy44NDUgMjIuODEzIDM2Ljk1NyAyMi44MTMgMzUuODYxIEwgMjIuODEzIDM0LjY1IEMgMjIuODA2IDMzLjcyOSAyMi44NTQgMzMuMDU4IDIyLjk1IDMyLjcwOSBDIDIzLjUyMiAzMC42NDEgMjUuMjEgMjguNjU2IDI2LjcxMyAyNi44ODggTCAyNi43NzcgMjYuODEyIEMgMjcuMjExIDI2LjMwMiAyNy42MjEgMjUuODIxIDI3Ljk5NCAyNS4zNDcgQyAzMC4xOSAyMi41NjEgMzEuMzUxIDE5LjIxNyAzMS4zNTEgMTUuNjc2IEMgMzEuMzUxIDcuMDMyIDI0LjMxOSAwIDE1LjY3NiAwIFogTSAyNC44NzUgMjIuODkyIEMgMjQuNTQ5IDIzLjMwOCAyNC4xNjMgMjMuNzYgMjMuNzU1IDI0LjIzOSBMIDIzLjY3NSAyNC4zMzMgQyAyMS45MiAyNi4zOTggMTkuOTMgMjguNzM4IDE5LjEyNCAzMS42NTQgQyAxOS4wMSAzMi4wNjcgMTguODgzIDMyLjY4NyAxOC44NTEgMzMuODc3IEwgMTIuNDE4IDMzLjg3NyBDIDEyLjM5MSAzMi42MTMgMTIuMjYyIDMxLjk2NSAxMi4xNDQgMzEuNTI4IEMgMTEuMzM3IDI4LjU3NCA5LjM1MSAyNi4yNjkgNy43NTUgMjQuNDE3IEwgNy43MjggMjQuMzg2IEMgNy4yNzcgMjMuODYzIDYuODUxIDIzLjM2OSA2LjQ3MiAyMi44ODcgQyA0LjgzNSAyMC44MDcgMy45NjkgMTguMzE0IDMuOTY5IDE1LjY3NiBDIDMuOTY5IDkuMjIxIDkuMjIxIDMuOTY5IDE1LjY3NiAzLjk2OSBDIDIyLjEzMSAzLjk2OSAyNy4zODIgOS4yMjEgMjcuMzgyIDE1LjY3NiBDIDI3LjM4MiAxOC4zMTYgMjYuNTE2IDIwLjgxMSAyNC44NzUgMjIuODkyIFoiCiAgICAgICAgZmlsbD0iIzAwMDAwMCIvPgogICAgPHBhdGgKICAgICAgICBpZD0icGF0aF83IgogICAgICAgIGQ9Ik0gMjAuODI4IDM4LjQwOSBMIDEwLjQzOCAzOC40MDkgQyA5LjM0MiAzOC40MDkgOC40NTMgMzkuMjk3IDguNDUzIDQwLjM5MyBDIDguNDUzIDQxLjQ4OSA5LjM0MiA0Mi4zNzggMTAuNDM4IDQyLjM3OCBMIDIwLjgyOCA0Mi4zNzggQyAyMS45MjQgNDIuMzc4IDIyLjgxMyA0MS40ODkgMjIuODEzIDQwLjM5MyBDIDIyLjgxMyAzOS4yOTcgMjEuOTI0IDM4LjQwOSAyMC44MjggMzguNDA5IFoiCiAgICAgICAgZmlsbD0iIzAwMDAwMCIvPgogICAgPHBhdGgKICAgICAgICBpZD0icGF0aF84IgogICAgICAgIGQ9Ik0gMTguMjMgNDIuOTM1IEwgMTMuMDM1IDQyLjkzNSBDIDExLjkzOSA0Mi45MzUgMTEuMDUxIDQzLjgyNCAxMS4wNTEgNDQuOTIgQyAxMS4wNTEgNDYuMDE2IDExLjkzOSA0Ni45MDQgMTMuMDM1IDQ2LjkwNCBMIDE4LjIzIDQ2LjkwNCBDIDE5LjMyNiA0Ni45MDQgMjAuMjE1IDQ2LjAxNiAyMC4yMTUgNDQuOTIgQyAyMC4yMTUgNDMuODI0IDE5LjMyNiA0Mi45MzUgMTguMjMgNDIuOTM1IFoiCiAgICAgICAgZmlsbD0iIzAwMDAwMCIvPgo8L3N2Zz4K'
+info_icon = 'svg+xml;base64,PHN2ZwogICAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogICAgdmlld0JveD0iMCAwIDMzMCAzMzAiCiAgICBpZD0idmVjdG9yIj4KICAgIDxwYXRoCiAgICAgICAgaWQ9InBhdGhfMSIKICAgICAgICBkPSJNIDE2NSAwIEMgNzQuMDE5IDAgMCA3NC4wMiAwIDE2NS4wMDEgQyAwIDI1NS45ODIgNzQuMDE5IDMzMCAxNjUgMzMwIEMgMjU1Ljk4MSAzMzAgMzMwIDI1NS45ODIgMzMwIDE2NS4wMDEgQyAzMzAgNzQuMDIgMjU1Ljk4MSAwIDE2NSAwIFogTSAxNjUgMzAwIEMgOTAuNTYgMzAwIDMwIDIzOS40NCAzMCAxNjUuMDAxIEMgMzAgOTAuNTYyIDkwLjU2IDMwIDE2NSAzMCBDIDIzOS40NCAzMCAzMDAgOTAuNTYyIDMwMCAxNjUuMDAxIEMgMzAwIDIzOS40NCAyMzkuNDM5IDMwMCAxNjUgMzAwIFoiCiAgICAgICAgZmlsbD0iIzAwMDAwMCIvPgogICAgPHBhdGgKICAgICAgICBpZD0icGF0aF8yIgogICAgICAgIGQ9Ik0gMTY0Ljk5OCA3MCBDIDE1My45NzIgNzAgMTQ1LjAwMiA3OC45NzYgMTQ1LjAwMiA5MC4wMDkgQyAxNDUuMDAyIDEwMS4wMzIgMTUzLjk3MiAxMTAgMTY0Ljk5OCAxMTAgQyAxNzYuMDI0IDExMCAxODQuOTk0IDEwMS4wMzIgMTg0Ljk5NCA5MC4wMDkgQyAxODQuOTk0IDc4Ljk3NiAxNzYuMDI0IDcwIDE2NC45OTggNzAgWiIKICAgICAgICBmaWxsPSIjMDAwMDAwIi8+CiAgICA8cGF0aAogICAgICAgIGlkPSJwYXRoXzMiCiAgICAgICAgZD0iTSAxNjUgMTQwIEMgMTU2LjcxNiAxNDAgMTUwIDE0Ni43MTYgMTUwIDE1NSBMIDE1MCAyNDUgQyAxNTAgMjUzLjI4NCAxNTYuNzE2IDI2MCAxNjUgMjYwIEMgMTczLjI4NCAyNjAgMTgwIDI1My4yODQgMTgwIDI0NSBMIDE4MCAxNTUgQyAxODAgMTQ2LjcxNiAxNzMuMjg0IDE0MCAxNjUgMTQwIFoiCiAgICAgICAgZmlsbD0iIzAwMDAwMCIvPgo8L3N2Zz4K'
+food_menu_icon = 'svg+xml;base64,PHN2ZwogICAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogICAgdmlld0JveD0iMCAwIDUxMiA1MTIiCiAgICBpZD0idmVjdG9yIj4KICAgIDxwYXRoCiAgICAgICAgaWQ9InBhdGgiCiAgICAgICAgZD0iTSA0MjguMDU1IDE0NC4wNTUgQyA0NDAuMTA2IDExOS45ODkgNDQwLjAxNiA5Ni4wOTQgNDQwIDk0Ljc3IEMgNDM5LjkwNiA4Ni43NDcgNDM1LjAyNyA3OS41NTUgNDI3LjYwNSA3Ni41MDQgQyA0MjAuMTgzIDczLjQ1MyA0MTEuNjYgNzUuMTI5IDQwNS45NDkgODAuNzY2IEMgMzk4LjE2NCA4OC40NTQgMzk1LjA1OCA4OC45NzMgMzk0LjczIDg5LjAwOCBDIDM5My4wNyA4OS4yMDMgMzg4LjI4OSA4Ny4yNjYgMzg0LjA3NCA4NS41NzggQyAzNzIuOTIyIDgxLjExMyAzNTcuNjQ4IDc1IDMzMy42NTYgNzUgQyAzMDcuNDY4IDc1IDI4Ni43MDcgODYuNTgyIDI3MS4zNTkgMTAwLjE3NiBDIDI3My4wNjYgNjkuNTU5IDI4MC44MiA0Ni41NTUgMjkzLjYyMSAzNC42NDUgQyAzMDEuNzExIDI3LjEyMiAzMDIuMTY4IDE0LjQ2NSAyOTQuNjQ0IDYuMzc5IEMgMjg3LjEyMSAtMS43MDcgMjc0LjQ2OCAtMi4xNjggMjY2LjM3OCA1LjM1NiBDIDI0Mi42MjQgMjcuNDU0IDIzNC4xMTYgNjIuMzM2IDIzMS43NjEgOTMuMDQ0IEMgMjE3LjU4OSA4Mi43NzEgMTk5Ljc4NCA3NS4wMDEgMTc4LjM0MyA3NS4wMDEgQyAxNTQuMzU1IDc1LjAwMSAxMzkuMDc3IDgxLjExNCAxMjcuOTI1IDg1LjU3OSBDIDEyMy43MSA4Ny4yNjcgMTE4Ljk0MSA4OS4yMDQgMTE3LjI2OSA4OS4wMDkgQyAxMTYuOTQxIDg4Ljk3NCAxMTMuODM1IDg4LjQ1NCAxMDYuMDUgODAuNzY3IEMgMTAwLjMzOSA3NS4xMyA5MS44MTYgNzMuNDU0IDg0LjM5NCA3Ni41MDUgQyA3Ni45NzIgNzkuNTU2IDcyLjA5MyA4Ni43NDcgNzEuOTk5IDk0Ljc3MSBDIDcxLjk4MyA5Ni4xMDMgNzEuODk3IDEyMC4yMzIgODQuMTI4IDE0NC40MTYgQyAzOS41ODkgMTY3LjQzMiAtMC4wMDEgMjIwLjE3NCAtMC4wMDEgMjkwLjAwMiBDIC0wLjAwMSAzMjIuNjg2IDcuMjY5IDM4NS4zNzMgNTUuOTM3IDQzOC4wMjUgQyA3Ny4zMTIgNDYxLjE0NiAxMDQuMDQ2IDQ3OS4xNjYgMTM1LjQwMiA0OTEuNTggQyAxNjkuNjM2IDUwNS4xMzEgMjA5LjUzOSA1MTIuMDAyIDI1NCA1MTIuMDAyIEMgMzA1LjI1IDUxMi4wMDIgMzUwLjUxMiA1MDIuOTEyIDM4OC41MjcgNDg0Ljk4NiBDIDM5OC41MTkgNDgwLjI3OSA0MDIuOCA0NjguMzYxIDM5OC4wOSA0NTguMzY5IEMgMzkzLjM3OSA0NDguMzgxIDM4MS40NjUgNDQ0LjA5NiAzNzEuNDczIDQ0OC44MDYgQyAzMzguODI4IDQ2NC4xOTcgMjk5LjMwNSA0NzIuMDAxIDI1NCA0NzIuMDAxIEMgOTYuMjE5IDQ3Mi4wMDEgNDAgMzc3Ljk4NSA0MCAyOTAuMDAxIEMgNDAgMjMxLjk4OSA3NC42OTUgMTg5Ljk4MSAxMTAuNzc3IDE3Ni4xOTYgQyAxMTguNTU0IDE4MS44NjggMTI3LjI4OSAxODYuMTQ1IDEzNi45MDYgMTg5LjA1OSBDIDEzNC4wMzkgMTk1LjU5OCAxMzIuMTk1IDIwMS40NTQgMTMwLjYwNSAyMDYuNDk3IEMgMTI5LjMyIDIxMC41NzEgMTI3LjcyMiAyMTUuNjQ1IDEyNi41ODUgMjE2Ljc2MyBDIDEyNi40OTEgMjE2Ljg1MyAxMjQuMjIyIDIxOC45NjYgMTEzLjE3MSAyMTkuOTgyIEMgMTA1LjAzNCAyMjAuNzI4IDk4LjE3MSAyMjYuMzQ1IDk1LjgzNSAyMzQuMTczIEMgOTMuNDk1IDI0Mi4wMDUgOTYuMTU1IDI1MC40NjYgMTAyLjU1IDI1NS41NTIgQyAxMDMuNjg3IDI1Ni40NTQgMTI5Ljk3MiAyNzcuMDAxIDE2Ny40NjQgMjc3LjAwMSBDIDE2OC43MTQgMjc3LjAwMSAxNjkuOTg0IDI3Ni45NzggMTcxLjI2MSAyNzYuOTMxIEMgMTgyLjg1NSAyNzYuNTAxIDIxMi42MDkgMjczLjAxNyAyMzguNDIxIDI1MC4wMjUgQyAyNDQuMjEgMjQ0Ljg2OSAyNTAuMzc0IDIzOC4xNDIgMjU1Ljk5OSAyMjkuNTQxIEMgMjYxLjYyNCAyMzguMTQ2IDI2Ny43ODQgMjQ0Ljg2OSAyNzMuNTczIDI1MC4wMjUgQyAyOTkuMzg2IDI3My4wMTcgMzI5LjEzOSAyNzYuNTAyIDM0MC43MzMgMjc2LjkzMSBDIDM0Mi4wMTQgMjc2Ljk3OCAzNDMuMjc2IDI3Ny4wMDEgMzQ0LjUzNCAyNzcuMDAxIEMgMzgxLjg1NCAyNzYuOTk3IDQwOC45NDggMjU2LjY5NiA0MTAuMTIgMjU1LjgwNiBDIDQxNi42NzkgMjUwLjgxIDQxOS40OTkgMjQyLjI5OCA0MTcuMjIyIDIzNC4zNzIgQyA0MTQuOTQ1IDIyNi40NDYgNDA4LjAzNCAyMjAuNzMxIDM5OS44MjQgMjE5Ljk4MSBDIDM4OC43NjUgMjE4Ljk2NSAzODYuMjU0IDIxNi44MTMgMzg2LjAwNCAyMTYuNTcxIEMgMzg0LjY5MSAyMTUuMzAxIDM4My4wOSAyMTAuNTAxIDM4MS41MzkgMjA1Ljg1NiBDIDM3OS45MTQgMjAwLjk3NyAzNzguMDIzIDE5NS4zMjUgMzc1LjE5OSAxODkuMDI4IEMgMzg1LjAwNCAxODYuMDQ0IDM5My44NzkgMTgxLjYzIDQwMS43NjIgMTc1Ljc3OCBDIDQ0OS4wMDQgMTk2Ljc1MSA0NzIgMjM0LjE2OSA0NzIgMjkwLjAwMSBDIDQ3MiAzMjYuMDU2IDQ2MS4wMzkgMzYxLjc5OCA0NDEuMTMzIDM5MC42NDIgQyA0MzQuODYgMzk5LjczMiA0MzcuMTQ1IDQxMi4xODkgNDQ2LjIzNSA0MTguNDYyIEMgNDQ5LjcwNCA0MjAuODU3IDQ1My42NjEgNDIyLjAwNSA0NTcuNTc5IDQyMi4wMDUgQyA0NjMuOTMxIDQyMi4wMDUgNDcwLjE3NyA0MTguOTgyIDQ3NC4wNTkgNDEzLjM2IEMgNDk4LjUyNCAzNzcuOTAzIDUxMiAzMzQuMDk0IDUxMiAyOTAuMDAxIEMgNTEyIDIyMi41NjcgNDgzLjA1OSAxNzIuNDc0IDQyOC4wNTUgMTQ0LjA1NiBaIE0gMTQyLjc5MyAxMjIuNzE1IEMgMTUyLjI2NiAxMTguOTIyIDE2Mi4wNjMgMTE1IDE3OC4zNDQgMTE1IEMgMTkyLjE4IDExNSAyMDMuOTI2IDEyMS4zNTkgMjEzLjE5OSAxMjkuMjkzIEMgMTk3LjI0MiAxMzAuODc1IDE3OC45NjkgMTM2LjI5MyAxNjEuNjI5IDE1My4yODkgQyAxNDIuODA1IDE1MS41MTIgMTI5LjQ4OCAxNDMuNDczIDEyMS4xMzMgMTI4Ljg3MSBDIDEyOS4wOSAxMjguMTk5IDEzNi4wMjggMTI1LjQyMiAxNDIuNzkzIDEyMi43MTUgWiBNIDIxMS44MTYgMjIwLjE1MiBDIDE5NS4yNSAyMzQuOTE0IDE3NS40NTMgMjM2Ljc0NiAxNjkuNzc3IDIzNi45NTcgQyAxNjYuODc1IDIzNy4wNjYgMTY0LjA2MiAyMzYuOTY1IDE2MS4zNTkgMjM2LjcxMSBDIDE2NC44NzkgMjMwLjgzNiAxNjYuODM5IDIyNC42MDYgMTY4Ljc1NyAyMTguNTEyIEMgMTcxLjgwNCAyMDguODQgMTc0Ljk1NiAxOTguODM2IDE4NS4yOTYgMTg2LjUzOSBDIDE5Ny42NTkgMTcxLjgzMiAyMDkuMjY1IDE2OC44NTkgMjI1LjEyIDE2OC42OTUgQyAyMjguNzU3IDE2OC42NTYgMjMyLjE4NiAxNjguNzY5IDIzNS4yOTIgMTY4Ljk2MSBDIDIzMi45OTEgMTkxLjExNyAyMjUuMTI0IDIwOC4yOTcgMjExLjgxNSAyMjAuMTUyIFogTSAzNDIuMjIzIDIzNi45NTcgQyAzMzYuNTQ3IDIzNi43NDYgMzE2Ljc1IDIzNC45MSAzMDAuMTg0IDIyMC4xNTIgQyAyODYuODc1IDIwOC4yOTcgMjc5LjAwOCAxOTEuMTE3IDI3Ni43MTEgMTY4Ljk2MSBDIDI3OS44MTMgMTY4Ljc3IDI4My4yNDIgMTY4LjY0OCAyODYuODc5IDE2OC42OTUgQyAzMDIuNzM0IDE2OC44NTkgMzE0LjM0IDE3MS44MzIgMzI2LjcwNyAxODYuNTM5IEMgMzM3LjAyMyAxOTguODEyIDM0MC4zNjMgMjA4LjgyOCAzNDMuNTk4IDIxOC41MTIgQyAzNDUuNjI1IDIyNC41OTQgMzQ3LjcgMjMwLjgxMyAzNTEuMjc4IDIzNi42NTcgQyAzNDguMzcyIDIzNi45NTQgMzQ1LjMzNyAyMzcuMDcxIDM0Mi4yMjMgMjM2Ljk1OCBaIE0gMzUwLjM3NSAxNTMuMjg5IEMgMzMzLjAzMSAxMzYuMjkzIDMxNC43NTggMTMwLjg3NSAyOTguODAxIDEyOS4yOTMgQyAzMDguMDcxIDEyMS4zNTkgMzE5LjgyMSAxMTUgMzMzLjY1NiAxMTUgQyAzNDkuOTM3IDExNSAzNTkuNzM0IDExOC45MjIgMzY5LjIwNyAxMjIuNzE1IEMgMzc1Ljk3MyAxMjUuNDIyIDM4Mi45MSAxMjguMTk5IDM5MC44NjcgMTI4Ljg3MSBDIDM4Mi41MTIgMTQzLjQ3MyAzNjkuMTk1IDE1MS41MTIgMzUwLjM3NSAxNTMuMjg5IFogTSAzNTAuMzc1IDE1My4yODkiCiAgICAgICAgZmlsbD0iIzAwMDAwMCIvPgo8L3N2Zz4K'
+
 def assign_ranking(group):
     try:
         try:
             return -int(group[:2])
         except:
             if check_string_for_array(group[:1]):
-                return get_junior_ranking(group[:1])
+                return -101
             else:
                 return -100
     except:
         return 0
 
-def get_junior_ranking(string):
-    if '5' in string:
-        return -105
-    if '6' in string:
-        return -104
-    if '7' in string:
-        return -103
-    if '8' in string:
-        return -102
-    if '9' in string:
-        return -101
-    else:
-        return 0
-
 def check_string_for_array(string):
     juniors = ['5', '6', '7', '8','9']
     for j in juniors:
-        if j in string:
+        if j in string[:1]:
             return True
     return False
 
 def get_priority(val): 
     return val.priority
 
-def get_header(person = ''):
-    value = '<!DOCTYPE html>\n' + \
+fancy_page_header = '<!DOCTYPE html>\n' + \
         '\t<html>\n' + \
         '\t\t<head>\n' + \
         '\t\t\t<meta name="viewport" content="width=device-width, initial-scale=1.0">\n' + \
@@ -109,10 +99,40 @@ def get_header(person = ''):
             '\tmargin-left: 12px;\n' + \
             "\tfont-family: -apple-system, BlinkMacSystemFont, 'Lato', sans-serif;\n" + \
             '}\n' + \
+            '.btn { border: none; background-color: #e0e0e0; padding: 12px 16px; font-size: 16px; cursor: pointer; }\n' + \
         '\t\t\t</style>\n' + \
-        '\t\t</head>\n' + \
-        '\t\t<body>\n' + \
+        '\t\t</head>\n'
+
+
+fancy_food_menu_header = '\t\t<body>' + \
+        "\t\t\t<div>\n" + \
+        "\t\t\t\t<p style='float: right'>\n" + \
+        "\t\t\t\t<button class='btn' type='button' onclick='goToGeneral();'><img src='data:image/" + general_plan_icon + "' height='24' width='24' ></img></button>\n" + \
+        "\t\t\t\t<button class='btn' type='button' onclick='goToPersonal();'><img src='data:image/" + personal_plan_icon + "' height='24' width='24' ></img></button>\n" + \
+        "\t\t\t\t</p>\n" + \
+        "\t\t\t<h2 id='greeting'>‎</h2>\n" + \
+        "\t\t\t</div>\n" + \
+        '\t\t\t<h1>Speisemenü</h1>\n' + \
+        '\t\t\t<script>\n' + \
+            'function goToGeneral() { location.href = `https://djd4rkn355.github.io/plan.html?user=${new URL(window.location.href).searchParams.get("user")}`; }\n' + \
+            'function goToPersonal() { location.href = `https://djd4rkn355.github.io/${new URL(window.location.href).searchParams.get("user")}.html`; }\n' + \
+        '\t\t\t</script>\n'
+
+def get_plan_body(person = '', info = ''):
+    value = '\t\t<body>\n' + \
+        "\t\t\t<div>\n" + \
+        "\t\t\t\t<p style='float: right'>\n"
+
+    if person == '':
+        value += "\t\t\t\t<button class='btn' type='button' onclick='goToPersonal();'><img src='data:image/" + personal_plan_icon + "' height='24' width='24' ></img></button>\n"
+    else:
+        value += "\t\t\t\t<button class='btn' type='button' onclick='goToGeneral();'><img src='data:image/" + general_plan_icon + "' height='24' width='24' ></img></button>\n"
+    
+    value += "\t\t\t\t<button class='btn' type='button' onclick='openInfo();'><img src='data:image/" + info_icon + "' height='24' width='24' ></img></button>\n" + \
+        "\t\t\t\t<button class='btn' type='button' onclick='goToFood();'><img src='data:image/" + food_menu_icon + "' height='24' width='24' ></img></button>\n" + \
+        "\t\t\t\t</p>\n" + \
         "\t\t\t<h2 id='greeting'></h2>\n" + \
+        "\t\t\t</div>\n" + \
         '\t\t\t<script>\n' + \
             "var person = '" + person + "';\n" + \
             "var greetings_morning = [`Hallo, ${person}!`, `Guten Morgen, ${person}!`, `Hab einen schönen Tag, ${person}.`, `Wie geht\\\'s dir, ${person}?`, `Gut geschlafen, ${person}?`, `Hey, ${person}!`, `Hi ${person}!`, `Schön dich zu sehen, ${person}.`, `Wie geht\\\'s dir so, ${person}?`];\n" + \
@@ -132,16 +152,24 @@ def get_header(person = ''):
             '} else {\n' + \
             "\tdocument.getElementById('greeting').innerHTML = greeting;\n" + \
             '}\n' + \
+            'var user = "";\n' + \
+            'var htmlIndex = 0;\n' + \
+            'if (window.location.href.indexOf(".html") == -1) {\n' + \
+            '\thtmlIndex = window.location.href.length;\n' + \
+            '} else {\n' + \
+            '\thtmlIndex = window.location.href.indexOf(".html");\n' + \
+            '}\n' + \
+            'if (new URL(window.location.href).searchParams.get("user") == null) {\n' + \
+                '\tuser = window.location.href.substring(window.location.href.indexOf("io/") + 3, htmlIndex);\n' + \
+            '} else {\n' + \
+                '\tuser = new URL(window.location.href).searchParams.get("user");\n' + \
+            '}\n' + \
+            'function goToGeneral() { location.href = `https://djd4rkn355.github.io/plan.html?user=${user}`; }\n' + \
+            'function goToPersonal() { location.href = `https://djd4rkn355.github.io/${user}.html`; }\n' + \
+            'function openInfo() { alert("' + info + '"); }\n' + \
+            'function goToFood() { location.href = `https://djd4rkn355.github.io/food_menu.html?user=${user}`; }\n' + \
         '\t\t\t</script>\n'
 
-    # if person == '':
-    #     title = 'AvH-Vertretungsplan'
-    # else:
-    #     if person[len(person) - 1:] == 's' or person[len(person) - 1:] == 'x' or person[len(person) - 1:] == 'z':
-    #         title = person + "' Plan"
-    #     else:
-    #         title = person + 's Plan'
-    # value += '\t\t\t<h1>' + title + '</h1>\n'
     if person == '':
         value += '\t\t\t<h1>AvH-Vertretungsplan</h1>'
     else:
@@ -293,16 +321,17 @@ def get_colour_value(a):
     else:
         return 'f5f5f5'
 
-def make_page(substitutions, person = '', group = '', courses = '', colours = 'wwwwwwwwwwwwwwwwwwwwwwwww'):
+def make_page(substitutions, info = '', person = '', group = '', courses = '', colours = 'wwwwwwwwwwwwwwwwwwwwwwwww'):
 
     if person == '':
         file_name = 'plan'
     else:
         file_name = person.replace('é', 'e').lower()
 
-    fancyWebsite = codecs.open(file_name + '.html', 'w', 'utf-8')
-    fancyWebsite.truncate()
-    fancyWebsite.write(get_header(person))
+    fancy_website = codecs.open(file_name + '.html', 'w', 'utf-8')
+    fancy_website.truncate()
+    fancy_website.write(fancy_page_header)
+    fancy_website.write(get_plan_body(person, info))
 
     substitutions.sort(key = get_priority, reverse = False)
 
@@ -319,49 +348,45 @@ def make_page(substitutions, person = '', group = '', courses = '', colours = 'w
             list_to_use.append(Substitution('', 'Dein Plan ist leer :(', '', '', '', '', 0))
 
     for i in range(0, len(list_to_use)):
-        fancyWebsite.write( 
+        fancy_website.write( 
             get_substitution_card(list_to_use[i], colours)
         )
 
-    fancyWebsite.write(
+    fancy_website.write(
         '\t\t</body>\n' +
         '\t</html>\n'
     )
 
-ls = [
-    Substitution('17', 'deu', 'eigenverantwortliches Arbeiten', '25.10.', '5 - 6', 'C304', assign_ranking('17')),
-    Substitution('17', 'ENP1', 'eigenverantwortliches Arbeiten', '25.10.', '5 - 6', 'C304', assign_ranking('17')),
-    Substitution('17', 'frz', 'eigenverantwortliches Arbeiten', '25.10.', '5 - 6', 'C304', assign_ranking('17')),
-    Substitution('17', 'spa', 'eigenverantwortliches Arbeiten', '25.10.', '5 - 6', 'C304', assign_ranking('17')),
-    Substitution('17', 'lat', 'eigenverantwortliches Arbeiten', '25.10.', '5 - 6', 'C304', assign_ranking('17')),
-    Substitution('17', 'tue', 'eigenverantwortliches Arbeiten', '25.10.', '5 - 6', 'C304', assign_ranking('17')),
-    Substitution('17', 'chi', 'eigenverantwortliches Arbeiten', '25.10.', '5 - 6', 'C304', assign_ranking('17')),
-    Substitution('17', 'kun', 'eigenverantwortliches Arbeiten', '25.10.', '5 - 6', 'C304', assign_ranking('17')),
-    Substitution('17', 'mus', 'eigenverantwortliches Arbeiten', '25.10.', '5 - 6', 'C304', assign_ranking('17')),
-    Substitution('17', 'dap', 'eigenverantwortliches Arbeiten', '25.10.', '5 - 6', 'C304', assign_ranking('17')),
-    Substitution('17', 'geg', 'eigenverantwortliches Arbeiten', '25.10.', '5 - 6', 'C304', assign_ranking('17')),
-    Substitution('17', 'ges', 'eigenverantwortliches Arbeiten', '25.10.', '5 - 6', 'C304', assign_ranking('17')),
-    Substitution('17', 'pol', 'eigenverantwortliches Arbeiten', '25.10.', '5 - 6', 'C304', assign_ranking('17')),
-    Substitution('17', 'phi', 'eigenverantwortliches Arbeiten', '25.10.', '5 - 6', 'C304', assign_ranking('17')),
-    Substitution('17', 'rel', 'eigenverantwortliches Arbeiten', '25.10.', '5 - 6', 'C304', assign_ranking('17')),
-    Substitution('17', 'map', 'eigenverantwortliches Arbeiten', '25.10.', '5 - 6', 'C304', assign_ranking('17')),
-    Substitution('17', 'bio', 'eigenverantwortliches Arbeiten', '25.10.', '5 - 6', 'C304', assign_ranking('17')),
-    Substitution('17', 'che', 'eigenverantwortliches Arbeiten', '25.10.', '5 - 6', 'C304', assign_ranking('17')),
-    Substitution('17', 'php', 'eigenverantwortliches Arbeiten', '25.10.', '5 - 6', 'C304', assign_ranking('17')),
-    Substitution('17', 'inf', 'eigenverantwortliches Arbeiten', '25.10.', '5 - 6', 'C304', assign_ranking('17')),
-    Substitution('17', 'spo', 'eigenverantwortliches Arbeiten', '25.10.', '5 - 6', 'C304', assign_ranking('17')),
-    Substitution('17', 'gll', 'eigenverantwortliches Arbeiten', '25.10.', '5 - 6', 'C304', assign_ranking('17')),
-    Substitution('17', 'wat', 'eigenverantwortliches Arbeiten', '25.10.', '5 - 6', 'C304', assign_ranking('17')),
-    Substitution('17', 'för', 'eigenverantwortliches Arbeiten', '25.10.', '5 - 6', 'C304', assign_ranking('17')),
-    Substitution('17', 'met', 'eigenverantwortliches Arbeiten', '25.10.', '5 - 6', 'C304', assign_ranking('17')),
-]
+def make_food_menu(items):
 
-# w r o y g c l b v p r d R O Y G C L B V P R
+    fancy_food_menu = codecs.open('food_menu.html', 'w', 'utf-8')
+    fancy_food_menu.truncate()
+    fancy_food_menu.write(fancy_page_header)
+    fancy_food_menu.write(fancy_food_menu_header)
+
+    for i in range(0, len(items)):
+        fancy_food_menu.write(
+            "\t\t\t<div class='card' style='background-color: #f5f5f5'>\n" + \
+            "\t\t\t\t<div>\n" + \
+            "\t\t\t\t<p>" + items[i] + "</p>\n" + \
+            "\t\t\t\t</div>\n" + \
+            "\t\t\t</div>\n"
+        )
+
+    fancy_food_menu.write(
+        '\t\t</body>\n' +
+        '\t</html>\n'
+    )
+
 make_page(
-    substitutions = ls,
-    person = 'Deniz',
-    group = '17',
-    # courses = 'ENP1 INF7 dap1 pop1 mat3 deu1 bio1 ges2 phy1 phi999 spo2',
-    colours = 'dLwwwwwwwGwPORwBVwYwwwwww'
+    []
 )
-# , '17', 'ENP1 INF7 dap1 pop1 mat3 deu1 bio1 ges2 phy1 phi999 spo2'
+
+make_page(
+    substitutions=[],
+    person='denny'
+)
+
+make_food_menu(
+    []
+)
