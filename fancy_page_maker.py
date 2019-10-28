@@ -166,7 +166,7 @@ def get_plan_body(person = '', info = ''):
             '}\n' + \
             'function goToGeneral() { location.href = `https://djd4rkn355.github.io/plan.html?user=${user}`; }\n' + \
             'function goToPersonal() { location.href = `https://djd4rkn355.github.io/${user}.html`; }\n' + \
-            'function openInfo() { alert("' + info + '"); }\n' + \
+            'function openInfo() { alert(`' + info + '`); }\n' + \
             'function goToFood() { location.href = `https://djd4rkn355.github.io/food_menu.html?user=${user}`; }\n' + \
         '\t\t\t</script>\n'
 
