@@ -196,6 +196,7 @@ while True:
 
                 # start info table fetch
 
+                info_content = ''
                 try:
                     try:
                         dateElement = table_id_previous.find_element_by_xpath('./preceding-sibling::p[1]')
@@ -212,6 +213,7 @@ while True:
                     except:
                         info_test = infoRows[1]
                         writeInfoText(dateB)
+                        info_content += dateB.text + "\n"
                         
                         for infoRowInt in range(0, len(infoRows)):
                             rowsInfo = infoRows[infoRowInt]
@@ -219,6 +221,7 @@ while True:
 
                             for infoColInt in range(0, len(infoCols)):
                                 writeInfoText(infoCols[infoColInt])
+                                info_content += infoCols[infoColInt].text + "\n"
                                 
                 except:
                     pass
@@ -400,9 +403,10 @@ while True:
                 copyfile("avh_substitutions.html", "avh_substitutions_check.html")
 
             if True:
-                make_page(substitutions)
+                make_page(substitutions, info_content)
                 make_page(
                     substitutions,
+                    info_content,
                     'Deniz',
                     '17',
                     'ENP1 INF7 dap1 pop1 mat3 deu1 bio1 ges2 phy1 phi999 spo2',
