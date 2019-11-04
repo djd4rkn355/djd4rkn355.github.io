@@ -105,7 +105,9 @@ def writeInfoText(element):
         .replace('<del>', '') \
         .replace('<ins>', '') \
         .replace('<sub>', '') \
-        .replace('<sup>', '')
+        .replace('<sup>', '') \
+        .replace('<p>', '') \
+        .replace('</p>', '<br>')
     writeSubstText("\n\t\t<h6>" + textToWrite + "</h6>")
 
 # these two functions allow for changing the way the script writes the required HTML files
