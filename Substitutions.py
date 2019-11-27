@@ -418,18 +418,18 @@ while True:
                 make_page(
                     substitutions,
                     info_content,
-                    'Amélie',
-                    '17',
-                    'ENP1 GES7 dap1 pop1 mat1 deu3 che2 geg999 phi1 spo5',
-                    'VYwwwwwwwPBGRwwRwOwwwwwww'
-                )
-                make_page(
-                    substitutions,
-                    info_content,
                     'Vaso',
                     '17',
                     'MAP3 INF7 che2 deu2 eng1 pop3 dar1 php3 phi1'
                 )
+            make_page(
+                substitutions,
+                info_content,
+                'Amélie',
+                '17',
+                'ENP1 GES7 dap1 pop1 mat1 deu3 che2 geg999 phi1 spo5',
+                'VYwwwwwwwPBGRwwRwOwwwwwww'
+            )
 
             if sameFoodFiles == True:
                 # updates the new file with the data from the check file to copy its fetch time
