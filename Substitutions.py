@@ -462,8 +462,10 @@ while True:
         foodMenuFile.close()
         browser.quit()
 
-        # sends an email with a stack trace for recognising exceptions without remoting into the server
-        send_email(currentTime, 'The connection likely has timed out. Please check the status of the school website as well as the script.\n\n' + traceback.format_exc())
+        # checks if the exception is a timeout, and if it is, don't send an email
+        if not 'username = browser.find_element_by_id("username")' in traceback.format_exc():
+            # sends an email with a stack trace for recognising exceptions without remoting into the server
+            send_email(currentTime, 'The connection likely has timed out. Please check the status of the school website as well as the script.\n\n' + traceback.format_exc())
 
     # waits eight minutes until the next fetch. A successful fetch will likely take around two minutes, not including the notification delay,
     # which will result in a refreshing time of around every ten minutes
