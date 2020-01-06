@@ -441,6 +441,7 @@ while True:
                 copyfile("food.html", "food_check.html")
                 make_food_menu([food_item])
 
+            # if sameFiles == False or sameFoodFiles == False:
             push_changes()
             print("Script successfully executed. Repository is up-to-date.")
 
