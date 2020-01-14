@@ -70,7 +70,7 @@ def send_email(currentTime, body):
     try:
         print("Sending email")
         smtpUser = 'rpiavhplan@gmail.com'
-        smtpPass = 'subst307plan_bydeniz'
+        smtpPass = '307alexander_von_humb0ldt'
         toAddress = 'k.duezgoeren@gmail.com'
         fromAddress = smtpUser
         subject = 'AvH Plan Server Issue'
