@@ -127,6 +127,8 @@ while True:
 
     try:
 
+        substitutions = []
+
         currentTime = datetime.now().strftime('%d.%m.%Y, %H:%M')
         print("----- " + currentTime + " -----")
         header = "<!DOCTYPE html>\n<html>\n\t<head>\n\t\t<meta charset=\"utf-8\">\n\t\t<style>\n\t\t\tbody {\n\t\t\t\tfont-family: Arial, Helvetica, sans-serif\n\t\t\t}\n\t\t</style>\n\t</head>\n\t<body>\n<h1>" + currentTime + "</h1>"
