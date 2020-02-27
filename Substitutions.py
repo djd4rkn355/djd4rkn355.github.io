@@ -273,7 +273,7 @@ while True:
                         teacherColInt = i
                     elif col.text == "Raum":
                         roomColInt = i
-                    elif col.text == "Vertretungs-Text":
+                    elif col.text == "Vertretungs-Text" or col.text == "Text":
                         additionalColInt = i
                     elif col.text == "Art":
                         typeColInt = i
