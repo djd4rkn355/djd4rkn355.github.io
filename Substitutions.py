@@ -109,6 +109,7 @@ def writeInfoText(element):
         .replace('<sup>', '') \
         .replace('<p>', '') \
         .replace('</p>', '<br>')
+    print(textToWrite)
     writeSubstText("\n\t\t<h6>" + textToWrite + "</h6>")
 
 # these two functions allow for changing the way the script writes the required HTML files
@@ -230,7 +231,6 @@ while True:
                                 info_content += "\\n\\n" + infoCols[infoColInt].text
                                 
                 except:
-                    print(traceback.format_exc())
                     pass
 
                 # end info table fetch
