@@ -230,6 +230,7 @@ while True:
                                 info_content += "\\n\\n" + infoCols[infoColInt].text
                                 
                 except:
+                    print(traceback.format_exc())
                     pass
 
                 # end info table fetch
