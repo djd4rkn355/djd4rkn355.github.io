@@ -204,27 +204,14 @@ while True:
                 # start info table fetch
 
                 try:
-                    doThis = True
                     try:
                         dateElement = table_id_previous.find_element_by_xpath('./preceding-sibling::p[1]')
                         dateB = dateElement.find_element_by_tag_name("b")
                     except:
-                        try:
-                            dateElement = table_id_previous.find_element_by_xpath('./preceding-sibling::p[2]')
-                            dateB = dateElement.find_element_by_tag_name("b")
-                        except:
-                            for i in range(1, 8):
-                                try:
-                                    if doThis:      
-                                        dateB = table_id_previous.find_element_by_xpath('./preceding-sibling::p[' + str(i) + ']')
-                                        if not "[" in dateB.text and dateB.text.length > 2:
-                                            doThis = False
-                                except:
-                                    pass
+                        dateElement = table_id_previous.find_element_by_xpath('./preceding-sibling::p[2]')
+                        dateB = dateElement.find_element_by_tag_name("b")
 
                     # info table
-                    if doThis:
-                        raise Exception()
                     infoRows = table_id_previous.find_elements_by_tag_name("tr")
                     try:
                         column_test = table_id_previous.find_elements_by_xpath('.//tbody/tr[1]/th')[5] # throws an exception if the table is not a substitution table
@@ -243,7 +230,6 @@ while True:
                                 info_content += "\\n\\n" + infoCols[infoColInt].text
                                 
                 except:
-                    print(traceback.format_exc())
                     pass
 
                 # end info table fetch
