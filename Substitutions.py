@@ -212,10 +212,11 @@ while True:
                             dateElement = table_id_previous.find_element_by_xpath('./preceding-sibling::p[2]')
                             dateB = dateElement.find_element_by_tag_name("b")
                         except:
-                            for i in range(1, 5):
+                            for i in range(1, 8):
                                 try:
                                     dateB = table_id_previous.find_element_by_xpath('./preceding-sibling::p[' + str(i) + ']')
-                                    break
+                                    if not "[" in dateB.text and dateB.text.length > 2:
+                                        break
                                 except:
                                     pass
 
