@@ -208,8 +208,15 @@ while True:
                         dateElement = table_id_previous.find_element_by_xpath('./preceding-sibling::p[1]')
                         dateB = dateElement.find_element_by_tag_name("b")
                     except:
-                        dateElement = table_id_previous.find_element_by_xpath('./preceding-sibling::p[2]')
-                        dateB = dateElement.find_element_by_tag_name("b")
+                        try:
+                            dateElement = table_id_previous.find_element_by_xpath('./preceding-sibling::p[2]')
+                            dateB = dateElement.find_element_by_tag_name("b")
+                        except:
+                            for i in range(1, 5):
+                                try:
+                                    dateB = table_id_previous.find_element_by_xpath('./preceding-sibling::p[' + str(i) + ']')
+                                except:
+                                    pass
 
                     # info table
                     infoRows = table_id_previous.find_elements_by_tag_name("tr")
