@@ -215,6 +215,7 @@ while True:
                             for i in range(1, 5):
                                 try:
                                     dateB = table_id_previous.find_element_by_xpath('./preceding-sibling::p[' + str(i) + ']')
+                                    break
                                 except:
                                     pass
 
