@@ -223,6 +223,8 @@ while True:
                                     pass
 
                     # info table
+                    if doThis:
+                        raise Exception()
                     infoRows = table_id_previous.find_elements_by_tag_name("tr")
                     try:
                         column_test = table_id_previous.find_elements_by_xpath('.//tbody/tr[1]/th')[5] # throws an exception if the table is not a substitution table
