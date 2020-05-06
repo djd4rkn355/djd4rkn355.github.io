@@ -17,26 +17,28 @@
             background-color: rgba(0, 0, 0, 0.7);
             left: 0;
             right: 0;
+            position: absolute;
+            top: 60%;
             
         }
         h1 {
-            margin-top: 40%;
+            /* margin-top: 40%; */
         }
         .text {
             color: white;
             text-align: center;
-            padding-top: 4pt;
-            padding-bottom: 4pt;
-            font-size: 20px;
+            /* padding-top: 2pt;
+            padding-bottom: 2pt; */
+            /* font-size: 20px; */
         }
     </style>
 </head>
 <body>
     <div>
-        <h1 class="text" id="time_left">Time until meeting Ben:</h1>
+        <h1 class="text" id="time_left"></h1>
     </div>
     <script>
-        function getTime() {
+        function setTime() {
             let s = new Date(1589623200000 - Date.now() - 86400000 - 3600000);
             let days = s.getDate();
             let hrs = s.getHours();
@@ -65,7 +67,7 @@
             let time = days + daysS + hrs + hrsS + mins + minsS + secs + secsS;
             document.getElementById("time_left").innerText = "Zeit, bis du Ben siehst: " + time;
         }
-        getTime()
-        window.setInterval(function() { getTime() }, 1000);
+        setTime()
+        window.setInterval(function() { setTime() }, 1000);
     </script>
 </body>
