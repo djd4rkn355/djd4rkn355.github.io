@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<head>
+    <link href='https://fonts.googleapis.com/css2?family=Lato:wght@300'; rel='stylesheet' type='text/css'>
+    <style>
+        body {
+            background-image: url("rhododendron.jpg");
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+            font-family: '-apple-system-body', 'Lato', sans-serif;
+            font-weight: 300;
+            margin: 0;
+        }
+        div {
+            width: 100%;
+            height: fit-content;
+            background-color: rgba(0, 0, 0, 0.7);
+            left: 0;
+            right: 0;
+            
+        }
+        h1 {
+            margin-top: 40%;
+        }
+        .text {
+            color: white;
+            text-align: center;
+            padding-top: 4pt;
+            padding-bottom: 4pt;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h1 class="text" id="time_left">Time until meeting Ben:</h1>
+    </div>
+    <script>
+        function getTime() {
+            let s = new Date(1589623200000 - Date.now() - 86400000 - 3600000);
+            let days = s.getDate();
+            let hrs = s.getHours();
+            let mins = s.getMinutes();
+            let secs = s.getSeconds();
+            if (days == 1) {
+                var daysS = ' Tag, ';
+            } else {
+                var daysS = ' Tage, ';
+            }
+            if (hrs == 1) {
+                var hrsS = ' Stunde, ';
+            } else {
+                var hrsS = ' Stunden, ';
+            }
+            if (mins == 1) {
+                var minsS = ' Minute, ';
+            } else {
+                var minsS = ' Minuten, ';
+            }
+            if (secs == 1) {
+                var secsS = ' Sekunde';
+            } else {
+                var secsS = ' Sekunden';
+            }
+            let time = days + daysS + hrs + hrsS + mins + minsS + secs + secsS;
+            document.getElementById("time_left").innerText = "Zeit, bis du Ben siehst: " + time;
+        }
+        getTime()
+        window.setInterval(function() { getTime() }, 1000);
+    </script>
+</body>
